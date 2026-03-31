@@ -1,0 +1,181 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<BaseLayout
+    title="Privacy Policy | Jaymes Corey"
+    description="Privacy policy for jaymescorey.com — how data is collected, used, and protected."
+    canonicalUrl="https://jaymescorey.com/privacy"
+>
+    <style is:global>
+        .privacy-hero {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 7rem 10% 4rem;
+            border-bottom: var(--border-width) solid var(--yellow);
+        }
+
+        .privacy-hero .section-label {
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--yellow);
+            opacity: 0.85;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-hero h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 0.95;
+            color: var(--paper);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-hero p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(246,241,231,0.45);
+        }
+
+        .privacy-body {
+            background: var(--paper);
+            padding: 5rem 10%;
+        }
+
+        .privacy-body-inner {
+            max-width: 740px;
+            margin: 0 auto;
+        }
+
+        .privacy-body-inner h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(1.25rem, 2vw, 1.75rem);
+            text-transform: uppercase;
+            color: var(--ink);
+            margin-top: 3rem;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid var(--yellow);
+            padding-left: 1rem;
+            line-height: 1.1;
+        }
+
+        .privacy-body-inner p,
+        .privacy-body-inner li {
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            line-height: 1.9;
+            color: var(--ink);
+            margin-bottom: 1rem;
+        }
+
+        .privacy-body-inner ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-body-inner a {
+            color: var(--rust);
+            text-decoration: underline;
+        }
+
+        .privacy-footer {
+            background: var(--ink);
+            padding: 2rem 10%;
+            border-top: var(--border-width) solid var(--yellow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .privacy-footer a {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--yellow);
+            text-decoration: none;
+        }
+
+        .privacy-footer a:hover { text-decoration: underline; }
+
+        .privacy-footer-meta {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: rgba(246,241,231,0.3);
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 640px) {
+            .privacy-hero { padding: 5rem 6vw 3rem; }
+            .privacy-body { padding: 3.5rem 6vw; }
+            .privacy-footer { padding: 2rem 6vw; }
+        }
+    </style>
+
+    <div id="progress-bar"></div>
+    <Nav page="home" />
+
+    <div class="mobile-menu-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+        <nav>
+            <a href="/" class="mob-link"><span class="mob-num">01 /</span>Home</a>
+            <a href="/about" class="mob-link"><span class="mob-num">02 /</span>About</a>
+            <a href="/portfolio" class="mob-link"><span class="mob-num">03 /</span>The Work</a>
+            <a href="/field-report" class="mob-cta mob-link"><span class="mob-num">→</span>Field Report</a>
+        </nav>
+        <div class="mobile-menu-footer">[ JAYMES COREY ] // Build It Before You're Ready.</div>
+    </div>
+
+    <header class="privacy-hero">
+        <span class="section-label">Legal // Privacy</span>
+        <h1>Privacy<br>Policy</h1>
+        <p>Last updated: March 31, 2026</p>
+    </header>
+
+    <div class="privacy-body">
+        <div class="privacy-body-inner">
+            <p>This privacy policy describes how jaymescorey.com collects, uses, and protects information when you visit this site or sign up for the email list.</p>
+
+            <h2>Information Collected</h2>
+            <p>The only personal information collected on this site is your email address, and only when you voluntarily submit it through a sign-up form. No accounts are created, no passwords are stored, and no payment information passes through this site.</p>
+
+            <h2>How Your Email Is Used</h2>
+            <p>Your email address is used solely to send the Field Report — a weekly dispatch about building in public, running one-person businesses, and related topics. You will not be sold to, added to third-party lists, or contacted for any other purpose without your explicit consent.</p>
+
+            <h2>Email Service Provider</h2>
+            <p>Email list management is handled by <a href="https://www.mailerlite.com" target="_blank" rel="noopener">MailerLite</a>. When you submit your email address, it is stored in MailerLite's systems. MailerLite's privacy policy applies to how they handle that data and can be found at <a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" rel="noopener">mailerlite.com/legal/privacy-policy</a>.</p>
+
+            <h2>Cookies and Analytics</h2>
+            <p>This site does not use tracking cookies or run behavioral advertising. If analytics tools are added in future, this policy will be updated to reflect that. MailerLite may set a cookie to track email open and click activity — this is standard email marketing behavior and is subject to their privacy policy.</p>
+
+            <h2>Unsubscribing</h2>
+            <p>Every email sent through this list includes an unsubscribe link. Clicking it removes you from the list immediately. You can also email <a href="mailto:hi@jaymescorey.com">hi@jaymescorey.com</a> to request removal.</p>
+
+            <h2>Data Retention</h2>
+            <p>Your email address is retained in MailerLite for as long as you remain subscribed. Upon unsubscribing, your data is handled per MailerLite's retention policy. You can request deletion of your data at any time by contacting <a href="mailto:hi@jaymescorey.com">hi@jaymescorey.com</a>.</p>
+
+            <h2>Third-Party Links</h2>
+            <p>This site may link to external websites. Those sites have their own privacy policies and this policy does not apply to them.</p>
+
+            <h2>Contact</h2>
+            <p>Questions about this policy can be directed to <a href="mailto:hi@jaymescorey.com">hi@jaymescorey.com</a>.</p>
+        </div>
+    </div>
+
+    <footer class="privacy-footer">
+        <a href="/">&larr; Back to Home</a>
+        <span class="privacy-footer-meta">[ JAYMES COREY ] [ PRIVACY POLICY ]</span>
+        <a href="/field-report">Field Report &rarr;</a>
+    </footer>
+
+</BaseLayout>

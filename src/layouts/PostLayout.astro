@@ -10,13 +10,59 @@ interface Props {
     readTime: string;
     category: string;
     postTitle: string;
+    slug: string;
 }
 
-const { title, description, canonicalUrl, pubDate, readTime, category, postTitle } = Astro.props;
+const { title, description, canonicalUrl, pubDate, readTime, category, postTitle, slug } = Astro.props;
 
 const displayDate = new Date(pubDate).toLocaleDateString('en-US', {
     year: 'numeric', month: 'long', day: 'numeric'
 });
+
+const allPosts = [
+    {
+        slug: 'building-in-public',
+        title: 'Why I Stopped Waiting to Be Ready (And Started Building in Public)',
+        excerpt: 'Most people wait for perfect. I waited for years. Here\'s what changed when I started building out loud.',
+        date: 'Mar 15, 2026',
+        readTime: '6 min',
+        category: 'WRITTEN',
+    },
+    {
+        slug: 'one-person-business-model',
+        title: 'The One-Person Business Model: Build Without a Team, Funding, or Permission',
+        excerpt: 'The old startup playbook is broken for most people. Here\'s the model that actually works.',
+        date: 'Mar 8, 2026',
+        readTime: '7 min',
+        category: 'WRITTEN',
+    },
+    {
+        slug: 'navy-discipline-entrepreneur',
+        title: 'What 4 Years in the Navy Taught Me About Building a Business',
+        excerpt: 'Mission clarity. Shipping ugly. Adapting without perfect intel. The Navy built habits that matter.',
+        date: 'Mar 1, 2026',
+        readTime: '6 min',
+        category: 'WRITTEN',
+    },
+    {
+        slug: 'present-dad-entrepreneur',
+        title: 'The Real ROI: Why Presence With Your Kids Is Worth Building For',
+        excerpt: 'Money is a terrible reason to build a business. Presence is the real return.',
+        date: 'Feb 22, 2026',
+        readTime: '5 min',
+        category: 'WRITTEN',
+    },
+    {
+        slug: 'zero-dollar-startup',
+        title: 'The $0 Startup: Building Multiple Businesses Without Outside Investment',
+        excerpt: 'No investors. No co-founders. No startup capital. Here\'s what zero investment actually looks like.',
+        date: 'Feb 15, 2026',
+        readTime: '7 min',
+        category: 'WRITTEN',
+    },
+];
+
+const morePosts = allPosts.filter(p => p.slug !== slug).slice(0, 3);
 
 const schema = {
     "@context": "https://schema.org",
@@ -44,8 +90,11 @@ const schema = {
 
 <BaseLayout title={title} description={description} canonicalUrl={canonicalUrl}>
     <Fragment slot="head">
-        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-        <style>
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+    </Fragment>
+
+    <style is:global>
+            /* ── POST HERO ── */
             .post-hero {
                 background: var(--ink);
                 color: var(--paper);
@@ -106,7 +155,7 @@ const schema = {
                 opacity: 0.5;
             }
 
-            /* ── Body ── */
+            /* ── BODY ── */
             .post-body {
                 background: var(--paper);
                 padding: 5rem 10%;
@@ -183,13 +232,171 @@ const schema = {
                 margin-bottom: 0.5rem;
             }
 
-            /* ── Post CTA ── */
+            /* ── SPRINT CALLOUT ── */
+            .sprint-callout {
+                background: var(--yellow);
+                border-top: var(--border-width) solid var(--ink);
+                border-bottom: var(--border-width) solid var(--ink);
+                padding: 3rem 10%;
+            }
+
+            .sprint-callout-inner {
+                max-width: 860px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                gap: 2.5rem;
+                flex-wrap: wrap;
+            }
+
+            .sprint-callout-label {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--ink);
+                opacity: 0.6;
+                white-space: nowrap;
+            }
+
+            .sprint-callout-body {
+                flex: 1;
+                min-width: 200px;
+            }
+
+            .sprint-callout-body h3 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(1.2rem, 2vw, 1.6rem);
+                text-transform: uppercase;
+                color: var(--ink);
+                line-height: 1.05;
+                margin-bottom: 0.4rem;
+            }
+
+            .sprint-callout-body p {
+                font-family: 'Lora', serif;
+                font-size: 0.9rem;
+                line-height: 1.7;
+                color: rgba(15,15,15,0.7);
+            }
+
+            .sprint-callout .btn {
+                white-space: nowrap;
+                flex-shrink: 0;
+                background: var(--ink);
+                color: var(--yellow);
+                box-shadow: 4px 4px 0px var(--rust);
+            }
+
+            .sprint-callout .btn:hover {
+                box-shadow: 7px 7px 0px var(--rust);
+            }
+
+            @media (max-width: 640px) {
+                .sprint-callout { padding: 2.5rem 6vw; }
+                .sprint-callout-inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+                .sprint-callout-label { display: none; }
+            }
+
+            /* ── MORE DISPATCHES ── */
+            .more-section {
+                background: var(--poster-black);
+                padding: 5rem 10%;
+                border-top: var(--border-width) solid var(--ink);
+                border-bottom: var(--border-width) solid var(--yellow);
+            }
+
+            .more-header {
+                display: flex;
+                align-items: baseline;
+                gap: 1.5rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .more-header h2 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(1.75rem, 3vw, 2.5rem);
+                text-transform: uppercase;
+                color: var(--paper);
+                line-height: 1;
+            }
+
+            .more-header span {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--yellow);
+                opacity: 0.6;
+            }
+
+            .more-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .more-card {
+                background: var(--ink);
+                border: var(--border-width) solid rgba(246,241,231,0.1);
+                padding: 1.75rem;
+                text-decoration: none;
+                color: inherit;
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+            }
+
+            .more-card:hover {
+                border-color: var(--yellow);
+                box-shadow: 6px 6px 0px var(--rust);
+                transform: translate(-2px, -2px);
+            }
+
+            .more-card-tag {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.62rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--rust);
+            }
+
+            .more-card-title {
+                font-family: 'Anton', sans-serif;
+                font-size: 1.05rem;
+                text-transform: uppercase;
+                color: var(--paper);
+                line-height: 1.1;
+            }
+
+            .more-card-excerpt {
+                font-family: 'Lora', serif;
+                font-size: 0.85rem;
+                line-height: 1.7;
+                color: rgba(246,241,231,0.55);
+                flex: 1;
+            }
+
+            .more-card-meta {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.6rem;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: var(--yellow);
+                opacity: 0.5;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(246,241,231,0.08);
+                display: flex;
+                justify-content: space-between;
+            }
+
+            /* ── EMAIL CTA ── */
             .post-cta-section {
                 background: var(--ink);
                 color: var(--paper);
                 padding: 6rem 10%;
                 text-align: center;
-                border-top: var(--border-width) solid var(--yellow);
             }
 
             .post-cta-label {
@@ -219,13 +426,19 @@ const schema = {
                 color: rgba(246,241,231,0.82);
             }
 
-            @media (max-width: 768px) {
+            /* ── RESPONSIVE ── */
+            @media (max-width: 860px) {
+                .more-grid { grid-template-columns: 1fr 1fr; }
+            }
+
+            @media (max-width: 640px) {
                 .post-hero { padding: 6rem 6vw 4rem; }
                 .post-body { padding: 3.5rem 6vw; }
+                .more-section { padding: 3.5rem 6vw; }
+                .more-grid { grid-template-columns: 1fr; }
                 .post-cta-section { padding: 4rem 6vw; }
             }
-        </style>
-    </Fragment>
+    </style>
 
     <div id="progress-bar"></div>
     <Nav page="fieldReport" />
@@ -253,31 +466,49 @@ const schema = {
 
     <div class="post-body">
         <div class="post-body-inner">
-            <a href="/field-report" class="post-back">← Back to Field Report</a>
+            <a href="/field-report" class="post-back">← All dispatches</a>
             <slot />
         </div>
     </div>
+
+    <!-- SPRINT CALLOUT -->
+    <aside class="sprint-callout">
+        <div class="sprint-callout-inner">
+            <span class="sprint-callout-label">◆ Limited — 10 clients at a time</span>
+            <div class="sprint-callout-body">
+                <h3>Need someone to build with you?</h3>
+                <p>The 30-Day Sprint is 4 weeks of focused work — calls, email access, and a real plan. $2,500. Apply when there's a seat.</p>
+            </div>
+            <a href="/sprint" class="btn">See The Sprint &nbsp;→</a>
+        </div>
+    </aside>
+
+    <!-- MORE DISPATCHES -->
+    <section class="more-section">
+        <div class="more-header">
+            <h2>More from the field</h2>
+            <span>Keep reading →</span>
+        </div>
+        <div class="more-grid">
+            {morePosts.map(post => (
+                <a href={`/field-report/${post.slug}`} class="more-card">
+                    <span class="more-card-tag">{post.category}</span>
+                    <span class="more-card-title">{post.title}</span>
+                    <p class="more-card-excerpt">{post.excerpt}</p>
+                    <div class="more-card-meta">
+                        <span>{post.date}</span>
+                        <span>{post.readTime} read</span>
+                    </div>
+                </a>
+            ))}
+        </div>
+    </section>
 
     <section class="post-cta-section">
         <p class="post-cta-label">00.1 // Follow The Build</p>
         <h2>Get the field report<br>in your inbox.</h2>
         <p>One email per week. Raw experiments, real numbers, no fluff. The behind-the-scenes nobody posts.</p>
-        <a href="/#enlist" class="btn">Join The List &nbsp;→</a>
+        <a href="/#enlist" class="btn">Follow The Build &nbsp;→</a>
     </section>
 
-    <script>
-        const hamburger = document.getElementById('navHamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileClose = document.getElementById('mobileMenuClose');
-        if (hamburger && mobileMenu && mobileClose) {
-            hamburger.addEventListener('click', () => {
-                mobileMenu.classList.add('open');
-                hamburger.setAttribute('aria-expanded', 'true');
-            });
-            mobileClose.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-                hamburger.setAttribute('aria-expanded', 'false');
-            });
-        }
-    </script>
 </BaseLayout>

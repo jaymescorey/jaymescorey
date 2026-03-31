@@ -1,6 +1,57 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
+
+const posts = [
+    {
+        slug: 'building-in-public',
+        title: 'Why I Stopped Waiting to Be Ready (And Started Building in Public)',
+        excerpt: 'Most people wait for perfect. I waited for years. Here\'s what changed when I started building out loud — and what imperfect action actually buys you.',
+        date: 'Mar 15, 2026',
+        readTime: '6 min',
+        category: 'WRITTEN',
+        num: '01',
+    },
+    {
+        slug: 'one-person-business-model',
+        title: 'The One-Person Business Model: Build Without a Team, Funding, or Permission',
+        excerpt: 'The old startup playbook is broken for most people. Here\'s the model that actually works — and how to start this week with what you have.',
+        date: 'Mar 8, 2026',
+        readTime: '7 min',
+        category: 'WRITTEN',
+        num: '02',
+    },
+    {
+        slug: 'navy-discipline-entrepreneur',
+        title: 'What 4 Years in the Navy Taught Me About Building a Business',
+        excerpt: 'Mission clarity. Shipping ugly. Adapting without perfect intel. The Navy built habits that turned out to matter more than any business course.',
+        date: 'Mar 1, 2026',
+        readTime: '6 min',
+        category: 'WRITTEN',
+        num: '03',
+    },
+    {
+        slug: 'present-dad-entrepreneur',
+        title: 'The Real ROI: Why Presence With Your Kids Is Worth Building For',
+        excerpt: 'Money is a terrible reason to build a business. Presence is the real return. Here\'s what I\'m actually trying to buy with every experiment I run.',
+        date: 'Feb 22, 2026',
+        readTime: '5 min',
+        category: 'WRITTEN',
+        num: '04',
+    },
+    {
+        slug: 'zero-dollar-startup',
+        title: 'The $0 Startup: Building Multiple Businesses Without Outside Investment',
+        excerpt: 'No investors. No co-founders. No startup capital. Here\'s what building with zero outside investment actually looks like — and why constraints make it better.',
+        date: 'Feb 15, 2026',
+        readTime: '7 min',
+        category: 'WRITTEN',
+        num: '05',
+    },
+];
+
+const featured = posts[0];
+const rest = posts.slice(1);
 ---
 
 <BaseLayout
@@ -10,8 +61,7 @@ import Nav from '../components/Nav.astro';
     ogImage="https://jaymescorey.com/images/og-jaymes.jpg"
 >
     <Fragment slot="head">
-        <script type="application/ld+json">{`
-        {
+        <script type="application/ld+json" is:inline>{`{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           "name": "Field Report — Jaymes Corey",
@@ -22,14 +72,15 @@ import Nav from '../components/Nav.astro';
             "name": "Jaymes Corey",
             "url": "https://jaymescorey.com"
           }
-        }
-        `}</script>
+        }`}</script>
+    </Fragment>
 
-        <style>
+    <style is:global>
+            /* ── HERO ── */
             .field-hero {
                 background: var(--ink);
                 color: var(--paper);
-                padding: 7rem 10% 6rem;
+                padding: 7rem 10% 5rem;
                 position: relative;
                 overflow: hidden;
                 border-bottom: var(--border-width) solid var(--yellow);
@@ -44,7 +95,7 @@ import Nav from '../components/Nav.astro';
                 font-family: 'Space Mono', monospace;
                 font-size: 0.65rem;
                 letter-spacing: 3px;
-                color: rgba(242,194,48,0.08);
+                color: rgba(242,194,48,0.07);
                 white-space: nowrap;
                 overflow: hidden;
             }
@@ -62,99 +113,226 @@ import Nav from '../components/Nav.astro';
 
             .field-hero h1 {
                 font-family: 'Anton', sans-serif;
-                font-size: clamp(4rem, 8vw, 7rem);
+                font-size: clamp(3.5rem, 7vw, 6rem);
                 line-height: 0.92;
-                margin-bottom: 1.5rem;
+                margin-bottom: 1.25rem;
                 color: var(--paper);
             }
 
             .field-hero p {
                 font-family: 'Lora', serif;
-                font-size: clamp(1rem, 1.8vw, 1.25rem);
+                font-size: clamp(1rem, 1.6vw, 1.15rem);
                 line-height: 1.8;
-                max-width: 760px;
-                color: rgba(246,241,231,0.88);
+                max-width: 640px;
+                color: rgba(246,241,231,0.82);
             }
 
-            .field-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
-                padding: 6rem 10%;
+            /* ── FEATURED POST ── */
+            .featured-wrap {
                 background: var(--paper);
+                padding: 5rem 10% 0;
             }
 
-            .field-card {
-                background: white;
+            .featured-label {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                color: var(--rust);
+                margin-bottom: 1.25rem;
+                display: block;
+            }
+
+            .featured-post {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0;
                 border: var(--border-width) solid var(--ink);
-                box-shadow: 8px 8px 0px var(--rust);
-                padding: 2.25rem;
-                min-height: 320px;
+                box-shadow: 10px 10px 0px var(--rust);
+                background: var(--ink);
+                text-decoration: none;
+                color: inherit;
+                transition: box-shadow 0.15s, transform 0.15s;
+            }
+
+            .featured-post:hover {
+                box-shadow: 14px 14px 0px var(--rust);
+                transform: translate(-2px, -2px);
+            }
+
+            .featured-left {
+                background: var(--yellow);
+                padding: 3rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                border-right: var(--border-width) solid var(--ink);
+            }
+
+            .featured-num {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(5rem, 10vw, 9rem);
+                line-height: 1;
+                color: var(--ink);
+                opacity: 0.12;
+                display: block;
+                margin-bottom: auto;
+            }
+
+            .featured-tag {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--ink);
+                opacity: 0.7;
+                margin-top: 1rem;
+            }
+
+            .featured-right {
+                padding: 3rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
             }
 
-            .field-card h3 {
+            .featured-right h2 {
                 font-family: 'Anton', sans-serif;
-                font-size: 1.6rem;
+                font-size: clamp(1.5rem, 2.5vw, 2.25rem);
                 text-transform: uppercase;
-                letter-spacing: -0.5px;
-                margin-bottom: 1rem;
-                color: var(--ink);
-                line-height: 1.1;
+                color: var(--paper);
+                line-height: 1.05;
+                margin-bottom: 1.25rem;
             }
 
-            .field-card p {
+            .featured-right p {
                 font-family: 'Lora', serif;
                 font-size: 0.95rem;
-                line-height: 1.75;
-                color: var(--ink);
-                opacity: 0.85;
+                line-height: 1.8;
+                color: rgba(246,241,231,0.75);
                 margin-bottom: 2rem;
+                flex: 1;
             }
 
-            .field-card a.field-card-link {
-                display: block;
-                text-decoration: none;
-                color: inherit;
-                height: 100%;
-            }
-
-            .field-card:hover {
-                box-shadow: 12px 12px 0px var(--rust);
-                transform: translate(-2px, -2px);
-                transition: box-shadow 0.15s, transform 0.15s;
-            }
-
-            .field-card span {
-                font-family: 'Space Mono', monospace;
-                font-size: 0.7rem;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                color: var(--rust);
-            }
-
-            .field-card .field-card-date {
+            .featured-meta {
                 font-family: 'Space Mono', monospace;
                 font-size: 0.65rem;
-                text-transform: uppercase;
                 letter-spacing: 1.5px;
-                color: rgba(15,15,15,0.45);
-                margin-top: auto;
-                padding-top: 1.5rem;
+                text-transform: uppercase;
+                color: var(--yellow);
+                opacity: 0.6;
+                padding-top: 1.25rem;
+                border-top: 1px solid rgba(242,194,48,0.2);
+                display: flex;
+                gap: 1rem;
+            }
+
+            /* ── POST LIST FEED ── */
+            .feed-wrap {
+                background: var(--paper);
+                padding: 3rem 10% 5rem;
+            }
+
+            .feed-row {
+                display: grid;
+                grid-template-columns: 3rem 1fr auto;
+                gap: 1.5rem;
+                align-items: start;
+                padding: 2rem 0;
+                border-bottom: 1px solid var(--light-rule);
+                text-decoration: none;
+                color: inherit;
+                transition: background 0.15s;
+            }
+
+            .feed-row:first-child {
                 border-top: 1px solid var(--light-rule);
             }
 
-            .field-card .read-link {
-                font-family: 'Space Mono', monospace;
-                font-size: 0.7rem;
-                text-transform: uppercase;
-                letter-spacing: 1.5px;
+            .feed-row:hover .feed-title {
                 color: var(--rust);
-                font-weight: 700;
             }
 
+            .feed-row:hover .feed-arrow {
+                transform: translateX(4px);
+            }
+
+            .feed-num {
+                font-family: 'Anton', sans-serif;
+                font-size: 1.5rem;
+                color: var(--ink);
+                opacity: 0.15;
+                line-height: 1;
+                padding-top: 2px;
+            }
+
+            .feed-body {
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+            }
+
+            .feed-tag {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.62rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--rust);
+            }
+
+            .feed-title {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+                text-transform: uppercase;
+                color: var(--ink);
+                line-height: 1.1;
+                transition: color 0.15s;
+            }
+
+            .feed-excerpt {
+                font-family: 'Lora', serif;
+                font-size: 0.88rem;
+                line-height: 1.7;
+                color: rgba(15,15,15,0.6);
+                margin-top: 0.25rem;
+                max-width: 640px;
+            }
+
+            .feed-date {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.6rem;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: rgba(15,15,15,0.4);
+                margin-top: 0.5rem;
+            }
+
+            .feed-aside {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 0.4rem;
+                padding-top: 4px;
+                min-width: 60px;
+            }
+
+            .feed-readtime {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.62rem;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: rgba(15,15,15,0.4);
+                white-space: nowrap;
+            }
+
+            .feed-arrow {
+                font-size: 1.1rem;
+                color: var(--rust);
+                transition: transform 0.15s;
+                line-height: 1;
+            }
+
+            /* ── FOOTER CTA ── */
             .field-footer {
                 padding: 6rem 10%;
                 background: var(--ink);
@@ -168,37 +346,39 @@ import Nav from '../components/Nav.astro';
                 font-size: clamp(3rem, 7vw, 5rem);
                 margin-bottom: 1.25rem;
                 line-height: 0.9;
+                text-transform: uppercase;
             }
 
             .field-footer p {
                 font-family: 'Lora', serif;
                 font-size: 1rem;
                 line-height: 1.8;
-                max-width: 680px;
+                max-width: 640px;
                 margin: 0 auto 2rem;
-                color: rgba(246,241,231,0.85);
+                color: rgba(246,241,231,0.82);
             }
 
-            .field-footer .btn {
-                margin-top: 1rem;
-            }
-
-            @media (max-width: 900px) {
-                .field-grid {
-                    grid-template-columns: 1fr;
-                }
+            /* ── RESPONSIVE ── */
+            @media (max-width: 860px) {
+                .featured-post { grid-template-columns: 1fr; }
+                .featured-left { border-right: none; border-bottom: var(--border-width) solid var(--ink); padding: 2rem; }
+                .featured-num { font-size: 5rem; }
+                .featured-right { padding: 2rem; }
+                .feed-row { grid-template-columns: 2rem 1fr auto; gap: 1rem; }
             }
 
             @media (max-width: 640px) {
                 .field-hero { padding: 5rem 6vw 4rem; }
-                .field-hero h1 { font-size: clamp(3rem, 11vw, 5rem); }
-                .field-card { padding: 1.75rem; }
+                .featured-wrap { padding: 3rem 6vw 0; }
+                .feed-wrap { padding: 2rem 6vw 3.5rem; }
+                .field-footer { padding: 4rem 6vw; }
+                .feed-row { grid-template-columns: 1fr; gap: 0.5rem; }
+                .feed-num { display: none; }
+                .feed-aside { flex-direction: row; align-items: center; }
             }
-        </style>
-    </Fragment>
+    </style>
 
     <div id="progress-bar"></div>
-
     <Nav page="fieldReport" />
 
     <div class="mobile-menu-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
@@ -214,56 +394,52 @@ import Nav from '../components/Nav.astro';
 
     <section class="field-hero">
         <span class="section-label">00.0 // Field Report</span>
-        <h1>Notes, voice, video from the lab.</h1>
-        <p>Field updates from the work that’s actually moving. Sometimes written. Sometimes audio. Sometimes video. Always real. This is where the raw progress lands.</p>
+        <h1>Notes from<br>the lab.</h1>
+        <p>Field updates from the work that's actually moving. Always real. This is where the raw progress lands.</p>
     </section>
 
-    <section class="field-grid">
-        <article class="field-card">
-            <a href="/field-report/building-in-public" class="field-card-link">
-                <span>WRITTEN &nbsp;·&nbsp; Mar 15, 2026</span>
-                <h3>Why I Stopped Waiting to Be Ready (And Started Building in Public)</h3>
-                <p>Most people wait for perfect. I waited for years. Here’s what changed when I started building out loud — and what imperfect action actually buys you.</p>
-                <div class="field-card-date">Read the dispatch &nbsp;→</div>
+    <!-- FEATURED POST -->
+    <div class="featured-wrap">
+        <span class="featured-label">◆ Latest dispatch</span>
+        <a href={`/field-report/${featured.slug}`} class="featured-post">
+            <div class="featured-left">
+                <span class="featured-num">{featured.num}</span>
+                <span class="featured-tag">{featured.category} &nbsp;·&nbsp; {featured.readTime} read</span>
+            </div>
+            <div class="featured-right">
+                <h2>{featured.title}</h2>
+                <p>{featured.excerpt}</p>
+                <div class="featured-meta">
+                    <span>{featured.date}</span>
+                    <span>Read the dispatch →</span>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <!-- POST FEED -->
+    <div class="feed-wrap">
+        {rest.map(post => (
+            <a href={`/field-report/${post.slug}`} class="feed-row">
+                <span class="feed-num">{post.num}</span>
+                <div class="feed-body">
+                    <span class="feed-tag">{post.category}</span>
+                    <span class="feed-title">{post.title}</span>
+                    <p class="feed-excerpt">{post.excerpt}</p>
+                    <span class="feed-date">{post.date}</span>
+                </div>
+                <div class="feed-aside">
+                    <span class="feed-readtime">{post.readTime}</span>
+                    <span class="feed-arrow">→</span>
+                </div>
             </a>
-        </article>
-        <article class="field-card">
-            <a href="/field-report/one-person-business-model" class="field-card-link">
-                <span>WRITTEN &nbsp;·&nbsp; Mar 8, 2026</span>
-                <h3>The One-Person Business Model: Build Without a Team, Funding, or Permission</h3>
-                <p>The old startup playbook is broken for most people. Here’s the model that actually works — and how to start this week with what you have.</p>
-                <div class="field-card-date">Read the dispatch &nbsp;→</div>
-            </a>
-        </article>
-        <article class="field-card">
-            <a href="/field-report/navy-discipline-entrepreneur" class="field-card-link">
-                <span>WRITTEN &nbsp;·&nbsp; Mar 1, 2026</span>
-                <h3>What 4 Years in the Navy Taught Me About Building a Business</h3>
-                <p>Mission clarity. Shipping ugly. Adapting without perfect intel. The Navy built habits that turned out to matter more than any business course.</p>
-                <div class="field-card-date">Read the dispatch &nbsp;→</div>
-            </a>
-        </article>
-        <article class="field-card">
-            <a href="/field-report/present-dad-entrepreneur" class="field-card-link">
-                <span>WRITTEN &nbsp;·&nbsp; Feb 22, 2026</span>
-                <h3>The Real ROI: Why Presence With Your Kids Is Worth Building For</h3>
-                <p>Money is a terrible reason to build a business. Presence is the real return. Here’s what I’m actually trying to buy with every experiment I run.</p>
-                <div class="field-card-date">Read the dispatch &nbsp;→</div>
-            </a>
-        </article>
-        <article class="field-card">
-            <a href="/field-report/zero-dollar-startup" class="field-card-link">
-                <span>WRITTEN &nbsp;·&nbsp; Feb 15, 2026</span>
-                <h3>The $0 Startup: Building Multiple Businesses Without Outside Investment</h3>
-                <p>No investors. No co-founders. No startup capital. Here’s what building with zero outside investment actually looks like — and why constraints make it better.</p>
-                <div class="field-card-date">Read the dispatch &nbsp;→</div>
-            </a>
-        </article>
-    </section>
+        ))}
+    </div>
 
     <section class="field-footer">
-        <h2>Follow the field report.</h2>
+        <h2>Follow the<br>field report.</h2>
         <p>No hype. No perfect posts. Just the work, the movement, and the stories that teach the next step.</p>
-        <a href="/" class="btn btn-yellow">Follow The Build</a>
+        <a href="/#enlist" class="btn">Follow The Build &nbsp;→</a>
     </section>
+
 </BaseLayout>

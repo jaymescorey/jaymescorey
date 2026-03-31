@@ -6,18 +6,16 @@ const { page = 'home' } = Astro.props;
 ---
 
 <nav>
-    {page === 'home' ? (
-        <a href="/" class="nav-logo">Jaymes Corey</a>
-    ) : (
-        <a href="/" class="nav-logo">Jaymes Corey</a>
-    )}
+    <a href="/" class="nav-logo">
+        <span class="nav-logo-jaymes">JAYMES</span><span class="nav-logo-corey">COREY<span class="nav-logo-dot">.</span></span>
+    </a>
     {page === 'home' && (
         <div class="nav-links">
             <a href="#start">Start Here</a>
             <a href="#lab">The Lab</a>
             <a href="/about">About</a>
             <a href="/field-report">Field Report</a>
-            <a href="#enlist" class="nav-cta">Join The List</a>
+            <a href="#enlist" class="nav-cta">Follow The Build</a>
         </div>
     )}
     {page === 'about' && (
@@ -76,3 +74,19 @@ const { page = 'home' } = Astro.props;
         </>
     )}
 </nav>
+
+<script>
+    const hamburger = document.getElementById('navHamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileMenuClose');
+    if (hamburger && mobileMenu && mobileClose) {
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            hamburger.setAttribute('aria-expanded', 'true');
+        });
+        mobileClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    }
+</script>

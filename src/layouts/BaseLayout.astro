@@ -27,6 +27,7 @@ const {
     <meta name="description" content={description}>
     {canonicalUrl && <link rel="canonical" href={canonicalUrl}>}
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link rel="alternate" type="application/rss+xml" title="Field Report — Jaymes Corey" href="/field-report/rss.xml">
     <link rel="icon" type="image/png" href="/images/favicon-32x32.png">
     <meta name="theme-color" content="#F2C230">
     {noIndex && <meta name="robots" content="noindex, nofollow">}
@@ -54,10 +55,24 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 
+    <!-- SiteNavigationElement structured data -->
+    <script type="application/ld+json" is:inline>{
+      "@context": "https://schema.org",
+      "@type": "SiteNavigationElement",
+      "name": ["Home", "About", "The Work", "Field Report", "The 30-Day Sprint"],
+      "url": [
+        "https://jaymescorey.com/",
+        "https://jaymescorey.com/about",
+        "https://jaymescorey.com/portfolio",
+        "https://jaymescorey.com/field-report",
+        "https://jaymescorey.com/sprint"
+      ]
+    }</script>
+
     <slot name="head" />
 
     <!-- MailerLite Universal -->
-    <script>
+    <script is:inline>
         (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
         .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
         n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})

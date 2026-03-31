@@ -65,7 +65,9 @@ import Nav from '../components/Nav.astro';
         <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-14.png">
         <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-15.png">
 
-        <style>
+    </Fragment>
+
+    <style is:global>
             /* ── PORTFOLIO HERO ── */
             .port-hero {
                 background: var(--ink);
@@ -437,6 +439,11 @@ import Nav from '../components/Nav.astro';
 
             .port-footer a:hover { color: var(--rust); }
 
+            .port-footer-social {
+                display: flex;
+                gap: 1.25rem;
+            }
+
             .port-footer-meta {
                 font-family: 'Space Mono', monospace;
                 font-size: 0.65rem;
@@ -696,8 +703,7 @@ import Nav from '../components/Nav.astro';
                 .port-hero h1 { letter-spacing: -2px; }
                 .port-philosophy { gap: 1.5rem; }
             }
-        </style>
-    </Fragment>
+    </style>
 
     <div id="progress-bar"></div>
 
@@ -1071,7 +1077,11 @@ import Nav from '../components/Nav.astro';
     <footer class="port-footer">
         <a href="/">&larr; Back to Jaymes Corey</a>
         <span class="port-footer-meta">[ STATUS: BUILDING ] [ JAYMES COREY ] [ PORTFOLIO_v1.0 ]</span>
-        <a href="/#join">Get The Field Report</a>
+        <div class="port-footer-social">
+            <a href="https://www.linkedin.com/in/jaymescorey" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.instagram.com/jaymescorey" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <a href="/#enlist">Follow The Build</a>
     </footer>
 
     <script>
@@ -1205,30 +1215,6 @@ import Nav from '../components/Nav.astro';
             if (em) scrambleEl(em, 'Work.', 500);
         });
 
-        // ── MOBILE MENU ──
-        (function() {
-            const hamburger = document.getElementById('navHamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const closeBtn = document.getElementById('mobileMenuClose');
-            if (!hamburger || !mobileMenu || !closeBtn) return;
-
-            const navHamburger = hamburger;
-            const navMobileMenu = mobileMenu;
-            const navCloseBtn = closeBtn;
-
-            const closeMobileMenu = () => {
-                navHamburger.classList.remove('open');
-                navMobileMenu.classList.remove('open');
-                document.body.style.overflow = '';
-            };
-
-            navHamburger.addEventListener('click', function() {
-                const isOpen = navMobileMenu.classList.toggle('open');
-                navHamburger.classList.toggle('open', isOpen);
-                document.body.style.overflow = isOpen ? 'hidden' : '';
-            });
-
-            navCloseBtn.addEventListener('click', closeMobileMenu);
-        })();    </script>
+    </script>
 
 </BaseLayout>

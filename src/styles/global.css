@@ -63,13 +63,42 @@ nav {
 }
 
 .nav-logo {
-    font-family: 'Anton', sans-serif;
-    font-size: 2rem;
-    text-transform: uppercase;
-    color: var(--yellow);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     text-decoration: none;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.nav-logo-jaymes {
+    background: var(--yellow);
+    color: var(--ink);
+    padding: 4px 8px;
+    font-size: 1.35rem;
+    letter-spacing: 1px;
+    box-shadow: 3px 3px 0px var(--rust);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    display: inline-block;
+}
+
+.nav-logo:hover .nav-logo-jaymes {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
+
+.nav-logo-corey {
+    color: var(--yellow);
+    font-size: 1.35rem;
     letter-spacing: 3px;
-    text-shadow: 0 0 8px rgba(242,194,48,0.18);
+}
+
+.nav-logo-dot {
+    color: var(--rust);
+    font-size: 1.6rem;
+    line-height: 0;
+    vertical-align: -2px;
 }
 
 .nav-links {
@@ -172,17 +201,6 @@ nav {
 }
 
 /* Logo mark */
-.nav-logo-mark {
-    color: var(--rust);
-    font-size: 0.75rem;
-    margin-right: 5px;
-    display: inline-block;
-    transition: transform 0.2s ease;
-}
-
-.nav-logo:hover .nav-logo-mark {
-    transform: translateX(3px);
-}
 
 /* Live status indicator */
 .nav-status {

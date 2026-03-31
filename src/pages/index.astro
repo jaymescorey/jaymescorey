@@ -361,6 +361,11 @@ import Nav from '../components/Nav.astro';
                 padding-top: 0.75rem;
             }
 
+            .site-footer-copy a {
+                color: inherit;
+                text-decoration: underline;
+            }
+
             @media (min-width: 900px) {
                 .site-footer-inner {
                     align-items: center;
@@ -951,7 +956,7 @@ import Nav from '../components/Nav.astro';
             <a href="#lab" class="mob-link"><span class="mob-num">02</span>The Lab</a>
             <a href="/about" class="mob-link"><span class="mob-num">03</span>About</a>
             <a href="/field-report" class="mob-link"><span class="mob-num">04</span>Field Report</a>
-            <a href="#enlist" class="mob-cta mob-link"><span class="mob-num">→</span>Join The List</a>
+            <a href="#enlist" class="mob-cta mob-link"><span class="mob-num">→</span>Follow The Build</a>
         </nav>
         <div class="mobile-menu-footer">[ JAYMES COREY ] // Build It Before You're Ready.</div>
     </div>
@@ -962,9 +967,6 @@ import Nav from '../components/Nav.astro';
             <span class="hero-eyebrow">THE CYCLE ENDS WITH ME.</span>
             <h1><span class="line-1">Company man or family man</span><span class="line-2">should never be a choice.</span></h1>
             <p class="hero-sub">My parents hustled like hell to provide—the standard path still cost us our time together. I refuse that trade. I&#39;m running raw experiments across my domains to fund a life of total presence with my three kids, and documenting every ugly, honest step so you can start moving, too.</p>
-            <div class="hero-btns">
-                <a href="#enlist" class="btn">FOLLOW THE BUILD</a>
-            </div>
             <div class="hero-mini-signup">
                 <p>Get the weekly field report straight to your inbox.</p>
                 <form id="hero-signup">
@@ -1097,7 +1099,7 @@ import Nav from '../components/Nav.astro';
                     <p>Every week I document what's working, what died, and what I'm building next. Raw, unfiltered, no polish.</p>
                 </div>
                 <div class="doors-row-cta">
-                    <a href="#enlist" class="btn doors-btn">Follow Along &nbsp;→</a>
+                    <a href="#enlist" class="btn doors-btn">Follow The Build &nbsp;→</a>
                 </div>
             </div>
 
@@ -1789,7 +1791,7 @@ import Nav from '../components/Nav.astro';
                 <a href="/portfolio">What I Build</a>
                 <a href="#pillars">What I Think</a>
                 <a href="/about">About</a>
-                <a href="#join">Join The List</a>
+                <a href="#enlist">Follow The Build</a>
             </nav>
 
             <div class="site-footer-social">
@@ -1806,7 +1808,7 @@ import Nav from '../components/Nav.astro';
                 <span>[ PHILOSOPHY: DO IT UGLY ]</span>
             </div>
 
-            <p class="site-footer-copy">&copy; 2026 Jaymes Corey. Sacramento, CA.</p>
+            <p class="site-footer-copy">&copy; 2026 Jaymes Corey. Sacramento, CA. &nbsp;·&nbsp; <a href="/privacy">Privacy Policy</a></p>
         </div>
     </footer>
 
@@ -2021,49 +2023,6 @@ import Nav from '../components/Nav.astro';
             }, { passive: true });
         }
     </script>
-    <script>
-        const navHamburger = document.getElementById('navHamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-
-        if (navHamburger && mobileMenu && mobileMenuClose) {
-            const hamburger = navHamburger as HTMLElement;
-            const mobileMenuEl = mobileMenu as HTMLElement;
-            const closeBtn = mobileMenuClose as HTMLElement;
-
-            function closeMobileMenu() {
-                hamburger.classList.remove('open');
-                hamburger.setAttribute('aria-expanded', 'false');
-                mobileMenuEl.classList.remove('open');
-                document.body.style.overflow = '';
-                mobileMenuEl.querySelectorAll('.mob-link').forEach(function(link) {
-                    const linkEl = link as HTMLElement;
-                    linkEl.style.animation = 'none';
-                    linkEl.style.opacity = '0';
-                    void linkEl.offsetWidth; // force reflow
-                    linkEl.style.animation = '';
-                });
-            }
-
-            hamburger.addEventListener('click', function() {
-                const isOpen = mobileMenuEl.classList.toggle('open');
-                hamburger.classList.toggle('open', isOpen);
-                hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-                document.body.style.overflow = isOpen ? 'hidden' : '';
-            });
-
-            closeBtn.addEventListener('click', closeMobileMenu);
-
-            // Close menu when any nav link is tapped
-            mobileMenuEl.querySelectorAll('.mob-link').forEach(function(link) {
-                const linkEl = link as HTMLElement;
-                linkEl.addEventListener('click', function() {
-                    // Small delay lets the scroll start before menu closes
-                    setTimeout(closeMobileMenu, 80);
-                });
-            });
-        }
-    </script>
 
     <script>
         const progressBar = document.getElementById('progress-bar') as HTMLElement | null;
@@ -2090,6 +2049,73 @@ import Nav from '../components/Nav.astro';
                 }
             });
         }
+    </script>
+
+    <!-- STICKY CTA -->
+    <a href="#enlist" id="sticky-cta" aria-label="Follow the build">
+        FOLLOW THE BUILD &nbsp;→
+    </a>
+
+    <style>
+        #sticky-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            background: var(--yellow);
+            color: var(--ink);
+            font-family: 'Anton', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 14px 24px;
+            border: var(--border-width) solid var(--ink);
+            box-shadow: 5px 5px 0px var(--rust);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(12px);
+            transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.15s ease;
+        }
+
+        #sticky-cta.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        #sticky-cta:hover {
+            box-shadow: 8px 8px 0px var(--rust);
+            transform: translate(-2px, -2px);
+        }
+
+        @media (max-width: 640px) {
+            #sticky-cta {
+                bottom: 1.25rem;
+                right: 1.25rem;
+                font-size: 0.85rem;
+                padding: 12px 18px;
+            }
+        }
+    </style>
+
+    <script>
+        (function () {
+            const cta = document.getElementById('sticky-cta');
+            const hero = document.querySelector('.hero') as HTMLElement | null;
+            if (!cta || !hero) return;
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    if (!entry.isIntersecting) {
+                        cta.classList.add('visible');
+                    } else {
+                        cta.classList.remove('visible');
+                    }
+                },
+                { threshold: 0.1 }
+            );
+            observer.observe(hero);
+        })();
     </script>
 
 </BaseLayout>

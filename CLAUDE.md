@@ -21,8 +21,16 @@ src/
     landing.astro     — LinkedIn traffic landing page (noindex, email capture → upsell)
     thank-you.astro   — Post-signup confirmation (noindex, pitches Builder Session)
     sprint.astro      — 30-Day Sprint offer page ($2,500, max 10 clients at a time)
+    field-report.astro         — Field Report index (featured post + feed list layout)
+    field-report/
+      building-in-public.astro
+      one-person-business-model.astro
+      navy-discipline-entrepreneur.astro
+      present-dad-entrepreneur.astro
+      zero-dollar-startup.astro
   layouts/
     BaseLayout.astro  — Shared layout wrapper
+    PostLayout.astro  — Shared layout for all field-report posts
   components/
     Nav.astro         — Navigation component
   styles/
@@ -30,7 +38,7 @@ src/
 public/
   images/             — All static assets
   robots.txt
-  sitemap.xml         — includes index, about, portfolio, sprint
+  sitemap.xml         — includes index, about, portfolio, sprint, and all field-report posts
 ```
 
 ### Landing page deployment
@@ -38,6 +46,20 @@ public/
 
 ### Sprint page
 `sprint.astro` — currently shows a waitlist modal (all spots marked as full) because hi@jaymescorey.com is not yet active. When email is ready, replace modal with a real application form. The waitlist form feeds into MailerLite (same account `2182045`).
+
+### Field Report (blog)
+`field-report.astro` — index page. Layout: one featured post (full-width split panel) + a compact feed list of all other posts. **The post list is hardcoded** in two places that must both be updated when adding a new post:
+1. `src/pages/field-report.astro` — the `posts` array at the top of the frontmatter
+2. `src/layouts/PostLayout.astro` — the `allPosts` array at the top of the frontmatter (used to build the "More from the field" rail)
+3. `public/sitemap.xml` — add a new `<url>` entry
+
+Each post page lives at `src/pages/field-report/[slug].astro` and uses `PostLayout.astro`. Required props: `title`, `description`, `canonicalUrl`, `pubDate` (YYYY-MM-DD), `readTime`, `category`, `postTitle`, `slug`.
+
+`PostLayout.astro` includes:
+- Dark post hero with Anton headline + Space Mono meta
+- Lora body copy, Anton H2s with yellow left-border, rust blockquotes with offset shadow
+- "More from the field" dark rail — 3 cards auto-filtered to exclude the current post
+- Email list CTA footer
 
 ## Design System
 
@@ -181,10 +203,10 @@ Add to `public/sitemap.xml` for every new public page:
 - **hi@jaymescorey.com** — Set up domain email. Once live, replace sprint waitlist modal with a real application form.
 - **MailerLite** — Set up a separate group/segment for Sprint waitlist vs newsletter subscribers. Verify signups land correctly end-to-end.
 - **Calendly URL** — `thank-you.astro` Builder Session button still points to `https://calendly.com/your-link`. Replace before sending traffic.
-- **Blog** — Planned. Each post needs title, meta, OG, and Schema.org `BlogPosting`. Add `/blog` to sitemap when live.
 - **404 page** — Build a custom `404.astro` in the site's brutalist style.
 - **Cloudflare Analytics** — Free, no cookies. Enable in the Cloudflare dashboard.
 - **Deploy** `landing` + `thank-you` to separate Cloudflare Pages deployment.
+- **Field Report** — Submit `sitemap.xml` to Google Search Console to index new posts.
 
 ## Key Assets
 ```
@@ -204,3 +226,6 @@ public/images/
 - The "landing page" always means `landing.astro`, not `index.astro`
 - `global.css` is the shared stylesheet — landing/thank-you may use scoped `<style>` blocks for page-specific overrides
 - Full-bleed sections use `margin-left: -10vw; margin-right: -10vw; padding-left: 10vw; padding-right: 10vw` (mobile: 6vw)
+- **Page-level styles must use `<style is:global>` as a top-level tag** — do NOT put `<style>` inside a `<Fragment slot="head">`. Astro's scoping breaks in that context: HTML elements get hashed class names but the CSS rules don't, so nothing matches. The `<Fragment slot="head">` is only for `<script>`, `<link>`, and `<meta>` tags.
+- Navy service = **4 years** — never write "8 years" or any other duration
+- **All email CTA buttons say "Follow The Build"** — this is the single call-to-action across every form and link on the site. Do not use "Join The List", "Get The Field Report", "Follow Along", or any other variant. Exceptions: sprint waitlist uses "Notify Me", landing page offer uses "Get The Guide" — those are different actions.
