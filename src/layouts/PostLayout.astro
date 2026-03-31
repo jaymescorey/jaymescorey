@@ -1,0 +1,283 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+
+interface Props {
+    title: string;
+    description: string;
+    canonicalUrl: string;
+    pubDate: string;
+    readTime: string;
+    category: string;
+    postTitle: string;
+}
+
+const { title, description, canonicalUrl, pubDate, readTime, category, postTitle } = Astro.props;
+
+const displayDate = new Date(pubDate).toLocaleDateString('en-US', {
+    year: 'numeric', month: 'long', day: 'numeric'
+});
+
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": postTitle,
+    "url": canonicalUrl,
+    "datePublished": pubDate,
+    "author": {
+        "@type": "Person",
+        "name": "Jaymes Corey",
+        "url": "https://jaymescorey.com"
+    },
+    "publisher": {
+        "@type": "Person",
+        "name": "Jaymes Corey",
+        "url": "https://jaymescorey.com"
+    },
+    "description": description,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonicalUrl
+    }
+};
+---
+
+<BaseLayout title={title} description={description} canonicalUrl={canonicalUrl}>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+        <style>
+            .post-hero {
+                background: var(--ink);
+                color: var(--paper);
+                padding: 8rem 10% 5rem;
+                position: relative;
+                overflow: hidden;
+                border-bottom: var(--border-width) solid var(--yellow);
+            }
+
+            .post-hero::before {
+                content: "FIELD REPORT // FIELD REPORT // FIELD REPORT //";
+                position: absolute;
+                bottom: 1.5rem;
+                left: 0;
+                right: 0;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 3px;
+                color: rgba(242,194,48,0.06);
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .post-category {
+                display: inline-block;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.72rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--yellow);
+                opacity: 0.85;
+                margin-bottom: 1.25rem;
+            }
+
+            .post-hero h1 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(2.25rem, 4.5vw, 4rem);
+                line-height: 1.0;
+                margin-bottom: 2rem;
+                max-width: 860px;
+                color: var(--paper);
+                text-transform: uppercase;
+            }
+
+            .post-meta {
+                display: flex;
+                gap: 0.75rem;
+                align-items: center;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: rgba(246,241,231,0.55);
+            }
+
+            .post-meta .sep {
+                color: var(--yellow);
+                opacity: 0.5;
+            }
+
+            /* ── Body ── */
+            .post-body {
+                background: var(--paper);
+                padding: 5rem 10%;
+            }
+
+            .post-body-inner {
+                max-width: 740px;
+                margin: 0 auto;
+            }
+
+            .post-back {
+                display: inline-block;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--rust);
+                text-decoration: none;
+                margin-bottom: 3rem;
+                border-bottom: 2px solid var(--rust);
+                padding-bottom: 2px;
+                transition: color 0.15s, border-color 0.15s;
+            }
+
+            .post-back:hover {
+                color: var(--ink);
+                border-bottom-color: var(--ink);
+            }
+
+            .post-body-inner h2 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(1.5rem, 2.5vw, 2rem);
+                text-transform: uppercase;
+                color: var(--ink);
+                margin-top: 3.5rem;
+                margin-bottom: 1rem;
+                line-height: 1.1;
+                border-left: 4px solid var(--yellow);
+                padding-left: 1rem;
+            }
+
+            .post-body-inner p {
+                font-family: 'Lora', serif;
+                font-size: 1.05rem;
+                line-height: 1.9;
+                color: var(--ink);
+                margin-bottom: 1.5rem;
+            }
+
+            .post-body-inner blockquote {
+                border-left: 4px solid var(--rust);
+                margin: 2.5rem 0;
+                padding: 1.25rem 1.75rem;
+                background: var(--cream);
+                font-family: 'Lora', serif;
+                font-style: italic;
+                font-size: 1.15rem;
+                line-height: 1.75;
+                color: var(--ink);
+                box-shadow: 6px 6px 0px var(--rust);
+            }
+
+            .post-body-inner ul,
+            .post-body-inner ol {
+                font-family: 'Lora', serif;
+                font-size: 1.05rem;
+                line-height: 1.9;
+                margin-bottom: 1.5rem;
+                padding-left: 1.5rem;
+                color: var(--ink);
+            }
+
+            .post-body-inner li {
+                margin-bottom: 0.5rem;
+            }
+
+            /* ── Post CTA ── */
+            .post-cta-section {
+                background: var(--ink);
+                color: var(--paper);
+                padding: 6rem 10%;
+                text-align: center;
+                border-top: var(--border-width) solid var(--yellow);
+            }
+
+            .post-cta-label {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.72rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--yellow);
+                opacity: 0.75;
+                margin-bottom: 1rem;
+            }
+
+            .post-cta-section h2 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(2.5rem, 5vw, 4rem);
+                line-height: 0.95;
+                margin-bottom: 1.25rem;
+                text-transform: uppercase;
+            }
+
+            .post-cta-section p {
+                font-family: 'Lora', serif;
+                font-size: 1rem;
+                line-height: 1.8;
+                max-width: 580px;
+                margin: 0 auto 2.5rem;
+                color: rgba(246,241,231,0.82);
+            }
+
+            @media (max-width: 768px) {
+                .post-hero { padding: 6rem 6vw 4rem; }
+                .post-body { padding: 3.5rem 6vw; }
+                .post-cta-section { padding: 4rem 6vw; }
+            }
+        </style>
+    </Fragment>
+
+    <div id="progress-bar"></div>
+    <Nav page="fieldReport" />
+
+    <div class="mobile-menu-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+        <nav>
+            <a href="/" class="mob-link"><span class="mob-num">01 /</span>Home</a>
+            <a href="/about" class="mob-link"><span class="mob-num">02 /</span>About</a>
+            <a href="/portfolio" class="mob-link"><span class="mob-num">03 /</span>The Work</a>
+            <a href="/field-report" class="mob-cta mob-link"><span class="mob-num">→</span>Field Report</a>
+        </nav>
+        <div class="mobile-menu-footer">[ FIELD_REPORT ] // No fluff dispatches.</div>
+    </div>
+
+    <header class="post-hero">
+        <span class="post-category">{category} // Field Report</span>
+        <h1>{postTitle}</h1>
+        <div class="post-meta">
+            <span>{displayDate}</span>
+            <span class="sep">◆</span>
+            <span>{readTime} read</span>
+        </div>
+    </header>
+
+    <div class="post-body">
+        <div class="post-body-inner">
+            <a href="/field-report" class="post-back">← Back to Field Report</a>
+            <slot />
+        </div>
+    </div>
+
+    <section class="post-cta-section">
+        <p class="post-cta-label">00.1 // Follow The Build</p>
+        <h2>Get the field report<br>in your inbox.</h2>
+        <p>One email per week. Raw experiments, real numbers, no fluff. The behind-the-scenes nobody posts.</p>
+        <a href="/#enlist" class="btn">Join The List &nbsp;→</a>
+    </section>
+
+    <script>
+        const hamburger = document.getElementById('navHamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileClose = document.getElementById('mobileMenuClose');
+        if (hamburger && mobileMenu && mobileClose) {
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.add('open');
+                hamburger.setAttribute('aria-expanded', 'true');
+            });
+            mobileClose.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        }
+    </script>
+</BaseLayout>

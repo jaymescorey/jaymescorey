@@ -2008,7 +2008,7 @@ h1 .line-2 {
     letter-spacing: 3px;
     color: var(--rust);
     margin-bottom: 1.5rem;
-    margin-top: -0.5rem;
+    margin-top: 0.75rem;
 }
 
 /* ── SECONDARY BUTTON ── */

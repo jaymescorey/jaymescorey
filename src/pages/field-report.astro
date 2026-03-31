@@ -114,12 +114,45 @@ import Nav from '../components/Nav.astro';
                 margin-bottom: 2rem;
             }
 
+            .field-card a.field-card-link {
+                display: block;
+                text-decoration: none;
+                color: inherit;
+                height: 100%;
+            }
+
+            .field-card:hover {
+                box-shadow: 12px 12px 0px var(--rust);
+                transform: translate(-2px, -2px);
+                transition: box-shadow 0.15s, transform 0.15s;
+            }
+
             .field-card span {
                 font-family: 'Space Mono', monospace;
                 font-size: 0.7rem;
                 text-transform: uppercase;
                 letter-spacing: 2px;
                 color: var(--rust);
+            }
+
+            .field-card .field-card-date {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                color: rgba(15,15,15,0.45);
+                margin-top: auto;
+                padding-top: 1.5rem;
+                border-top: 1px solid var(--light-rule);
+            }
+
+            .field-card .read-link {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                color: var(--rust);
+                font-weight: 700;
             }
 
             .field-footer {
@@ -187,19 +220,44 @@ import Nav from '../components/Nav.astro';
 
     <section class="field-grid">
         <article class="field-card">
-            <span>WRITTEN</span>
-            <h3>Quick dispatches</h3>
-            <p>Short notes on what moved, what didn’t, and what changed in the lab. No polished essay — just what matters this week.</p>
+            <a href="/field-report/building-in-public" class="field-card-link">
+                <span>WRITTEN &nbsp;·&nbsp; Mar 15, 2026</span>
+                <h3>Why I Stopped Waiting to Be Ready (And Started Building in Public)</h3>
+                <p>Most people wait for perfect. I waited for years. Here’s what changed when I started building out loud — and what imperfect action actually buys you.</p>
+                <div class="field-card-date">Read the dispatch &nbsp;→</div>
+            </a>
         </article>
         <article class="field-card">
-            <span>VOICE</span>
-            <h3>Audio check-ins</h3>
-            <p>Voice notes from the work day. The messy thinking, the next move, and the story behind each imperfect action.</p>
+            <a href="/field-report/one-person-business-model" class="field-card-link">
+                <span>WRITTEN &nbsp;·&nbsp; Mar 8, 2026</span>
+                <h3>The One-Person Business Model: Build Without a Team, Funding, or Permission</h3>
+                <p>The old startup playbook is broken for most people. Here’s the model that actually works — and how to start this week with what you have.</p>
+                <div class="field-card-date">Read the dispatch &nbsp;→</div>
+            </a>
         </article>
         <article class="field-card">
-            <span>VIDEO</span>
-            <h3>Behind-the-scenes</h3>
-            <p>Short video clips from the process, the tools, and the place where the build actually happens — with the kids in view.</p>
+            <a href="/field-report/navy-discipline-entrepreneur" class="field-card-link">
+                <span>WRITTEN &nbsp;·&nbsp; Mar 1, 2026</span>
+                <h3>What 4 Years in the Navy Taught Me About Building a Business</h3>
+                <p>Mission clarity. Shipping ugly. Adapting without perfect intel. The Navy built habits that turned out to matter more than any business course.</p>
+                <div class="field-card-date">Read the dispatch &nbsp;→</div>
+            </a>
+        </article>
+        <article class="field-card">
+            <a href="/field-report/present-dad-entrepreneur" class="field-card-link">
+                <span>WRITTEN &nbsp;·&nbsp; Feb 22, 2026</span>
+                <h3>The Real ROI: Why Presence With Your Kids Is Worth Building For</h3>
+                <p>Money is a terrible reason to build a business. Presence is the real return. Here’s what I’m actually trying to buy with every experiment I run.</p>
+                <div class="field-card-date">Read the dispatch &nbsp;→</div>
+            </a>
+        </article>
+        <article class="field-card">
+            <a href="/field-report/zero-dollar-startup" class="field-card-link">
+                <span>WRITTEN &nbsp;·&nbsp; Feb 15, 2026</span>
+                <h3>The $0 Startup: Building Multiple Businesses Without Outside Investment</h3>
+                <p>No investors. No co-founders. No startup capital. Here’s what building with zero outside investment actually looks like — and why constraints make it better.</p>
+                <div class="field-card-date">Read the dispatch &nbsp;→</div>
+            </a>
         </article>
     </section>
 
