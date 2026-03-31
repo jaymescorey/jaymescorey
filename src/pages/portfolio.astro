@@ -1,0 +1,1218 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<BaseLayout
+    title="The Work | Jaymes Corey — Brand Strategy & Creative Campaigns"
+    description="Brand strategy, creative campaigns, and speculative design from Jaymes Corey. ADDY Award-winning work. Big ideas executed with intention."
+    canonicalUrl="https://jaymescorey.com/portfolio"
+    ogImage="https://jaymescorey.com/images/og-jaymes.jpg"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "The Work — Jaymes Corey",
+          "url": "https://jaymescorey.com/portfolio",
+          "description": "Brand strategy, creative campaigns, and speculative design from Jaymes Corey. ADDY Award-winning work.",
+          "author": {
+            "@type": "Person",
+            "name": "Jaymes Corey",
+            "url": "https://jaymescorey.com"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaymescorey.com/" },
+              { "@type": "ListItem", "position": 2, "name": "The Work", "item": "https://jaymescorey.com/portfolio" }
+            ]
+          }
+        }
+        `}</script>
+
+        <!-- Preload gallery images so they're ready before the overlay opens -->
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_1.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_2.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_3.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_4.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_5.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_6.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_7.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_8.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_9.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_10.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_11.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_12.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_13.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_14.png">
+        <link rel="preload" as="image" href="/images/addy-award-jaymes-corey_15.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts1.jpeg">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-1.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-2.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-3.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-4.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-5.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-6.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-7.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-8.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-9.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-10.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-11.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-12.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-13.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-14.png">
+        <link rel="preload" as="image" href="/images/Jaymes-Corey-All-Birds-Concepts-15.png">
+
+        <style>
+            /* ── PORTFOLIO HERO ── */
+            .port-hero {
+                background: var(--ink);
+                border-bottom: 6px solid var(--yellow);
+                padding: 7rem 10% 6rem;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .port-hero::before {
+                content: "THE WORK // THE WORK // THE WORK // THE WORK // THE WORK // THE WORK // THE WORK //";
+                position: absolute;
+                bottom: 1.5rem;
+                left: 0; right: 0;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 3px;
+                color: rgba(242,194,48,0.12);
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .port-hero::after {
+                content: "";
+                position: absolute;
+                top: 0; left: 40px; bottom: 0;
+                width: 2px;
+                background: rgba(201, 74, 43, 0.25);
+            }
+
+            .port-hero-inner {
+                position: relative;
+                z-index: 2;
+            }
+
+            .port-hero h1 {
+                font-size: clamp(5rem, 13vw, 10rem);
+                color: var(--yellow);
+                margin-bottom: 1.5rem;
+                letter-spacing: -3px;
+            }
+
+            .port-hero h1 em {
+                display: block;
+                color: var(--paper);
+                -webkit-text-stroke: 3px var(--yellow);
+                paint-order: stroke fill;
+                font-style: normal;
+            }
+
+            .port-hero-sub {
+                font-family: 'Lora', serif;
+                font-style: italic;
+                font-size: clamp(1.1rem, 2vw, 1.5rem);
+                color: rgba(246, 241, 231, 0.75);
+                max-width: 600px;
+                line-height: 1.5;
+            }
+
+            .port-philosophy {
+                margin-top: 2.5rem;
+                display: flex;
+                gap: 3rem;
+                flex-wrap: wrap;
+            }
+
+            .port-philosophy-item {
+                display: flex;
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .port-philosophy-item .label {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--rust);
+            }
+
+            .port-philosophy-item .value {
+                font-family: 'Anton', sans-serif;
+                font-size: 1.2rem;
+                text-transform: uppercase;
+                color: var(--yellow);
+                letter-spacing: 1px;
+            }
+
+            /* ── FEATURED CASE ── */
+            .featured-case {
+                padding: 8rem 10%;
+                background: var(--paper);
+                border-bottom: var(--border-width) solid var(--ink);
+            }
+
+            .featured-case-inner {
+                display: grid;
+                grid-template-columns: 1fr 1.8fr;
+                gap: 4rem;
+                align-items: start;
+            }
+
+            .featured-case-info {
+                position: relative;
+            }
+
+            .case-number {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                opacity: 0.5;
+                margin-bottom: 1rem;
+                display: block;
+            }
+
+            .featured-case-info h2 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(3rem, 6vw, 5.5rem);
+                text-transform: uppercase;
+                line-height: 0.88;
+                letter-spacing: -2px;
+                margin-bottom: 1.5rem;
+            }
+
+            .featured-case-info h2 span {
+                display: block;
+                color: var(--rust);
+            }
+
+            .case-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .case-tag {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                padding: 4px 12px;
+                border: 2px solid var(--ink);
+                background: transparent;
+            }
+
+            .case-tag.award {
+                background: var(--yellow);
+                border-color: var(--ink);
+                font-weight: 700;
+            }
+
+            .featured-case-info .case-description {
+                font-family: 'Lora', serif;
+                font-size: 1.1rem;
+                line-height: 1.75;
+                max-width: 540px;
+                margin-bottom: 2rem;
+                opacity: 0.85;
+            }
+
+            .case-cta {
+                display: inline-block;
+                padding: 1rem 2.5rem;
+                font-family: 'Anton', sans-serif;
+                font-size: 1.1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+                background: var(--ink);
+                color: var(--yellow);
+                border: var(--border-width) solid var(--ink);
+                box-shadow: 6px 6px 0px var(--rust);
+                transition: 0.1s;
+                cursor: pointer;
+            }
+
+            .case-cta:hover {
+                transform: translate(-2px, -2px);
+                box-shadow: 8px 8px 0px var(--rust);
+            }
+
+            /* ── FEATURED VISUAL PANEL ── */
+            .featured-visual {
+                position: relative;
+            }
+
+            .featured-img-wrap {
+                position: relative;
+                border: var(--border-width) solid var(--ink);
+                box-shadow: 18px 18px 0px var(--ink);
+                transform: rotate(1.5deg);
+                overflow: hidden;
+                background: #1a0a2e;
+            }
+
+            .featured-img-wrap img {
+                width: 100%;
+                display: block;
+            }
+
+            /* ── UGLY APPROVED STAMP ── */
+            .ugly-stamp {
+                position: absolute;
+                top: -28px;
+                right: -28px;
+                width: 130px;
+                height: 130px;
+                z-index: 10;
+                transform: rotate(12deg);
+                filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.5));
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                cursor: default;
+            }
+
+            .ugly-stamp:hover {
+                transform: rotate(-6deg) scale(1.1);
+            }
+
+            .ugly-stamp-ring {
+                position: relative;
+                width: 130px;
+                height: 130px;
+            }
+
+            .ugly-stamp-ring svg {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .ugly-stamp-dog {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 68px;
+                height: 68px;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 3px solid var(--ink);
+                background: var(--yellow);
+            }
+
+            .ugly-stamp-dog img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center top;
+            }
+
+            .tape-h {
+                position: absolute;
+                top: -12px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 22px;
+                background: rgba(242, 194, 48, 0.7);
+                border: 1px solid rgba(0,0,0,0.15);
+                z-index: 5;
+            }
+
+            /* ── CAMPAIGN GALLERY / CORKBOARD ── */
+            .corkboard {
+                columns: 3;
+                column-gap: 2.5rem;
+                margin-top: 4rem;
+            }
+
+            @media (max-width: 900px) { .corkboard { columns: 2; } }
+            @media (max-width: 560px) { .corkboard { columns: 1; } }
+
+            .gallery-pin {
+                break-inside: avoid;
+                position: relative;
+                margin-bottom: 2.5rem;
+                transform: rotate(var(--r, 0deg));
+                transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease;
+                background: white;
+                border: var(--border-width) solid var(--ink);
+                box-shadow: 8px 8px 0px rgba(0,0,0,0.6);
+                padding: 8px 8px 0;
+                display: inline-block;
+                width: 100%;
+            }
+
+            .gallery-pin:hover {
+                transform: rotate(0deg) translateY(-8px);
+                box-shadow: 14px 14px 0px var(--rust);
+                z-index: 10;
+                position: relative;
+            }
+
+            .gallery-pin img {
+                width: 100%;
+                display: block;
+            }
+
+            .gallery-tape {
+                position: absolute;
+                top: -13px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 70px;
+                height: 20px;
+                background: rgba(242, 194, 48, 0.65);
+                border: 1px solid rgba(0,0,0,0.12);
+                z-index: 5;
+            }
+
+            /* ── DESIGN PHILOSOPHY STRIP ── */
+            .philosophy-strip {
+                background: var(--rust);
+                border-top: var(--border-width) solid var(--ink);
+                border-bottom: var(--border-width) solid var(--ink);
+                padding: 5rem 10%;
+            }
+
+            .philosophy-strip h2 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(2.5rem, 5vw, 4.5rem);
+                text-transform: uppercase;
+                line-height: 0.9;
+                color: var(--ink);
+                margin-bottom: 2rem;
+                letter-spacing: -1px;
+            }
+
+            .philosophy-strip h2 em {
+                font-style: normal;
+                color: var(--yellow);
+                -webkit-text-stroke: 2px var(--ink);
+                paint-order: stroke fill;
+            }
+
+            .philosophy-strip p {
+                font-family: 'Lora', serif;
+                font-style: italic;
+                font-size: clamp(1rem, 2vw, 1.3rem);
+                color: var(--ink);
+                max-width: 680px;
+                line-height: 1.65;
+                opacity: 0.9;
+            }
+
+            /* ── MINI FOOTER ── */
+            .port-footer {
+                background: var(--ink);
+                padding: 3rem 10%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+                border-top: var(--border-width) solid var(--yellow);
+            }
+
+            .port-footer a {
+                font-family: 'Anton', sans-serif;
+                font-size: 1.1rem;
+                color: var(--yellow);
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                transition: color 0.2s;
+            }
+
+            .port-footer a:hover { color: var(--rust); }
+
+            .port-footer-meta {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                color: rgba(246,241,231,0.3);
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+            /* ── HERO HEADLINE + MASCOT ── */
+            .hero-headline-row {
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+            }
+
+            .hero-mascot {
+                width: clamp(260px, 28vw, 400px);
+                flex-shrink: 0;
+                transform-origin: bottom center;
+                animation: mascot-float 4s ease-in-out infinite;
+                filter: drop-shadow(3px 6px 0px rgba(0,0,0,0.5));
+                cursor: pointer;
+            }
+
+            .hero-mascot img { width: 100%; display: block; }
+
+            @keyframes mascot-float {
+                0%, 100% { transform: translateY(0px) rotate(-1deg); }
+                50%       { transform: translateY(-12px) rotate(1deg); }
+            }
+
+            .hero-mascot:hover {
+                animation: mascot-wag 0.5s ease-in-out infinite;
+                filter: drop-shadow(4px 8px 0px var(--rust));
+            }
+
+            @keyframes mascot-wag {
+                0%   { transform: rotate(-6deg) translateY(-4px); }
+                25%  { transform: rotate(6deg)  translateY(-4px); }
+                50%  { transform: rotate(-4deg) translateY(-8px); }
+                75%  { transform: rotate(4deg)  translateY(-4px); }
+                100% { transform: rotate(-6deg) translateY(-4px); }
+            }
+
+            @media (max-width: 768px) { .hero-mascot { display: none; } }
+
+            /* ── CASE STUDY OVERLAY ── */
+            .case-overlay {
+                position: fixed;
+                top: 0; right: 0; bottom: 0; left: 0;
+                z-index: 3000;
+                background: var(--paper);
+                transform: translateX(100%);
+                transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1),
+                            visibility 0s 0.55s;
+                visibility: hidden;
+                pointer-events: none;
+                overflow-y: auto;
+                overflow-x: hidden;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .case-overlay.open {
+                transform: translateX(0);
+                transition: transform 0.55s cubic-bezier(0.77, 0, 0.175, 1),
+                            visibility 0s 0s;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            /* Sticky top bar */
+            .case-overlay-nav {
+                position: sticky;
+                top: 0;
+                z-index: 10;
+                background: var(--ink);
+                border-bottom: 4px solid var(--yellow);
+                padding: 1rem 5%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+
+            .case-overlay-close {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--yellow);
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0;
+                transition: color 0.2s;
+                white-space: nowrap;
+            }
+
+            .case-overlay-close:hover { color: var(--rust); }
+
+            .case-overlay-id {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.6rem;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                color: rgba(242,194,48,0.4);
+            }
+
+            .case-overlay-share {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--ink);
+                background: var(--yellow);
+                border: none;
+                padding: 7px 16px;
+                cursor: pointer;
+                box-shadow: 3px 3px 0 var(--rust);
+                transition: transform 0.15s, box-shadow 0.15s;
+                white-space: nowrap;
+            }
+
+            .case-overlay-share:hover {
+                transform: translate(-1px, -1px);
+                box-shadow: 4px 4px 0 var(--rust);
+            }
+
+            .case-overlay-share.copied {
+                background: var(--rust);
+                color: white;
+            }
+
+            /* Overlay hero */
+            .case-overlay-hero {
+                background: var(--ink);
+                padding: 5rem 10% 4rem;
+                border-bottom: 4px solid var(--rust);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .case-overlay-hero::after {
+                content: attr(data-bg-text);
+                position: absolute;
+                bottom: -1.5rem;
+                right: 4%;
+                font-family: 'Anton', sans-serif;
+                font-size: 14vw;
+                color: rgba(242,194,48,0.04);
+                text-transform: uppercase;
+                white-space: nowrap;
+                line-height: 1;
+                pointer-events: none;
+            }
+
+            .case-overlay-hero h2 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(3.5rem, 8vw, 7rem);
+                text-transform: uppercase;
+                line-height: 0.88;
+                letter-spacing: -2px;
+                color: var(--yellow);
+                margin: 1rem 0 2rem;
+            }
+
+            .case-overlay-hero h2 span {
+                display: block;
+                color: var(--paper);
+                -webkit-text-stroke: 3px var(--yellow);
+                paint-order: stroke fill;
+            }
+
+            .case-overlay-hero .case-tag {
+                border-color: rgba(246,241,231,0.25);
+                color: rgba(246,241,231,0.7);
+            }
+
+            .case-overlay-hero .case-tag.award {
+                background: var(--yellow);
+                border-color: var(--yellow);
+                color: var(--ink);
+            }
+
+            /* Overlay body */
+            .case-overlay-body {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 5rem;
+                padding: 5rem 10%;
+                background: var(--paper);
+                border-bottom: var(--border-width) solid var(--ink);
+                align-items: start;
+            }
+
+            .case-overlay-lead img {
+                width: 100%;
+                display: block;
+                border: var(--border-width) solid var(--ink);
+                box-shadow: 14px 14px 0 var(--ink);
+                transform: rotate(1deg);
+            }
+
+            .case-overlay-copy .case-description {
+                font-family: 'Lora', serif;
+                font-size: clamp(1rem, 1.8vw, 1.2rem);
+                line-height: 1.8;
+                margin-bottom: 1.5rem;
+                opacity: 0.85;
+            }
+
+            .case-overlay-copy .case-tags { margin-top: 2rem; }
+
+            /* Overlay gallery */
+            .case-overlay-gallery {
+                background: var(--poster-black);
+                border-top: var(--border-width) solid var(--rust);
+                padding: 5rem 8%;
+            }
+
+            .case-overlay-gallery .section-label { color: var(--rust); }
+            .case-overlay-gallery .section-title { color: var(--yellow); }
+
+            /* Overlay footer */
+            .case-overlay-footer {
+                background: var(--ink);
+                padding: 2.5rem 10%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+                border-top: var(--border-width) solid var(--yellow);
+            }
+
+            .case-overlay-footer .port-footer-meta {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.6rem;
+                color: rgba(246,241,231,0.25);
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
+
+            /* ── RESPONSIVE ── */
+            @media (max-width: 900px) {
+                .featured-case-inner {
+                    grid-template-columns: 1fr;
+                    gap: 3rem;
+                }
+                .featured-visual { order: -1; }
+                .featured-img-wrap { transform: rotate(0.5deg); }
+                .case-overlay-body { grid-template-columns: 1fr; gap: 3rem; }
+                .case-overlay-id { display: none; }
+            }
+
+            @media (max-width: 600px) {
+                .port-hero h1 { letter-spacing: -2px; }
+                .port-philosophy { gap: 1.5rem; }
+            }
+        </style>
+    </Fragment>
+
+    <div id="progress-bar"></div>
+
+    <Nav page="portfolio" />
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+        <nav>
+            <a href="/" class="mob-link"><span class="mob-num">01 /</span>Home</a>
+            <a href="/about" class="mob-link"><span class="mob-num">02 /</span>About</a>
+            <a href="/#join" class="mob-link"><span class="mob-num">03 /</span>Field Report</a>
+            <a href="/portfolio" class="mob-cta mob-link"><span class="mob-num">&#8594;</span>The Work</a>
+        </nav>
+        <div class="mobile-menu-footer">[ DO_IT_UGLY ] // Build It Before You're Ready.</div>
+    </div>
+
+    <!-- ── HERO ── -->
+    <section class="port-hero">
+        <div class="port-hero-inner">
+            <span class="section-label" style="color: var(--yellow); opacity: 0.7;">00.0 // The Work</span>
+            <div class="hero-headline-row">
+                <h1>The<br><em>Work.</em></h1>
+                <div class="hero-mascot" title="Jaymes Corey">
+                    <img src="https://api.iconify.design/ph:dog-bold.svg?color=%23F2C230" alt="Jaymes Corey Mascot" style="filter: drop-shadow(0 0 12px rgba(242,194,48,0.4));">
+                </div>
+            </div>
+            <p class="port-hero-sub">
+                Big ideas. Unconventional thinking. Permission-based design —
+                rules broken on purpose, not by accident.
+                Sometimes an award follows.
+            </p>
+            <div class="port-philosophy">
+                <div class="port-philosophy-item">
+                    <span class="label">Approach</span>
+                    <span class="value">Permission-Based</span>
+                </div>
+                <div class="port-philosophy-item">
+                    <span class="label">Discipline</span>
+                    <span class="value">Brand Strategy</span>
+                </div>
+                <div class="port-philosophy-item">
+                    <span class="label">Recognition</span>
+                    <span class="value">ADDY Award 2025</span>
+                </div>
+                <div class="port-philosophy-item">
+                    <span class="label">Mode</span>
+                    <span class="value">Always Building</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TICKER ── -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-inner">
+            <span>Big Ideas</span><span class="ticker-sep">&#9670;</span>
+            <span>Permission-Based Design</span><span class="ticker-sep">&#9670;</span>
+            <span>Unconventional Thinking</span><span class="ticker-sep">&#9670;</span>
+            <span>ADDY Award 2025</span><span class="ticker-sep">&#9670;</span>
+            <span>What If Campaigns</span><span class="ticker-sep">&#9670;</span>
+            <span>Brand Architecture</span><span class="ticker-sep">&#9670;</span>
+            <span>Big Ideas</span><span class="ticker-sep">&#9670;</span>
+            <span>Permission-Based Design</span><span class="ticker-sep">&#9670;</span>
+            <span>Unconventional Thinking</span><span class="ticker-sep">&#9670;</span>
+            <span>ADDY Award 2025</span><span class="ticker-sep">&#9670;</span>
+            <span>What If Campaigns</span><span class="ticker-sep">&#9670;</span>
+            <span>Brand Architecture</span><span class="ticker-sep">&#9670;</span>
+        </div>
+    </div>
+
+    <!-- ── FEATURED: ALICE'S STRANGE BREW ── -->
+    <section class="featured-case">
+        <div class="section-header reveal" style="margin-bottom: 4rem;">
+            <span class="section-label">01 // Featured Case</span>
+            <h2 class="section-title">Where It Got <span>Weird.</span></h2>
+        </div>
+
+        <div class="featured-case-inner reveal">
+
+            <!-- LEFT: INFO -->
+            <div class="featured-case-info">
+                <span class="case-number">CASE_FILE_001 // CONCEPT CAMPAIGN</span>
+                <h2>Alice's<br><span>Strange Brew.</span></h2>
+
+                <div class="case-tags">
+                    <span class="case-tag award">&#9733; Latest Imagination</span>
+                    <span class="case-tag">Brand Identity</span>
+                    <span class="case-tag">Concept Campaign</span>
+                    <span class="case-tag">Speculative Design</span>
+                    <span class="case-tag">What If</span>
+                </div>
+
+                <p class="case-description">
+                    What if a beloved storybook world entered the coffee business? Not with a gift shop mug,
+                    but a real franchise — a coffee experience as strange and alive as
+                    the story itself.
+                </p>
+
+                <div class="case-tags" style="margin-bottom: 2.5rem;">
+                    <span class="case-tag">Storybook &times; Coffee</span>
+                    <span class="case-tag">Franchise Concept</span>
+                    <span class="case-tag">Immersive Brand</span>
+                </div>
+
+                <button class="case-cta" id="open-alice">View Case Study &rarr;</button>
+            </div>
+
+            <!-- RIGHT: VISUAL -->
+            <div class="featured-visual">
+                <div class="tape-h"></div>
+
+                <!-- UGLY APPROVED STAMP -->
+                <div class="ugly-stamp" title="Ugly Approved.">
+                    <div class="ugly-stamp-ring">
+                        <svg viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="65" cy="65" r="62" fill="var(--ink)" stroke="var(--yellow)" stroke-width="4"/>
+                            <circle cx="65" cy="65" r="54" fill="none" stroke="var(--yellow)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                            <path id="topArc" d="M 12,65 A 53,53 0 0,1 118,65" fill="none"/>
+                            <text font-family="Anton, sans-serif" font-size="11" fill="var(--yellow)" letter-spacing="3">
+                                <textPath href="#topArc" startOffset="8%">UGLY APPROVED</textPath>
+                            </text>
+                            <path id="botArc" d="M 14,68 A 53,53 0 0,0 116,68" fill="none"/>
+                            <text font-family="Space Mono, monospace" font-size="7.5" fill="var(--rust)" letter-spacing="2">
+                                <textPath href="#botArc" startOffset="18%">DO IT UGLY &#9733; 2025</textPath>
+                            </text>
+                            <line x1="65" y1="5" x2="65" y2="12" stroke="var(--yellow)" stroke-width="2"/>
+                            <line x1="65" y1="118" x2="65" y2="125" stroke="var(--yellow)" stroke-width="2"/>
+                            <line x1="5" y1="65" x2="12" y2="65" stroke="var(--yellow)" stroke-width="2"/>
+                            <line x1="118" y1="65" x2="125" y2="65" stroke="var(--yellow)" stroke-width="2"/>
+                        </svg>
+                        <div class="ugly-stamp-dog">
+                            <img src="/images/jaymes-corey-do-it-ugly-mascot.png" alt="Jaymes Corey Mascot">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="featured-img-wrap">
+                    <img src="/images/addy-award-jaymes-corey_1.png" alt="Alice's Strange Brew — Brand Campaign by Jaymes Corey">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══ CASE STUDY OVERLAY: ALICE'S STRANGE BREW ══ -->
+    <div class="case-overlay" id="case-alice-strange-brew">
+
+        <div class="case-overlay-nav">
+            <button class="case-overlay-close" id="close-alice-top">&larr; Back to The Work</button>
+            <span class="case-overlay-id">CASE_FILE_001 // ALICE'S STRANGE BREW</span>
+            <button class="case-overlay-share" id="share-alice">Share This &rarr;</button>
+        </div>
+
+        <div class="case-overlay-hero" data-bg-text="Strange Brew">
+            <span class="case-number" style="color:rgba(242,194,48,0.6);">CASE_FILE_001 // CONCEPT CAMPAIGN</span>
+            <h2>Alice's<br><span>Strange Brew.</span></h2>
+            <div class="case-tags">
+                <span class="case-tag award">&#9733; ADDY Imagination Award</span>
+                <span class="case-tag">Brand Identity</span>
+                <span class="case-tag">Concept Campaign</span>
+                <span class="case-tag">Speculative Design</span>
+                <span class="case-tag">What If</span>
+            </div>
+        </div>
+
+        <div class="case-overlay-body">
+            <div class="case-overlay-lead">
+                <img src="/images/addy-award-jaymes-corey_1.png" alt="Alice's Strange Brew — Brand Campaign by Jaymes Corey">
+            </div>
+            <div class="case-overlay-copy">
+                <p class="case-description">What if a beloved storybook world became a coffee franchise? Not a gift shop mug — a real brand experience as strange and alive as the story itself.</p>
+                <p class="case-description">Alice's Strange Brew imagines exactly that. A coffee brand built around a classic literary character — where the menu is mad, the space bends logic, and no two visits feel quite the same.</p>
+                <p class="case-description">The concept isn't just about coffee. It's about what happens when you fall down the rabbit hole and decide to stay for a while.</p>
+                <div class="case-tags">
+                    <span class="case-tag">Storybook &times; Coffee</span>
+                    <span class="case-tag">Franchise Concept</span>
+                    <span class="case-tag">Immersive Brand</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-overlay-gallery">
+            <span class="section-label">01.5 // Behind The Campaign</span>
+            <h2 class="section-title">The Full <span style="color:var(--cream);">Spread.</span></h2>
+            <p style="font-family:'Lora',serif; font-style:italic; font-size:1.1rem; max-width:600px; opacity:0.7; margin-top:-1rem; color:var(--cream); margin-bottom:3rem;">
+                Every touchpoint from the campaign. Messy by design. Intentional by instinct.
+            </p>
+            <div class="corkboard">
+                <div class="gallery-pin" style="--r:-2.1deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_1.png" alt="Alice's Strange Brew — slide 1" loading="eager"></div>
+                <div class="gallery-pin" style="--r:1.8deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_2.png" alt="Alice's Strange Brew — slide 2" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-0.9deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_3.png" alt="Alice's Strange Brew — slide 3" loading="eager"></div>
+                <div class="gallery-pin" style="--r:2.4deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_4.png" alt="Alice's Strange Brew — slide 4" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-1.6deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_5.png" alt="Alice's Strange Brew — slide 5" loading="eager"></div>
+                <div class="gallery-pin" style="--r:0.7deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_6.png" alt="Alice's Strange Brew — slide 6" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-2.8deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_7.png" alt="Alice's Strange Brew — slide 7" loading="eager"></div>
+                <div class="gallery-pin" style="--r:1.3deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_8.png" alt="Alice's Strange Brew — slide 8" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-0.5deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_9.png" alt="Alice's Strange Brew — slide 9" loading="eager"></div>
+                <div class="gallery-pin" style="--r:2.2deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_10.png" alt="Alice's Strange Brew — slide 10" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-1.9deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_11.png" alt="Alice's Strange Brew — slide 11" loading="eager"></div>
+                <div class="gallery-pin" style="--r:0.4deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_12.png" alt="Alice's Strange Brew — slide 12" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-2.5deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_13.png" alt="Alice's Strange Brew — slide 13" loading="eager"></div>
+                <div class="gallery-pin" style="--r:1.1deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_14.png" alt="Alice's Strange Brew — slide 14" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-0.8deg"><div class="gallery-tape"></div><img src="/images/addy-award-jaymes-corey_15.png" alt="Alice's Strange Brew — slide 15" loading="eager"></div>
+            </div>
+        </div>
+
+        <div class="case-overlay-footer">
+            <button class="case-overlay-close" id="close-alice-bottom">&larr; Back to The Work</button>
+            <span class="port-footer-meta">[ CASE_FILE_001 ] [ ALICE'S STRANGE BREW ] [ CONCEPT ]</span>
+        </div>
+
+    </div>
+
+    <!-- ── FEATURED: ALL BIRDS ── -->
+    <section class="featured-case" style="background: var(--cream);">
+        <div class="section-header reveal" style="margin-bottom: 4rem;">
+            <span class="section-label">02 // Student Work</span>
+            <h2 class="section-title">A Woolly Good <span>Time.</span></h2>
+        </div>
+
+        <div class="featured-case-inner reveal">
+
+            <!-- LEFT: INFO -->
+            <div class="featured-case-info">
+                <span class="case-number">CASE_FILE_002 // CONCEPT CAMPAIGN</span>
+                <h2>All<br><span>Birds.</span></h2>
+
+                <div class="case-tags">
+                    <span class="case-tag award">&#9733; Student Project</span>
+                    <span class="case-tag">Brand Campaign</span>
+                    <span class="case-tag">Concept Design</span>
+                    <span class="case-tag">Academy of Art University</span>
+                </div>
+
+                <p class="case-description">
+                    Allbirds makes shoes from wool. So what if their mascot was a sheep?
+                    This student campaign built an entire character-driven brand world
+                    around the one creature that makes their product possible &mdash; turning
+                    sustainability into something warm, funny, and genuinely lovable.
+                </p>
+
+                <div class="case-tags" style="margin-bottom: 2.5rem;">
+                    <span class="case-tag">Character Campaign</span>
+                    <span class="case-tag">Sustainable Brand</span>
+                    <span class="case-tag">Speculative Design</span>
+                </div>
+
+                <button class="case-cta" id="open-allbirds">View Case Study &rarr;</button>
+            </div>
+
+            <!-- RIGHT: VISUAL -->
+            <div class="featured-visual">
+                <div class="tape-h"></div>
+
+                <!-- UGLY APPROVED STAMP -->
+                <div class="ugly-stamp" title="Ugly Approved.">
+                    <div class="ugly-stamp-ring">
+                        <svg viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="65" cy="65" r="62" fill="var(--ink)" stroke="var(--yellow)" stroke-width="4"/>
+                            <circle cx="65" cy="65" r="54" fill="none" stroke="var(--yellow)" stroke-width="1.5" stroke-dasharray="4 3"/>
+                            <path id="topArc2" d="M 12,65 A 53,53 0 0,1 118,65" fill="none"/>
+                            <text font-family="Anton, sans-serif" font-size="11" fill="var(--yellow)" letter-spacing="3">
+                                <textPath href="#topArc2" startOffset="8%">UGLY APPROVED</textPath>
+                            </text>
+                            <path id="botArc2" d="M 14,68 A 53,53 0 0,0 116,68" fill="none"/>
+                            <text font-family="Space Mono, monospace" font-size="7.5" fill="var(--rust)" letter-spacing="2">
+                                <textPath href="#botArc2" startOffset="18%">DO IT UGLY &#9733; 2025</textPath>
+                            </text>
+                            <line x1="65" y1="5" x2="65" y2="12" stroke="var(--yellow)" stroke-width="2"/>
+                            <line x1="65" y1="118" x2="65" y2="125" stroke="var(--yellow)" stroke-width="2"/>
+                            <line x1="5" y1="65" x2="12" y2="65" stroke="var(--yellow)" stroke-width="2"/>
+                            <line x1="118" y1="65" x2="125" y2="65" stroke="var(--yellow)" stroke-width="2"/>
+                        </svg>
+                        <div class="ugly-stamp-dog">
+                            <img src="/images/jaymes-corey-do-it-ugly-mascot.png" alt="Jaymes Corey Mascot">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="featured-img-wrap">
+                    <img src="/images/Jaymes-Corey-All-Birds-Concepts1.jpeg" alt="All Birds — Brand Campaign Concept by Jaymes Corey">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══ CASE STUDY OVERLAY: ALL BIRDS ══ -->
+    <div class="case-overlay" id="case-all-birds">
+
+        <div class="case-overlay-nav">
+            <button class="case-overlay-close" id="close-allbirds-top">&larr; Back to The Work</button>
+            <span class="case-overlay-id">CASE_FILE_002 // ALL BIRDS</span>
+            <button class="case-overlay-share" id="share-allbirds">Share This &rarr;</button>
+        </div>
+
+        <div class="case-overlay-hero" data-bg-text="All Birds">
+            <h2>All<br><span>Birds.</span></h2>
+            <div class="case-tags">
+                <span class="case-tag award">&#9733; Student Project</span>
+                <span class="case-tag">Brand Campaign</span>
+                <span class="case-tag">Academy of Art University</span>
+                <span class="case-tag">Character Design</span>
+                <span class="case-tag">Speculative Design</span>
+            </div>
+        </div>
+
+        <div class="case-overlay-body">
+            <div class="case-overlay-lead">
+                <img src="/images/Jaymes-Corey-All-Birds-Concepts1.jpeg" alt="All Birds — Brand Campaign by Jaymes Corey" loading="eager">
+            </div>
+            <div class="case-overlay-copy">
+                <span class="section-label">The Idea</span>
+                <p class="case-description">Allbirds builds their shoes from a very particular kind of merino wool. So the question became simple: what if the sheep that makes all of this possible had a face, a personality, and a starring role in the whole brand story?</p>
+                <p class="case-description">This student project at Academy of Art University built a character-driven campaign around a sheep mascot &mdash; turning the sustainability angle from a footnote into the hero of the story. Warm, funny, and genuinely hard to forget.</p>
+                <div class="case-tags" style="margin-top: 2rem;">
+                    <span class="case-tag">Character Campaign</span>
+                    <span class="case-tag">Sustainable Brand</span>
+                    <span class="case-tag">Woolly Goodness</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-overlay-gallery">
+            <span class="section-label">The Work</span>
+            <h3 class="section-title">Every Slide.</h3>
+            <div class="corkboard">
+                <div class="gallery-pin" style="--r:-2.1deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-1.png" alt="All Birds — slide 1" loading="eager"></div>
+                <div class="gallery-pin" style="--r:1.8deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-2.png" alt="All Birds — slide 2" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-0.9deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-3.png" alt="All Birds — slide 3" loading="eager"></div>
+                <div class="gallery-pin" style="--r:2.4deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-4.png" alt="All Birds — slide 4" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-1.6deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-5.png" alt="All Birds — slide 5" loading="eager"></div>
+                <div class="gallery-pin" style="--r:0.7deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-6.png" alt="All Birds — slide 6" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-2.8deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-7.png" alt="All Birds — slide 7" loading="eager"></div>
+                <div class="gallery-pin" style="--r:1.3deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-8.png" alt="All Birds — slide 8" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-0.5deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-9.png" alt="All Birds — slide 9" loading="eager"></div>
+                <div class="gallery-pin" style="--r:2.2deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-10.png" alt="All Birds — slide 10" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-1.9deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-11.png" alt="All Birds — slide 11" loading="eager"></div>
+                <div class="gallery-pin" style="--r:0.4deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-12.png" alt="All Birds — slide 12" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-2.5deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-13.png" alt="All Birds — slide 13" loading="eager"></div>
+                <div class="gallery-pin" style="--r:1.1deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-14.png" alt="All Birds — slide 14" loading="eager"></div>
+                <div class="gallery-pin" style="--r:-0.8deg"><div class="gallery-tape"></div><img src="/images/Jaymes-Corey-All-Birds-Concepts-15.png" alt="All Birds — slide 15" loading="eager"></div>
+            </div>
+        </div>
+
+        <div class="case-overlay-footer">
+            <button class="case-overlay-close" id="close-allbirds-bottom">&larr; Back to The Work</button>
+            <span class="port-footer-meta">[ CASE_FILE_002 ] [ ALL BIRDS ] [ STUDENT CONCEPT ]</span>
+        </div>
+
+    </div>
+
+    <!-- ── PHILOSOPHY STRIP ── -->
+    <section class="philosophy-strip">
+        <div class="reveal" style="max-width:900px;">
+            <span class="section-label" style="color: var(--ink); opacity:0.7;">03 // The Approach</span>
+            <h2>Permission-Based.<br><em>Not Reckless.</em></h2>
+            <p>
+                There's a difference between breaking rules because you don't know them
+                and breaking rules because you understand exactly what you're doing —
+                and why it works better this way.
+                <br><br>
+                Every unconventional choice in here was made on purpose.
+                Big ideas executed with intention. Ugly starts refined into things worth showing.
+            </p>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="port-footer">
+        <a href="/">&larr; Back to Jaymes Corey</a>
+        <span class="port-footer-meta">[ STATUS: BUILDING ] [ JAYMES COREY ] [ PORTFOLIO_v1.0 ]</span>
+        <a href="/#join">Get The Field Report</a>
+    </footer>
+
+    <script>
+        // ── CASE STUDY OVERLAY ──
+        function openCase(id) {
+            var overlay = document.getElementById('case-' + id);
+            if (!overlay) return;
+            overlay.classList.add('open');
+            overlay.scrollTop = 0;
+            document.documentElement.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';
+            history.pushState({ overlay: id }, '', '#' + id);
+            var shareBtn = overlay.querySelector('.case-overlay-share');
+            if (shareBtn) { shareBtn.textContent = 'Share This →'; shareBtn.classList.remove('copied'); }
+        }
+
+        function closeCase() {
+            document.querySelectorAll('.case-overlay.open').forEach(function(o) {
+                o.classList.remove('open');
+            });
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+            history.pushState(null, '', window.location.pathname);
+        }
+
+        function shareCase(id, btn) {
+            var url = window.location.origin + window.location.pathname + '#' + id;
+            if (navigator.share) {
+                navigator.share({ title: document.title, url: url });
+            } else {
+                navigator.clipboard.writeText(url).then(function() {
+                    btn.textContent = 'Link Copied ✓';
+                    btn.classList.add('copied');
+                    setTimeout(function() {
+                        btn.textContent = 'Share This →';
+                        btn.classList.remove('copied');
+                    }, 2500);
+                });
+            }
+        }
+
+        // Wire up open/close buttons
+        document.getElementById('open-alice').addEventListener('click', function() { openCase('alice-strange-brew'); });
+        document.getElementById('close-alice-top').addEventListener('click', closeCase);
+        document.getElementById('close-alice-bottom').addEventListener('click', closeCase);
+        document.getElementById('share-alice').addEventListener('click', function() { shareCase('alice-strange-brew', this); });
+
+        document.getElementById('open-allbirds').addEventListener('click', function() { openCase('all-birds'); });
+        document.getElementById('close-allbirds-top').addEventListener('click', closeCase);
+        document.getElementById('close-allbirds-bottom').addEventListener('click', closeCase);
+        document.getElementById('share-allbirds').addEventListener('click', function() { shareCase('all-birds', this); });
+
+        // Browser back button closes overlay
+        window.addEventListener('popstate', function() {
+            var open = document.querySelector('.case-overlay.open');
+            if (open) {
+                open.classList.remove('open');
+                document.documentElement.style.overflow = '';
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Escape key closes overlay
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeCase();
+        });
+
+        // Open overlay on load if URL contains a hash
+        window.addEventListener('load', function() {
+            var hash = window.location.hash.slice(1);
+            if (hash) openCase(hash);
+        });
+
+        // ── SCROLL REVEAL ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ── CURSOR RING ──
+        if (window.matchMedia('(hover: hover)').matches) {
+            const ring = document.createElement('div');
+            ring.className = 'cursor-ring';
+            document.body.appendChild(ring);
+            let mx = 0, my = 0, rx = 0, ry = 0;
+            document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; ring.style.opacity = '1'; });
+            document.addEventListener('mouseleave', () => { ring.style.opacity = '0'; });
+            (function loopRing() {
+                rx += (mx - rx) * 0.12;
+                ry += (my - ry) * 0.12;
+                ring.style.left = rx + 'px';
+                ring.style.top = ry + 'px';
+                requestAnimationFrame(loopRing);
+            })();
+            document.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('mouseenter', () => { ring.style.width = '44px'; ring.style.height = '44px'; ring.style.borderColor = 'var(--yellow)'; });
+                el.addEventListener('mouseleave', () => { ring.style.width = '28px'; ring.style.height = '28px'; ring.style.borderColor = 'var(--rust)'; });
+            });
+        }
+
+        // ── TEXT SCRAMBLE on hero ──
+        function scrambleEl(el, finalText, delay) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ?!#$%*>';
+            let n = 0;
+            setTimeout(() => {
+                const iv = setInterval(() => {
+                    el.textContent = finalText.split('').map((ch, i) => {
+                        if (ch === ' ' || ch === '.') return ch;
+                        return i < Math.floor(n) ? finalText[i] : chars[Math.floor(Math.random() * chars.length)];
+                    }).join('');
+                    n += 0.5;
+                    if (n >= finalText.length) { el.textContent = finalText; clearInterval(iv); }
+                }, 40);
+            }, delay);
+        }
+
+        window.addEventListener('load', () => {
+            const em = document.querySelector('.port-hero h1 em');
+            if (em) scrambleEl(em, 'Work.', 500);
+        });
+
+        // ── MOBILE MENU ──
+        var hamburger = document.getElementById('navHamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        var closeBtn = document.getElementById('mobileMenuClose');
+
+        function closeMobileMenu() {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', function() {
+            var isOpen = mobileMenu.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        closeBtn.addEventListener('click', closeMobileMenu);
+    </script>
+
+</BaseLayout>

@@ -1,0 +1,764 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<BaseLayout
+    title="The 30-Day Sprint | Jaymes Corey"
+    description="Your idea. My decade of building from zero. 30 days, one-on-one — we map it, build it ugly, and find out if it's real. Only 10 spots available."
+    canonicalUrl="https://jaymescorey.com/sprint"
+    ogImage="https://jaymescorey.com/images/og-jaymes.jpg"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "The 30-Day Sprint",
+          "url": "https://jaymescorey.com/sprint",
+          "description": "One-on-one 30-day build sprint with Jaymes Corey. Your idea, his decade of experience, zero theory.",
+          "provider": {
+            "@type": "Person",
+            "name": "Jaymes Corey",
+            "url": "https://jaymescorey.com"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "2500",
+            "priceCurrency": "USD"
+          }
+        }
+        `}</script>
+
+        <style>
+            /* ── SPRINT PAGE ── */
+
+            .sprint-hero {
+                background: var(--ink);
+                color: var(--paper);
+                min-height: 90svh;
+                display: flex;
+                align-items: center;
+                padding: 5rem 10%;
+                border-bottom: var(--border-width) solid var(--yellow);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .sprint-hero::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-image: radial-gradient(rgba(242,194,48,0.04) 1px, transparent 1px);
+                background-size: 3px 3px;
+            }
+
+            .sprint-hero-inner {
+                position: relative;
+                z-index: 2;
+                max-width: 800px;
+            }
+
+            .sprint-eyebrow {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                color: var(--yellow);
+                background: rgba(242,194,48,0.1);
+                border: 1px solid rgba(242,194,48,0.3);
+                display: inline-block;
+                padding: 5px 14px;
+                margin-bottom: 1.5rem;
+            }
+
+            .sprint-hero h1 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(3.5rem, 8vw, 6.5rem);
+                line-height: 0.92;
+                text-transform: uppercase;
+                letter-spacing: -2px;
+                color: var(--paper);
+                margin-bottom: 1.5rem;
+            }
+
+            .sprint-hero h1 .accent {
+                color: var(--yellow);
+            }
+
+            .sprint-hero-sub {
+                font-family: 'Lora', serif;
+                font-size: clamp(1.1rem, 2vw, 1.35rem);
+                line-height: 1.7;
+                color: rgba(246,241,231,0.75);
+                max-width: 600px;
+                margin-bottom: 2.5rem;
+            }
+
+            .sprint-hero-meta {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+                flex-wrap: wrap;
+                margin-top: 1rem;
+            }
+
+            .sprint-spots {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.72rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--rust);
+            }
+
+            /* ── PROBLEM SECTION ── */
+            .sprint-problem {
+                background: var(--paper);
+                padding: 6rem 10%;
+                border-bottom: var(--border-width) solid var(--ink);
+            }
+
+            .sprint-problem-inner {
+                max-width: 700px;
+            }
+
+            .sprint-problem p {
+                font-family: 'Lora', serif;
+                font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+                line-height: 1.8;
+                color: var(--ink);
+                margin-bottom: 1.25rem;
+            }
+
+            .sprint-problem-pull {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(2rem, 4vw, 3rem);
+                text-transform: uppercase;
+                letter-spacing: -1px;
+                line-height: 1;
+                color: var(--ink);
+                border-left: 6px solid var(--yellow);
+                padding-left: 1.5rem;
+                margin: 3rem 0;
+            }
+
+            /* ── WHAT YOU GET ── */
+            .sprint-offer {
+                background: var(--poster-black);
+                color: var(--paper);
+                padding: 6rem 10%;
+                border-bottom: var(--border-width) solid var(--yellow);
+            }
+
+            .sprint-offer-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+
+            .sprint-offer-card {
+                background: rgba(246,241,231,0.04);
+                border: var(--border-width) solid rgba(242,194,48,0.3);
+                padding: 2rem;
+                position: relative;
+            }
+
+            .sprint-offer-card::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0; right: 0;
+                height: 3px;
+                background: var(--yellow);
+            }
+
+            .sprint-offer-num {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--yellow);
+                margin-bottom: 0.75rem;
+            }
+
+            .sprint-offer-card h3 {
+                font-family: 'Anton', sans-serif;
+                font-size: 1.6rem;
+                text-transform: uppercase;
+                letter-spacing: -0.5px;
+                line-height: 1;
+                color: var(--paper);
+                margin-bottom: 0.75rem;
+            }
+
+            .sprint-offer-card p {
+                font-family: 'Lora', serif;
+                font-size: 0.92rem;
+                line-height: 1.7;
+                color: rgba(246,241,231,0.65);
+            }
+
+            /* ── FOR / NOT FOR ── */
+            .sprint-fit {
+                background: var(--paper);
+                padding: 6rem 10%;
+                border-bottom: var(--border-width) solid var(--ink);
+            }
+
+            .sprint-fit-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                margin-top: 3rem;
+            }
+
+            .sprint-fit-col h3 {
+                font-family: 'Anton', sans-serif;
+                font-size: 1.8rem;
+                text-transform: uppercase;
+                letter-spacing: -0.5px;
+                line-height: 1;
+                margin-bottom: 1.5rem;
+            }
+
+            .sprint-fit-col--yes h3 { color: var(--ink); }
+            .sprint-fit-col--no h3 { color: var(--rust); }
+
+            .sprint-fit-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.85rem;
+            }
+
+            .sprint-fit-list li {
+                font-family: 'Lora', serif;
+                font-size: 1rem;
+                line-height: 1.6;
+                color: var(--ink);
+                padding-left: 1.5rem;
+                position: relative;
+            }
+
+            .sprint-fit-col--yes li::before {
+                content: '→';
+                position: absolute;
+                left: 0;
+                font-family: 'Space Mono', monospace;
+                color: var(--ink);
+                font-weight: 700;
+            }
+
+            .sprint-fit-col--no li::before {
+                content: '×';
+                position: absolute;
+                left: 0;
+                font-family: 'Space Mono', monospace;
+                color: var(--rust);
+                font-weight: 700;
+            }
+
+            /* ── INVESTMENT ── */
+            .sprint-investment {
+                background: var(--yellow);
+                padding: 6rem 10%;
+                border-top: var(--border-width) solid var(--ink);
+                border-bottom: var(--border-width) solid var(--ink);
+                text-align: center;
+            }
+
+            .sprint-price {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(5rem, 12vw, 9rem);
+                line-height: 1;
+                letter-spacing: -4px;
+                color: var(--ink);
+                display: block;
+                margin: 1rem 0;
+            }
+
+            .sprint-investment-label {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                color: var(--ink);
+                opacity: 0.6;
+            }
+
+            .sprint-investment-includes {
+                display: flex;
+                justify-content: center;
+                gap: 3rem;
+                flex-wrap: wrap;
+                margin: 2.5rem 0 3rem;
+            }
+
+            .sprint-investment-includes span {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--ink);
+                opacity: 0.75;
+            }
+
+            /* ── ABOUT ── */
+            .sprint-about {
+                background: var(--cream);
+                padding: 6rem 10%;
+                border-bottom: var(--border-width) solid var(--ink);
+            }
+
+            .sprint-about-inner {
+                display: grid;
+                grid-template-columns: 1fr 340px;
+                gap: 5rem;
+                align-items: center;
+            }
+
+            .sprint-about p {
+                font-family: 'Lora', serif;
+                font-size: 1.05rem;
+                line-height: 1.8;
+                color: var(--ink);
+                margin-bottom: 1.25rem;
+            }
+
+            .sprint-about-card {
+                background: var(--ink);
+                border: var(--border-width) solid var(--ink);
+                box-shadow: 8px 8px 0px var(--rust);
+                padding: 2.5rem 2rem;
+                transform: rotate(1.5deg);
+            }
+
+            .sprint-about-card p {
+                font-family: 'Anton', sans-serif;
+                font-size: 1.8rem;
+                text-transform: uppercase;
+                line-height: 1.1;
+                letter-spacing: -0.5px;
+                color: var(--yellow);
+                margin: 0;
+            }
+
+            .sprint-about-card span {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.6rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: rgba(246,241,231,0.4);
+                display: block;
+                margin-top: 1.25rem;
+            }
+
+            /* ── FINAL CTA ── */
+            .sprint-cta {
+                background: var(--ink);
+                color: var(--paper);
+                padding: 7rem 10%;
+                text-align: center;
+                border-top: var(--border-width) solid var(--yellow);
+            }
+
+            .sprint-cta h2 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(3rem, 7vw, 5.5rem);
+                text-transform: uppercase;
+                letter-spacing: -2px;
+                line-height: 0.95;
+                color: var(--paper);
+                margin-bottom: 1.5rem;
+            }
+
+            .sprint-cta h2 .accent { color: var(--yellow); }
+
+            .sprint-cta p {
+                font-family: 'Lora', serif;
+                font-size: 1.1rem;
+                color: rgba(246,241,231,0.65);
+                max-width: 500px;
+                margin: 0 auto 2.5rem;
+                line-height: 1.7;
+            }
+
+            .sprint-cta-spots {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--rust);
+                margin-top: 1.25rem;
+                display: block;
+            }
+
+            /* ── FOOTER ── */
+            .sprint-footer {
+                background: var(--ink);
+                border-top: 1px solid rgba(242,194,48,0.15);
+                padding: 2rem 10%;
+                text-align: center;
+            }
+
+            .sprint-footer a {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.68rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--paper);
+                opacity: 0.4;
+                text-decoration: none;
+                transition: opacity 0.15s;
+            }
+
+            .sprint-footer a:hover { opacity: 1; color: var(--yellow); }
+
+            /* ── RESPONSIVE ── */
+            @media (max-width: 768px) {
+                .sprint-hero { padding: 4rem 6%; }
+                .sprint-problem, .sprint-offer, .sprint-fit,
+                .sprint-investment, .sprint-about, .sprint-cta { padding: 4rem 6%; }
+                .sprint-offer-grid { grid-template-columns: 1fr; }
+                .sprint-fit-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+                .sprint-about-inner { grid-template-columns: 1fr; }
+                .sprint-about-card { transform: rotate(0deg); }
+                .sprint-investment-includes { gap: 1.5rem; }
+            }
+        </style>
+    </Fragment>
+
+    <Nav />
+
+    <!-- HERO -->
+    <section class="sprint-hero">
+        <div class="sprint-hero-inner">
+            <span class="sprint-eyebrow">// Current Round: Fully Booked</span>
+            <h1>Stop planning.<br><span class="accent">Start building.</span><br>30 days.</h1>
+            <p class="sprint-hero-sub">Your idea. My decade of building from zero. One month, one-on-one — we map it, build it ugly, and find out if it's real. No theory. No templates. Just two people who refuse to wait.</p>
+            <button class="btn apply-trigger">Join The Waitlist &nbsp;→</button>
+            <div class="sprint-hero-meta">
+                <span class="sprint-spots">● 10 spots max &nbsp;//&nbsp; $2,500 &nbsp;//&nbsp; 30 days</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE PROBLEM -->
+    <section class="sprint-problem reveal">
+        <div class="sprint-problem-inner">
+            <span class="section-label">01 // THE PROBLEM</span>
+            <div class="sprint-problem-pull">The idea isn't the problem.<br>The waiting is.</div>
+            <p>You've had the idea for months. Maybe years. You've researched it, drafted it, talked about it — and then put it back on the shelf because the timing wasn't right, the plan wasn't solid, the market wasn't clear.</p>
+            <p>Here's the truth: the plan never gets solid from the outside. You find out what's real by building it. Ugly, fast, and in public.</p>
+            <p>That's what this is.</p>
+        </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section class="sprint-offer reveal">
+        <span class="section-label" style="color: var(--yellow);">02 // WHAT YOU GET</span>
+        <h2 class="section-title" style="color: var(--paper);">The Full<br><span style="-webkit-text-stroke: 2px var(--yellow); color: transparent;">Sprint.</span></h2>
+
+        <div class="sprint-offer-grid">
+            <div class="sprint-offer-card">
+                <div class="sprint-offer-num">01 // Before We Start</div>
+                <h3>Intake & Prep</h3>
+                <p>You fill out a short intake before we ever get on a call. Your idea, where you're stuck, what you want to walk away with. I review it and map a build plan before day one — so we hit the ground running, not warming up.</p>
+            </div>
+
+            <div class="sprint-offer-card">
+                <div class="sprint-offer-num">02 // Week 1</div>
+                <h3>Kickoff Call</h3>
+                <p>60–90 minutes. Deep dive on the idea, align on the 30-day target, and define what "launched ugly" actually looks like for your specific thing. You'll leave this call knowing exactly what you're building and why.</p>
+            </div>
+
+            <div class="sprint-offer-card">
+                <div class="sprint-offer-num">03 // Weeks 2, 3 & 4</div>
+                <h3>Weekly Sprint Calls</h3>
+                <p>45–60 minutes each. We review what got built, kill what isn't working, and lock in the next week's moves. Three calls. Three weeks of real progress. No fluff, no theory — just motion.</p>
+            </div>
+
+            <div class="sprint-offer-card">
+                <div class="sprint-offer-num">04 // Between Calls</div>
+                <h3>Email Access</h3>
+                <p>Hit a wall mid-week? You've got my inbox. Not 24/7 — but when it matters, you can reach me. Quick answers, gut checks, unstuck moments. The kind of access that keeps momentum from dying between sessions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOR / NOT FOR -->
+    <section class="sprint-fit reveal">
+        <span class="section-label">03 // IS THIS FOR YOU</span>
+        <h2 class="section-title">Right Fit.<br><span class="outline">Wrong Fit.</span></h2>
+
+        <div class="sprint-fit-grid">
+            <div class="sprint-fit-col sprint-fit-col--yes">
+                <h3>This Is For You If —</h3>
+                <ul class="sprint-fit-list">
+                    <li>You have an idea that's been sitting too long</li>
+                    <li>You've started but keep stalling out</li>
+                    <li>You're done waiting for the perfect moment</li>
+                    <li>You want someone who's actually built things, not just taught them</li>
+                    <li>You're ready to move even if it's ugly</li>
+                </ul>
+            </div>
+
+            <div class="sprint-fit-col sprint-fit-col--no">
+                <h3>This Isn't For You If —</h3>
+                <ul class="sprint-fit-list">
+                    <li>You want someone to build it for you</li>
+                    <li>You're looking for a course or a template</li>
+                    <li>You need everything perfect before you move</li>
+                    <li>You're not ready to commit 30 days of real effort</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTMENT -->
+    <section class="sprint-investment reveal">
+        <span class="section-label">04 // THE INVESTMENT</span>
+        <span class="sprint-price">$2,500</span>
+        <p class="sprint-investment-label">One-time. 30 days. Everything included.</p>
+        <div class="sprint-investment-includes">
+            <span>✓ Intake Review</span>
+            <span>✓ Kickoff Call (60–90 min)</span>
+            <span>✓ 3 Weekly Sprint Calls</span>
+            <span>✓ Email Access</span>
+            <span>✓ 10 Spots Max</span>
+        </div>
+        <button class="btn apply-trigger">Join The Waitlist &nbsp;→</button>
+    </section>
+
+    <!-- ABOUT JAYMES -->
+    <section class="sprint-about reveal">
+        <div class="sprint-about-inner">
+            <div>
+                <span class="section-label">05 // WHO YOU'RE BUILDING WITH</span>
+                <h2 class="section-title">Not a<br><span class="outline">Guru.</span></h2>
+                <p>Navy Vet. Dad of 3. I've built service businesses from zero to profit across Florida, Hawaii, and California — no loans, no investors, no safety net.</p>
+                <p>I homeschool my kids and run experiments across 80+ domains in public. I don't sell courses about building. I build, and I let you watch — or in this case, build with me.</p>
+                <p>I've made expensive mistakes so you don't have to make the same ones. That's the whole value of this.</p>
+            </div>
+            <div class="sprint-about-card">
+                <div class="tape"></div>
+                <p>Not Telling You How.<br>Building With You.</p>
+                <span>// The whole point</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="sprint-cta">
+        <h2>Your move.<br><span class="accent">Make it ugly.</span></h2>
+        <p>30 days from now, something is in motion. Launched, tested, or fully mapped and moving. Not perfect. Real.</p>
+        <button class="btn apply-trigger">Join The Waitlist &nbsp;→</button>
+        <span class="sprint-cta-spots">● Current round is full — get on the list for the next one.</span>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="sprint-footer">
+        <a href="/">← Back to Jaymes Corey</a>
+    </footer>
+
+    <!-- WAITLIST MODAL -->
+    <div id="waitlist-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-box">
+            <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+            <span class="modal-eyebrow">// Current Round: Fully Booked</span>
+            <h2 id="modal-title">All 10 spots<br>are taken.</h2>
+            <p>This round is full. Drop your email below and you'll be the first to know when a spot opens — before it goes anywhere else.</p>
+            <form class="modal-form" id="modal-form">
+                <div class="modal-form-row">
+                    <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+                    <button type="submit">Notify Me</button>
+                </div>
+                <input type="hidden" name="ml-submit" value="1">
+                <input type="hidden" name="anticsrf" value="true">
+                <p class="modal-fine">No spam. Just a heads-up when a spot opens.</p>
+            </form>
+            <div class="modal-confirm" id="modal-confirm">You're on the list. I'll reach out personally when a spot opens.</div>
+        </div>
+    </div>
+
+    <style>
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15,15,15,0.85);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-box {
+            background: var(--paper);
+            border: var(--border-width) solid var(--ink);
+            box-shadow: 10px 10px 0px var(--rust);
+            padding: 3rem 2.5rem 2.5rem;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            transform: translateY(16px);
+            transition: transform 0.2s ease;
+        }
+
+        .modal-overlay.open .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            line-height: 1;
+            cursor: pointer;
+            color: var(--ink);
+            opacity: 0.4;
+            transition: opacity 0.15s;
+            padding: 0;
+        }
+
+        .modal-close:hover { opacity: 1; }
+
+        .modal-eyebrow {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--rust);
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-box h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1;
+            color: var(--ink);
+            margin-bottom: 1rem;
+        }
+
+        .modal-box p {
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--ink);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-form-row {
+            display: flex;
+            gap: 0;
+            border: var(--border-width) solid var(--ink);
+            box-shadow: 6px 6px 0px var(--rust);
+        }
+
+        .modal-form-row input {
+            flex: 1;
+            padding: 0.85rem 1rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            border: none;
+            background: white;
+            outline: none;
+            color: var(--ink);
+        }
+
+        .modal-form-row button {
+            padding: 0.85rem 1.25rem;
+            font-family: 'Anton', sans-serif;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--ink);
+            color: var(--yellow);
+            border: none;
+            cursor: pointer;
+            transition: background 0.15s;
+            white-space: nowrap;
+        }
+
+        .modal-form-row button:hover { background: var(--rust); }
+
+        .modal-fine {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem !important;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.45 !important;
+            margin-top: 0.85rem;
+            margin-bottom: 0 !important;
+        }
+
+        .modal-confirm {
+            display: none;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--ink);
+            background: var(--yellow);
+            border: var(--border-width) solid var(--ink);
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+            line-height: 1.5;
+        }
+
+        .modal-confirm.visible { display: block; }
+    </style>
+
+    <script>
+        // Reveal on scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Modal
+        const modal = document.getElementById('waitlist-modal');
+        const closeBtn = document.getElementById('modal-close');
+
+        document.querySelectorAll('.apply-trigger').forEach(btn => {
+            btn.addEventListener('click', () => modal.classList.add('open'));
+        });
+
+        closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('open');
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') modal.classList.remove('open');
+        });
+
+        // Waitlist form submit
+        document.getElementById('modal-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const confirm = document.getElementById('modal-confirm');
+            this.style.display = 'none';
+            confirm.classList.add('visible');
+        });
+    </script>
+</BaseLayout>

@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaymes Corey — Big Ideas. Built Ugly.</title>
+    <meta name="description" content="I help people stop planning and start making. Get the free field guide.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── Variables ── */
+        :root {
+            --yellow: #F2C230;
+            --ink: #0F0F0F;
+            --poster-black: #1C1C1C;
+            --paper: #F6F1E7;
+            --rust: #C94A2B;
+            --cream: #FAF7F0;
+            --border: 4px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Lora', serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ── Grain ── */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ── Reveal ── */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal.d1 { transition-delay: 0.1s; }
+        .reveal.d2 { transition-delay: 0.2s; }
+        .reveal.d3 { transition-delay: 0.3s; }
+        .reveal.d4 { transition-delay: 0.45s; }
+
+        /* ── Labels ── */
+        .section-label {
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.55;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            font-family: 'Anton', sans-serif;
+            font-size: 1.2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--ink);
+            color: var(--yellow);
+            border: var(--border) solid var(--ink);
+            box-shadow: 6px 6px 0px var(--rust);
+            transition: transform 0.15s, box-shadow 0.15s;
+            cursor: pointer;
+        }
+        .btn:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px var(--rust); }
+
+        .btn-yellow {
+            background: var(--yellow);
+            color: var(--ink);
+            border-color: var(--ink);
+            box-shadow: 6px 6px 0px var(--ink);
+        }
+        .btn-yellow:hover { box-shadow: 10px 10px 0px var(--ink); }
+
+        .btn-big {
+            font-size: 1.5rem;
+            padding: 1.4rem 3.5rem;
+            box-shadow: 8px 8px 0px var(--rust);
+        }
+        .btn-big:hover { box-shadow: 12px 12px 0px var(--rust); }
+
+        /* ════════════════════════════════
+           HERO
+        ════════════════════════════════ */
+        .hero {
+            min-height: 82vh;
+            background-color: var(--yellow);
+            background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 3px 3px;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            padding: 4rem 5%;
+            border-bottom: var(--border) solid var(--ink);
+            position: relative;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 40px; bottom: 0;
+            width: 2px;
+            background: rgba(201,74,43,0.3);
+            z-index: 1;
+        }
+
+        .hero-text {
+            flex: 1.1;
+            max-width: 650px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+            padding-left: 30px;
+        }
+
+        .hero-image {
+            flex: 0.9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Space Mono', monospace;
+            font-weight: bold;
+            font-size: 0.85rem;
+            background: var(--ink);
+            color: var(--yellow);
+            display: inline-block;
+            padding: 4px 12px;
+            margin-bottom: 1.25rem;
+            align-self: flex-start;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(4rem, 11vw, 8rem);
+            line-height: 0.95;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            color: var(--ink);
+        }
+        h1 .line-2 {
+            display: block;
+            color: var(--paper);
+            -webkit-text-stroke: 3px var(--ink);
+            paint-order: stroke fill;
+        }
+
+        .hero-credibility {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--rust);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-sub {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+            line-height: 1.4;
+            max-width: 500px;
+            margin-bottom: 2.5rem;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: var(--poster-black);
+        }
+
+        /* Portrait */
+        .portrait-container {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            transform: rotate(1deg);
+        }
+        .hero-portrait {
+            width: 100%;
+            border: var(--border) solid var(--ink);
+            box-shadow: 20px 20px 0px var(--ink);
+            filter: grayscale(100%) contrast(115%);
+            display: block;
+            background: var(--paper);
+            min-height: 380px;
+        }
+        .mascot-sticker {
+            position: absolute;
+            bottom: -40px; left: -110px;
+            width: 200px;
+            transform: rotate(-8deg);
+            z-index: 10;
+            filter: drop-shadow(10px 10px 0px rgba(0,0,0,0.3));
+            opacity: 0.9;
+            transition: transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275), opacity 0.3s;
+        }
+        .mascot-sticker:hover { transform: rotate(2deg) scale(1.08); opacity: 1; }
+        .mascot-sticker img { width: 100%; display: block; }
+        .crown-svg {
+            position: absolute;
+            top: -18px; left: 20px;
+            width: 56px; height: auto;
+            fill: var(--yellow);
+            stroke: var(--ink);
+            stroke-width: 6px;
+            stroke-linejoin: round;
+            transform: rotate(-15deg);
+            z-index: 2;
+        }
+
+        /* ════════════════════════════════
+           TICKER
+        ════════════════════════════════ */
+        .ticker {
+            background: var(--ink);
+            padding: 1rem 0;
+            border-bottom: 6px solid var(--rust);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-track { display: flex; animation: tickerScroll 38s linear infinite; }
+        .ticker:hover .ticker-track { animation-duration: 14s; }
+        .ticker-item {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.5rem;
+            color: var(--yellow);
+            text-transform: uppercase;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+        }
+        .ticker-item::after {
+            content: "";
+            display: inline-block;
+            width: 10px; height: 10px;
+            background: var(--rust);
+            margin-left: 2rem;
+            transform: rotate(45deg);
+        }
+        @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ════════════════════════════════
+           ARROW DIVIDER
+           Big bouncing ↓ between sections
+        ════════════════════════════════ */
+        .arrow-divider {
+            background: var(--paper);
+            border-bottom: var(--border) solid var(--ink);
+            text-align: center;
+            padding: 2.5rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .arrow-divider.dark {
+            background: var(--poster-black);
+            border-color: var(--yellow);
+        }
+        .arrow-divider.rust-bg {
+            background: var(--rust);
+            border-color: var(--ink);
+        }
+
+        .arrow-divider-label {
+            display: block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--rust);
+            margin-bottom: 0.5rem;
+        }
+        .arrow-divider.dark .arrow-divider-label { color: var(--yellow); opacity: 0.6; }
+        .arrow-divider.rust-bg .arrow-divider-label { color: var(--ink); opacity: 0.6; }
+
+        .arrow-glyph {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(4rem, 10vw, 7rem);
+            line-height: 1;
+            color: var(--ink);
+            display: block;
+            animation: arrowBounce 1.8s ease-in-out infinite;
+        }
+        .arrow-divider.dark .arrow-glyph { color: var(--yellow); }
+        .arrow-divider.rust-bg .arrow-glyph { color: var(--ink); }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(10px); }
+        }
+
+        /* ════════════════════════════════
+           THE SHIFT  (dark)
+        ════════════════════════════════ */
+        .shift-section {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 6rem 10%;
+            border-bottom: var(--border) solid var(--yellow);
+        }
+        .shift-section .section-label { color: var(--yellow); opacity: 0.6; }
+
+        .shift-section h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+            line-height: 0.92;
+            margin-bottom: 3rem;
+            color: var(--yellow);
+        }
+
+        /* Big callout quote */
+        .shift-callout {
+            border-left: 6px solid var(--rust);
+            padding: 1.5rem 2rem;
+            margin-bottom: 2.5rem;
+            max-width: 680px;
+        }
+
+        .shift-callout p {
+            font-family: 'Lora', serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-style: italic;
+            line-height: 1.5;
+            color: rgba(246,241,231,0.9);
+        }
+
+        .shift-body p {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(246,241,231,0.6);
+            margin-bottom: 0.5rem;
+        }
+
+        .shift-kicker {
+            font-family: 'Anton', sans-serif !important;
+            font-size: clamp(1.4rem, 3vw, 2rem) !important;
+            color: var(--yellow) !important;
+            opacity: 1 !important;
+            letter-spacing: 0 !important;
+            margin-top: 2rem;
+            font-style: normal !important;
+            text-transform: uppercase;
+        }
+
+        /* ════════════════════════════════
+           CORE — DO IT UGLY  (manifesto)
+        ════════════════════════════════ */
+        .core-section {
+            background: var(--paper);
+            padding: 6rem 10%;
+            border-bottom: var(--border) solid var(--ink);
+        }
+        .core-section .section-label { opacity: 0.55; }
+
+        .core-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(5rem, 14vw, 10rem);
+            text-transform: uppercase;
+            line-height: 0.88;
+            letter-spacing: -4px;
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+        .core-title .outline {
+            display: block;
+            color: var(--paper);
+            -webkit-text-stroke: 4px var(--ink);
+            paint-order: stroke fill;
+        }
+
+        .core-lead {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: clamp(1.05rem, 2vw, 1.3rem);
+            color: rgba(15,15,15,0.55);
+            margin-bottom: 3rem;
+            max-width: 440px;
+        }
+
+        /* Each line is its own full-width stamp */
+        .manifesto-line {
+            display: flex;
+            align-items: stretch;
+            border: var(--border) solid var(--ink);
+            margin-bottom: -4px; /* collapse borders */
+            transition: transform 0.2s, box-shadow 0.2s, z-index 0s;
+            position: relative;
+            background: white;
+        }
+        .manifesto-line:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0 var(--rust);
+            z-index: 2;
+        }
+
+        .manifesto-num {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--rust);
+            background: var(--yellow);
+            padding: 1.25rem 1rem;
+            border-right: var(--border) solid var(--ink);
+            display: flex;
+            align-items: center;
+            min-width: 56px;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .manifesto-text {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+            text-transform: uppercase;
+            letter-spacing: 0;
+            color: var(--ink);
+            padding: 1.1rem 1.75rem;
+            display: flex;
+            align-items: center;
+        }
+
+        /* ════════════════════════════════
+           THIS IS FOR YOU  (3 big dark cards)
+        ════════════════════════════════ */
+        .for-section {
+            background: var(--poster-black);
+            padding: 6rem 10%;
+            border-bottom: var(--border) solid var(--yellow);
+        }
+        .for-section .section-label { color: var(--yellow); opacity: 0.55; }
+
+        .for-section h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 0.9;
+            color: var(--paper);
+            margin-bottom: 3rem;
+        }
+
+        .for-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .for-card {
+            border: var(--border) solid rgba(246,241,231,0.15);
+            border-bottom: none;
+            padding: 2rem 2.25rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            transition: background 0.2s, border-color 0.2s;
+            cursor: default;
+        }
+        .for-card:last-child { border-bottom: var(--border) solid rgba(246,241,231,0.15); }
+        .for-card:hover { background: rgba(242,194,48,0.06); border-color: var(--yellow); }
+
+        .for-card-num {
+            font-family: 'Anton', sans-serif;
+            font-size: 3.5rem;
+            line-height: 1;
+            color: var(--rust);
+            opacity: 0.5;
+            flex-shrink: 0;
+            width: 60px;
+            text-align: center;
+            margin-top: -4px;
+        }
+
+        .for-card-body {}
+
+        .for-card-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+            line-height: 1;
+            color: var(--yellow);
+            margin-bottom: 0.5rem;
+        }
+
+        .for-card-sub {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: rgba(246,241,231,0.5);
+            line-height: 1.5;
+        }
+
+        /* ════════════════════════════════
+           OFFER — THE ONE FORM
+        ════════════════════════════════ */
+        .offer-section {
+            background: var(--rust);
+            padding: 6rem 10%;
+            border-top: var(--border) solid var(--ink);
+            border-bottom: var(--border) solid var(--ink);
+            position: relative;
+            overflow: hidden;
+        }
+        .offer-section::before {
+            content: "START HERE // START HERE // START HERE // START HERE // START HERE //";
+            position: absolute;
+            top: 1.5rem; left: 0; right: 0;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: rgba(246,241,231,0.18);
+            white-space: nowrap;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .offer-inner { max-width: 680px; position: relative; z-index: 2; }
+
+        .offer-section .section-label { color: var(--ink); opacity: 0.7; }
+
+        .offer-section h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3.5rem, 8vw, 6rem);
+            text-transform: uppercase;
+            line-height: 0.88;
+            letter-spacing: -2px;
+            color: var(--ink);
+            margin: 0.75rem 0 0.6rem;
+        }
+
+        .offer-subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--yellow);
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
+        }
+
+        .offer-desc {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            color: rgba(246,241,231,0.8);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .offer-bullets {
+            list-style: none;
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .offer-bullets li {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--ink);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            line-height: 1.5;
+        }
+        .offer-bullets li::before {
+            content: "✓";
+            font-weight: 700;
+            color: var(--yellow);
+            flex-shrink: 0;
+        }
+
+        /* ── THE Form ── */
+        /* ════════════════════════════════════════════════════════
+           MAILERLITE EMBED
+           Replace .ml-placeholder-form with your MailerLite
+           embed code. Keep the .ml-form-zone wrapper div.
+        ════════════════════════════════════════════════════════ */
+        .ml-form-zone { margin-top: 0; }
+
+        .ml-placeholder-form {
+            display: flex;
+            gap: 0;
+            max-width: 540px;
+            box-shadow: 10px 10px 0px var(--ink);
+        }
+        .ml-placeholder-form input[type="email"] {
+            flex: 1;
+            padding: 1.2rem 1.5rem;
+            border: 3px solid var(--ink);
+            border-right: none;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            background: var(--paper);
+            color: var(--ink);
+            outline: none;
+            min-width: 0;
+        }
+        .ml-placeholder-form input[type="email"]::placeholder { color: rgba(15,15,15,0.45); }
+        .ml-placeholder-form button {
+            background: var(--ink);
+            color: var(--yellow);
+            border: 3px solid var(--ink);
+            border-left: none;
+            padding: 1.2rem 2rem;
+            font-family: 'Anton', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            transition: background 0.2s, color 0.2s;
+            flex-shrink: 0;
+        }
+        .ml-placeholder-form button:hover { background: var(--yellow); color: var(--ink); }
+
+        .offer-fine {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            color: var(--ink);
+            opacity: 0.55;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ════════════════════════════════
+           ABOUT  (dossier)
+        ════════════════════════════════ */
+        .about-section {
+            background: var(--paper);
+            padding: 6rem 10%;
+            border-bottom: var(--border) solid var(--ink);
+        }
+        .dossier-box {
+            border: var(--border) solid var(--ink);
+            padding: 3rem;
+            box-shadow: 16px 16px 0px var(--ink);
+            background: white;
+            position: relative;
+            max-width: 720px;
+        }
+        .dossier-box::before {
+            content: "[ ABOUT ]";
+            position: absolute;
+            top: -14px; right: 2rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            background: var(--rust);
+            color: white;
+            padding: 2px 10px;
+            letter-spacing: 2px;
+        }
+        .dossier-name {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            line-height: 1;
+            margin-bottom: 1.75rem;
+        }
+        .dossier-text {
+            font-family: 'Lora', serif;
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: rgba(15,15,15,0.8);
+            max-width: 560px;
+        }
+        .dossier-text p { margin-bottom: 1rem; }
+        .dossier-text p:last-child { margin-bottom: 0; }
+        .dossier-text strong { color: var(--ink); font-weight: 700; }
+
+        /* ════════════════════════════════
+           FINAL CTA
+        ════════════════════════════════ */
+        .final-section {
+            background: var(--poster-black);
+            color: var(--paper);
+            padding: 7rem 10%;
+            border-top: var(--border) solid var(--yellow);
+            text-align: center;
+        }
+        .final-section .section-label { color: var(--yellow); opacity: 0.45; }
+        .final-headline {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3.5rem, 10vw, 7.5rem);
+            text-transform: uppercase;
+            line-height: 0.88;
+            letter-spacing: -3px;
+            color: var(--paper);
+            margin: 1rem 0 2.5rem;
+        }
+        .final-headline span { color: var(--yellow); }
+        .final-sub {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(246,241,231,0.45);
+            max-width: 420px;
+            margin: 0 auto 3.5rem;
+            line-height: 1.6;
+        }
+
+        /* ── Footer ── */
+        .site-footer {
+            background: var(--ink);
+            padding: 1.75rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-top: 2px solid rgba(242,194,48,0.12);
+        }
+        .site-footer p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            color: rgba(246,241,231,0.25);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .site-footer a { color: rgba(246,241,231,0.25); text-decoration: none; transition: color 0.2s; }
+        .site-footer a:hover { color: var(--yellow); }
+
+        /* ════════════════════════════════
+           RESPONSIVE
+        ════════════════════════════════ */
+        @media (max-width: 900px) {
+            .hero { flex-direction: row; padding: 3rem 2rem 3rem 60px; gap: 1.5rem; min-height: auto; }
+            .hero-text { padding-left: 0; }
+            .portrait-container { max-width: 280px; }
+            .hero-portrait { min-height: 280px; }
+            .mascot-sticker { width: 120px; left: -15px; bottom: -15px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; align-items: flex-start; gap: 2.5rem; }
+            .hero-image { width: 100%; padding-bottom: 2.5rem; }
+            .portrait-container { max-width: 300px; }
+            .hero-portrait { min-height: 300px; }
+            .mascot-sticker { width: 130px; left: -15px; bottom: -15px; }
+            .shift-section, .core-section, .offer-section,
+            .for-section, .about-section, .final-section { padding-left: 6%; padding-right: 6%; }
+            .dossier-box { padding: 2rem 1.25rem; }
+            .for-card { gap: 1rem; }
+            .for-card-num { font-size: 2.5rem; width: 44px; }
+        }
+
+        @media (max-width: 560px) {
+            .hero { padding: 2.5rem 5% 3.5rem; }
+            .ml-placeholder-form { flex-direction: column; box-shadow: none; }
+            .ml-placeholder-form input[type="email"] { border-right: 3px solid var(--ink); border-bottom: none; }
+            .manifesto-text { font-size: clamp(1.1rem, 5vw, 1.6rem); }
+            .site-footer { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ════════════════════════════════
+         HERO
+    ════════════════════════════════ -->
+    <section class="hero" id="top">
+        <div class="hero-text">
+            <span class="hero-eyebrow">Writer / Builder</span>
+            <h1>
+                <span class="line-1">Big Ideas.</span>
+                <span class="line-2">Built Ugly.</span>
+            </h1>
+            <p class="hero-credibility">ADDY Award Winner &bull; Brand Strategist</p>
+            <p class="hero-sub">
+                I help people stop planning<br>and start making.
+            </p>
+            <a href="#start" class="btn btn-big">Get The Free Guide ↓</a>
+        </div>
+
+        <div class="hero-image">
+            <div class="portrait-container">
+                <img src="/images/jaymes.webp"
+                     alt="Jaymes Corey"
+                     class="hero-portrait"
+                     onerror="this.style.background='#1C1C1C'; this.style.minHeight='380px'; this.alt='';">
+                <div class="mascot-sticker">
+                    <img src="https://api.iconify.design/ph:dog-bold.svg" alt="Do It Ugly Mascot">
+                    <svg class="crown-svg" viewBox="0 0 100 100">
+                        <path d="M10 80 L25 30 L45 60 L55 10 L65 60 L85 30 L100 80 Z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         TICKER
+    ════════════════════════════════ -->
+    <div class="ticker">
+        <div class="ticker-track">
+            <span class="ticker-item">Bite First. Polish Later.</span>
+            <span class="ticker-item">Perfection is heavy. Trying is light.</span>
+            <span class="ticker-item">Stop planning. Start building.</span>
+            <span class="ticker-item">Wish List | Lived List</span>
+            <span class="ticker-item">Bite First. Polish Later.</span>
+            <span class="ticker-item">Perfection is heavy. Trying is light.</span>
+            <span class="ticker-item">Stop planning. Start building.</span>
+            <span class="ticker-item">Wish List | Lived List</span>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════
+         THE SHIFT
+    ════════════════════════════════ -->
+    <section class="shift-section">
+        <span class="section-label reveal">00.1 // The Problem</span>
+        <h2 class="reveal d1">Most people don't<br>have a lack of ideas.</h2>
+        <div class="shift-callout reveal d2">
+            <p>They have a lack of <em>movement.</em><br>
+            They read. Watch. Plan. Scroll.<br>
+            And somewhere along the way… they forget they can build things too.</p>
+        </div>
+        <div class="shift-body">
+            <p class="reveal d3 shift-kicker">This is where that changes.</p>
+        </div>
+    </section>
+
+    <!-- Arrow -->
+    <div class="arrow-divider dark">
+        <span class="arrow-divider-label">// Keep reading</span>
+        <span class="arrow-glyph">↓</span>
+    </div>
+
+    <!-- ════════════════════════════════
+         CORE — DO IT UGLY  (manifesto)
+    ════════════════════════════════ -->
+    <section class="core-section">
+        <span class="section-label reveal">00.2 // The Philosophy</span>
+        <h2 class="core-title reveal d1">Do It<br><span class="outline">Ugly.</span></h2>
+        <p class="core-lead reveal d2">You don't need a perfect plan. You need motion.</p>
+
+        <div class="manifesto-line reveal d2">
+            <span class="manifesto-num">01</span>
+            <span class="manifesto-text">Start before you're ready.</span>
+        </div>
+        <div class="manifesto-line reveal d3">
+            <span class="manifesto-num">02</span>
+            <span class="manifesto-text">Build before it makes sense.</span>
+        </div>
+        <div class="manifesto-line reveal d4">
+            <span class="manifesto-num">03</span>
+            <span class="manifesto-text">Fix it after it's real.</span>
+        </div>
+    </section>
+
+    <!-- Arrow -->
+    <div class="arrow-divider">
+        <span class="arrow-divider-label">// Is this you?</span>
+        <span class="arrow-glyph">↓</span>
+    </div>
+
+    <!-- ════════════════════════════════
+         WHO THIS IS FOR  (3 big dark cards)
+    ════════════════════════════════ -->
+    <section class="for-section">
+        <span class="section-label reveal">00.3 // Is This You?</span>
+        <h2 class="reveal d1">This is for<br>you if:</h2>
+
+        <div class="for-cards">
+            <div class="for-card reveal d2">
+                <span class="for-card-num">01</span>
+                <div class="for-card-body">
+                    <p class="for-card-title">Ideas everywhere. Nothing built.</p>
+                    <p class="for-card-sub">You have a notes app full of ideas, a head full of plans, and exactly zero things shipped.</p>
+                </div>
+            </div>
+            <div class="for-card reveal d3">
+                <span class="for-card-num">02</span>
+                <div class="for-card-body">
+                    <p class="for-card-title">Tired of watching other people build.</p>
+                    <p class="for-card-sub">You keep seeing people build the exact thing you thought of first. That feeling doesn't go away on its own.</p>
+                </div>
+            </div>
+            <div class="for-card reveal d4">
+                <span class="for-card-num">03</span>
+                <div class="for-card-body">
+                    <p class="for-card-title">You want something real with your name on it.</p>
+                    <p class="for-card-sub">Not a goal. Not a plan. Something you made. Something that exists. Before someone else gets there.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arrow -->
+    <div class="arrow-divider rust-bg">
+        <span class="arrow-divider-label">// Here's how to start</span>
+        <span class="arrow-glyph">↓</span>
+    </div>
+
+    <!-- ════════════════════════════════
+         OFFER — THE ONE FORM
+    ════════════════════════════════ -->
+    <section class="offer-section" id="start">
+        <div class="offer-inner">
+            <span class="section-label reveal">00.4 // Start Here</span>
+            <h2 class="reveal d1">Get The Exit.</h2>
+            <p class="offer-subtitle reveal d1">Free Field Guide — Idea → First Real Thing</p>
+            <p class="offer-desc reveal d2">A short, no-fluff playbook to break out of planning mode and build something real in 7 days.</p>
+
+            <ul class="offer-bullets">
+                <li class="reveal d2">Turn one idea into something real in 7 days</li>
+                <li class="reveal d3">Break out of planning mode for good</li>
+                <li class="reveal d4">Build before doubt catches up</li>
+            </ul>
+
+            <!-- ════════════════════════════════════════════════════════
+                 MAILERLITE EMBED
+                 Replace .ml-placeholder-form with your MailerLite embed.
+                 Keep the .ml-form-zone wrapper div.
+            ════════════════════════════════════════════════════════ -->
+            <div class="ml-form-zone reveal d3">
+                <form class="ml-placeholder-form" id="offer-capture">
+                    <input type="email" name="fields[email]" placeholder="YOUR_EMAIL@FIELD.COM" required aria-label="Email address">
+                    <input type="hidden" name="ml-submit" value="1">
+                    <input type="hidden" name="anticsrf" value="true">
+                    <button type="submit">Get The Guide</button>
+                </form>
+                <p class="offer-fine">No fluff. No sponsorships. Unsubscribe anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         ABOUT
+    ════════════════════════════════ -->
+    <section class="about-section">
+        <div class="dossier-box reveal">
+            <span class="section-label">// Personnel Dossier</span>
+            <h2 class="dossier-name">Jaymes Corey.<br>I build things.</h2>
+            <div class="dossier-text">
+                <p>Not perfectly. Not in order. <strong>Not with permission.</strong></p>
+                <p>Brand strategy, real projects, and lessons from actually doing the thing — not just thinking about it.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         FINAL CTA
+    ════════════════════════════════ -->
+    <section class="final-section">
+        <span class="section-label reveal">// Last Chance</span>
+        <h2 class="final-headline reveal d1">You don't<br>need more<br>info. <span>Start.</span></h2>
+        <p class="final-sub reveal d2">Move one thing from the Wish List to the Lived List. Today.</p>
+        <a href="#start" class="btn btn-yellow btn-big reveal d3">Get The Free Guide ↓</a>
+    </section>
+
+    <!-- ════════════════════════════════
+         FOOTER
+    ════════════════════════════════ -->
+    <footer class="site-footer">
+        <p>&copy; 2025 Jaymes Corey</p>
+        <p>[ DO_IT_UGLY ] // Bite First. Polish Later.</p>
+        <p><a href="https://jaymescorey.com">jaymescorey.com</a></p>
+    </footer>
+
+    <script>
+        // ── Scroll Reveal ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ── Hero visible immediately ──
+        document.querySelectorAll('.hero .reveal').forEach(el => {
+            setTimeout(() => el.classList.add('visible'), 80);
+        });
+
+        // ── H1 scramble ──
+        function scrambleEl(el, finalText, delay) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ?!#$%*>';
+            let n = 0;
+            setTimeout(() => {
+                const iv = setInterval(() => {
+                    el.textContent = finalText.split('').map((ch, i) => {
+                        if (ch === ' ' || ch === '.') return ch;
+                        return i < Math.floor(n) ? finalText[i] : chars[Math.floor(Math.random() * chars.length)];
+                    }).join('');
+                    n += 0.5;
+                    if (n >= finalText.length) { el.textContent = finalText; clearInterval(iv); }
+                }, 40);
+            }, delay);
+        }
+
+        window.addEventListener('load', () => {
+            const l1 = document.querySelector('h1 .line-1');
+            const l2 = document.querySelector('h1 .line-2');
+            if (l1) scrambleEl(l1, 'Big Ideas.', 300);
+            if (l2) scrambleEl(l2, 'Built Ugly.', 800);
+        });
+
+        // ── Form → thank-you (remove when MailerLite is added) ──
+        document.getElementById('offer-capture')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = '/thank-you';
+        });
+    </script>
+
+</body>
+</html>

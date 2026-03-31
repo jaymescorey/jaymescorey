@@ -1,17 +1,2094 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+    title="Jaymes Corey | Building 80 Micro-Businesses in Public"
+    description="U.S. Navy Veteran. Dad of 3. I'm running 80 domain experiments in public — documenting every win, kill, and pivot — so my kids never inherit my limits."
+    canonicalUrl="https://jaymescorey.com/"
+    ogImage="https://jaymescorey.com/images/og-jaymes.jpg"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Jaymes Corey",
+          "url": "https://jaymescorey.com",
+          "image": "https://jaymescorey.com/images/og-jaymes.jpg",
+          "jobTitle": "Creative Strategist & Serial Founder",
+          "description": "ADDY Award-winning creative strategist, 10x founder, and Navy veteran. I build brands, businesses, and things most people just talk about.",
+          "sameAs": [
+            "https://www.linkedin.com/in/jaymescorey",
+            "https://x.com/jaymescorey",
+            "https://www.instagram.com/jaymescorey"
+          ],
+          "worksFor": {
+            "@type": "Organization",
+            "name": "BRAVND"
+          }
+        }
+        `}</script>
+        <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Jaymes Corey",
+          "url": "https://jaymescorey.com",
+          "description": "Big ideas. Strange experiments. Notes from a builder who stopped waiting for perfect.",
+          "author": {
+            "@type": "Person",
+            "name": "Jaymes Corey"
+          }
+        }
+        `}</script>
+
+        <style>
+            /* ── THE WORK SECTION ── */
+            .work-section { background: var(--paper); }
+
+            .work-cards {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+
+            .work-card .card-number {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                opacity: 0.5;
+                margin-bottom: 0.75rem;
+            }
+
+            .work-card h3 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(1.4rem, 2.5vw, 2rem);
+                text-transform: uppercase;
+                letter-spacing: -0.5px;
+                margin-bottom: 0.75rem;
+                color: var(--ink);
+                line-height: 1;
+            }
+
+            .work-card .card-desc {
+                font-family: 'Lora', serif;
+                font-size: 0.95rem;
+                line-height: 1.65;
+                opacity: 0.8;
+                margin-bottom: 0.75rem;
+            }
+
+            .work-card .card-result {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.72rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                color: var(--rust);
+                font-weight: 700;
+            }
+
+            .work-link-wrap {
+                margin-top: 3rem;
+                text-align: center;
+            }
+
+            .work-link {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--ink);
+                text-decoration: none;
+                border-bottom: 3px solid var(--rust);
+                padding-bottom: 3px;
+                transition: color 0.1s;
+            }
+
+            .work-link:hover { color: var(--rust); }
+
+            /* ── YELLOW EMAIL SECTION ── */
+            .enlist-section-yellow {
+                background: var(--yellow);
+                border-top: var(--border-width) solid var(--ink);
+                border-bottom: var(--border-width) solid var(--ink);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .enlist-section-yellow::before {
+                content: "JOIN THE LIST // JOIN THE LIST // JOIN THE LIST // JOIN THE LIST //";
+                position: absolute;
+                top: 1.5rem;
+                left: 0;
+                right: 0;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 3px;
+                color: rgba(15, 15, 15, 0.08);
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .enlist-section-yellow .enlist-form-row {
+                box-shadow: 10px 10px 0px var(--ink);
+            }
+
+            .enlist-section-yellow .enlist-form-row button {
+                background: var(--ink);
+                color: var(--yellow);
+                border-color: var(--ink);
+            }
+
+            .enlist-section-yellow .enlist-form-row button:hover {
+                background: var(--rust);
+                border-color: var(--rust);
+                color: white;
+            }
+
+            .enlist-section-yellow .enlist-form-row input {
+                border-color: var(--ink);
+            }
+
+            .enlist-section-yellow .enlist-form-row input::placeholder {
+                color: rgba(15, 15, 15, 0.45);
+            }
+
+            .enlist-section-yellow .enlist-fine {
+                color: var(--ink);
+                opacity: 0.6;
+            }
+
+            /* ── CONTENT PILLARS ── */
+            .pillars-section { background: var(--cream); }
+
+            .pillars-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+
+            .pillar-card {
+                background: white;
+                border: var(--border-width) solid var(--ink);
+                padding: 2rem 2rem 1.75rem;
+                box-shadow: 6px 6px 0px var(--rust);
+                transition: transform 0.1s, box-shadow 0.1s;
+            }
+
+            .pillar-card:hover {
+                transform: translate(-2px, -2px);
+                box-shadow: 8px 8px 0px var(--rust);
+            }
+
+            .pillar-number {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--rust);
+                margin-bottom: 0.6rem;
+            }
+
+            .pillar-card h3 {
+                font-family: 'Anton', sans-serif;
+                font-size: 1.6rem;
+                text-transform: uppercase;
+                letter-spacing: -0.5px;
+                margin-bottom: 0.75rem;
+                color: var(--ink);
+                line-height: 1;
+            }
+
+            .pillar-card p {
+                font-family: 'Lora', serif;
+                font-size: 0.9rem;
+                line-height: 1.65;
+                opacity: 0.75;
+                color: var(--ink);
+            }
+
+            /* ── LAB SUBTICKER ── */
+            .lab-subticker {
+                border-top: 1px solid rgba(242, 194, 48, 0.18);
+                padding: 0.85rem 0;
+                overflow: hidden;
+                white-space: nowrap;
+                margin-top: 4rem;
+            }
+
+            .lab-subticker-track {
+                display: inline-block;
+                animation: tickerScroll 35s linear infinite;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                color: rgba(242, 194, 48, 0.4);
+            }
+
+            /* ── SITE FOOTER ── */
+            .site-footer {
+                background: linear-gradient(180deg, #101010 0%, #0b0b0b 100%);
+                color: var(--paper);
+                padding: 5.5rem 10% 3rem;
+                border-top: var(--border-width) solid var(--yellow);
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .site-footer::before {
+                content: '';
+                position: absolute;
+                top: -40px;
+                right: -40px;
+                width: 220px;
+                height: 220px;
+                background: rgba(242,194,48,0.08);
+                border-radius: 50%;
+                box-shadow: 0 0 0 4px rgba(242,194,48,0.08);
+                pointer-events: none;
+            }
+
+            .site-footer-inner {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.25rem;
+                max-width: 1180px;
+                margin: 0 auto;
+                position: relative;
+                z-index: 1;
+            }
+
+            .site-footer-logo {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(2.2rem, 4vw, 3rem);
+                color: var(--yellow);
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: -1px;
+                line-height: 1;
+            }
+
+            .site-footer-nav {
+                display: flex;
+                gap: 2rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .site-footer-nav a {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: rgba(255,255,255,0.85);
+                text-decoration: none;
+                opacity: 0.75;
+                transition: opacity 0.15s, color 0.15s, transform 0.15s;
+            }
+
+            .site-footer-nav a:hover {
+                opacity: 1;
+                color: var(--yellow);
+                transform: translateY(-1px);
+            }
+
+            .site-footer-social {
+                display: flex;
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .site-footer-social a {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: rgba(255,255,255,0.75);
+                text-decoration: none;
+                opacity: 0.7;
+                transition: opacity 0.15s, color 0.15s, transform 0.15s;
+            }
+
+            .site-footer-social a:hover {
+                opacity: 1;
+                color: var(--yellow);
+                transform: translateY(-1px);
+            }
+
+            .site-footer-divider {
+                width: min(720px, 100%);
+                height: 1px;
+                background: rgba(242, 194, 48, 0.18);
+                margin: 0.75rem auto;
+            }
+
+            .site-footer-tags {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .site-footer-tags span {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.68rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--yellow);
+                opacity: 0.9;
+                padding: 0.55rem 0.9rem;
+                border: 1px solid rgba(242,194,48,0.18);
+                background: rgba(242,194,48,0.07);
+                border-radius: 999px;
+            }
+
+            .site-footer-copy {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.72rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                opacity: 0.45;
+                margin: 0;
+                padding-top: 0.75rem;
+            }
+
+            @media (min-width: 900px) {
+                .site-footer-inner {
+                    align-items: center;
+                }
+            }
+
+            /* ── HI I'M JAYMES ── */
+            .intro-section { background: var(--paper); }
+
+            .intro-stats {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                border: var(--border-width) solid var(--ink);
+                margin: 2.5rem 0 3.5rem;
+            }
+
+            .intro-stat {
+                padding: 1.5rem 1.25rem;
+                text-align: center;
+                border-right: var(--border-width) solid var(--ink);
+            }
+
+            .intro-stat:last-child { border-right: none; }
+
+            .intro-stat-num {
+                display: block;
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(2.2rem, 4vw, 3.5rem);
+                line-height: 1;
+                letter-spacing: -1px;
+                color: var(--ink);
+            }
+
+            .intro-stat-label {
+                display: block;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.58rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                color: var(--rust);
+                margin-top: 0.5rem;
+            }
+
+            .intro-grid {
+                display: grid;
+                grid-template-columns: 1fr 300px;
+                gap: 4rem;
+                align-items: start;
+            }
+
+            .intro-body p {
+                font-family: 'Lora', serif;
+                font-size: clamp(1rem, 1.5vw, 1.15rem);
+                line-height: 1.8;
+                color: var(--ink);
+                margin-bottom: 1.25rem;
+            }
+
+            .intro-anchor {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--rust);
+                margin-top: 2rem;
+            }
+
+            .intro-pullquote {
+                background: var(--ink);
+                border: var(--border-width) solid var(--ink);
+                box-shadow: 8px 8px 0px var(--rust);
+                padding: 2.5rem 2rem 2rem;
+                position: relative;
+                transform: rotate(var(--r, 1.5deg));
+                margin-top: 0.5rem;
+            }
+
+            .intro-pullquote-text {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+                text-transform: uppercase;
+                line-height: 1.1;
+                letter-spacing: -0.5px;
+                color: var(--yellow);
+            }
+
+            .intro-pullquote-attr {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.6rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: rgba(246,241,231,0.4);
+                margin-top: 1.5rem;
+            }
+
+
+            /* ── LIVE LAB DASHBOARD ── */
+            .lab-dashboard-section { background: var(--poster-black); color: var(--paper); }
+            .lab-dashboard-section .section-label { color: var(--yellow); }
+            .lab-dashboard-section .section-title { color: var(--paper); }
+
+            .lab-dashboard-lead {
+                font-family: 'Lora', serif;
+                font-size: 1.05rem;
+                max-width: 580px;
+                opacity: 0.65;
+                line-height: 1.7;
+                margin-top: 0.5rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .lab-filters {
+                display: flex;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                margin-bottom: 2rem;
+                padding: 1rem 1rem 0.75rem;
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(246,241,231,0.12);
+                border-radius: 0.25rem;
+            }
+
+            .lab-filter {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                padding: 0.5rem 1rem;
+                border: 2px solid rgba(246,241,231,0.2);
+                background: transparent;
+                color: var(--paper);
+                cursor: pointer;
+                opacity: 0.7;
+                transition: all 0.15s;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .lab-filter:hover { opacity: 1; border-color: var(--yellow); color: var(--yellow); }
+
+            .lab-filter.active {
+                opacity: 1;
+                background: var(--yellow);
+                border-color: var(--yellow);
+                color: var(--ink);
+            }
+
+            .lab-filter-count {
+                background: rgba(0,0,0,0.2);
+                padding: 0.1rem 0.4rem;
+                font-size: 0.6rem;
+            }
+
+            .lab-filter.active .lab-filter-count { background: rgba(15,15,15,0.15); }
+
+            .lab-rows { display: flex; flex-direction: column; gap: 0; }
+
+            .lab-row {
+                display: grid;
+                grid-template-columns: 120px 1fr 1fr 200px;
+                gap: 1.5rem;
+                align-items: center;
+                padding: 1.4rem 1.5rem;
+                border: 1px solid rgba(246,241,231,0.08);
+                border-bottom: none;
+                background: rgba(255,255,255,0.04);
+                transition: background 0.2s, transform 0.2s;
+            }
+
+            .lab-row:last-child { border-bottom: 1px solid rgba(246,241,231,0.08); }
+            .lab-row:hover { background: rgba(246,241,231,0.08); transform: translateX(-2px); }
+            .lab-row[data-status="live"] { border-color: rgba(242,194,48,0.22); }
+            .lab-row[data-status="killed"] { opacity: 0.9; }
+
+            .lab-row[data-status="killed"] { opacity: 0.45; }
+
+            .lab-badge {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.6rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                padding: 0.3rem 0.65rem;
+                border: 1px solid;
+                white-space: nowrap;
+            }
+
+            .lab-badge--live { color: var(--yellow); border-color: var(--yellow); }
+            .lab-badge--building { color: #7dd3fc; border-color: #7dd3fc; }
+            .lab-badge--killed { color: var(--rust); border-color: var(--rust); }
+            .lab-badge--idea { color: rgba(246,241,231,0.4); border-color: rgba(246,241,231,0.2); }
+
+            .lab-row-domain {
+                font-family: 'Anton', sans-serif;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: -0.5px;
+                color: var(--paper);
+                line-height: 1.1;
+            }
+
+            .lab-row-focus {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+                color: var(--yellow);
+                opacity: 0.7;
+                margin-top: 0.3rem;
+            }
+
+            .lab-row-result {
+                font-family: 'Lora', serif;
+                font-size: 0.95rem;
+                opacity: 0.7;
+                font-style: italic;
+                line-height: 1.7;
+            }
+
+            .lab-progress-label {
+                display: flex;
+                justify-content: space-between;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.58rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                opacity: 0.45;
+                margin-bottom: 0.4rem;
+            }
+
+            .lab-progress-track {
+                height: 6px;
+                background: rgba(246,241,231,0.12);
+                overflow: hidden;
+                border-radius: 99px;
+            }
+
+            .lab-progress-fill {
+                height: 100%;
+                width: 0;
+                transition: width 1s cubic-bezier(0.23, 1, 0.32, 1);
+                border-radius: 99px;
+            }
+
+            .lab-progress-fill--live { background: var(--yellow); }
+            .lab-progress-fill--building { background: #7dd3fc; }
+            .lab-progress-fill--killed { background: var(--rust); }
+            .lab-progress-fill--idea { background: rgba(246,241,231,0.2); }
+
+            .lab-dashboard-note {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                opacity: 0.3;
+                margin-top: 2rem;
+                text-align: center;
+            }
+
+            @media (max-width: 768px) {
+                .lab-row {
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: auto auto;
+                    gap: 0.75rem;
+                }
+                .lab-row-result { display: none; }
+                .lab-row-progress { grid-column: 1 / -1; }
+            }
+
+            /* ── KIDS APPROVED ── */
+            .kids-approved-section {
+                background: var(--paper);
+                text-align: center;
+                border-top: var(--border-width) solid var(--ink);
+                padding-bottom: 4rem;
+            }
+
+            .kids-stamp-wrap {
+                display: flex;
+                justify-content: center;
+                margin: 2.5rem 0 1.5rem;
+            }
+
+            .kids-stamp {
+                position: relative;
+                width: 250px;
+                height: 250px;
+                filter: drop-shadow(6px 6px 0px var(--rust));
+                animation: kids-stamp-idle 5s ease-in-out infinite;
+                will-change: transform;
+                cursor: default;
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                            filter 0.3s ease;
+            }
+
+            .kids-stamp::before {
+                content: 'BRAND SEAL';
+                position: absolute;
+                top: -20px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--ink);
+                background: var(--yellow);
+                padding: 0.35rem 0.9rem;
+                border: 2px solid var(--ink);
+                border-radius: 999px;
+            }
+
+            .kids-stamp:hover {
+                animation: none;
+                transform: rotate(-8deg) scale(1.05);
+                filter: drop-shadow(8px 8px 0px var(--rust));
+            }
+
+            @keyframes kids-stamp-idle {
+                0%, 100% { transform: rotate(9deg); }
+                50%       { transform: rotate(14deg); }
+            }
+
+            .kids-stamp-ring {
+                position: relative;
+                width: 100%;
+                height: 100%;
+            }
+
+            .kids-stamp-ring svg {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+            }
+
+            .kids-stamp-dog {
+                position: absolute;
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%);
+                width: 110px; height: 110px;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 4px solid var(--ink);
+                background: var(--yellow);
+            }
+
+            .kids-stamp-dog img {
+                width: 100%; height: 100%;
+                object-fit: cover;
+                object-position: center top;
+            }
+
+            .kids-stamp-note {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.95rem;
+                color: rgba(15,15,15,0.7);
+                letter-spacing: 0.12em;
+                margin-top: 1rem;
+                text-transform: uppercase;
+            }
+
+            /* ── FREEDOM TO SECTION ── */
+            .freedom-section {
+                background: var(--paper);
+                border-top: var(--border-width) solid var(--ink);
+            }
+
+            .freedom-lead {
+                font-family: 'Lora', serif;
+                font-size: 1.1rem;
+                opacity: 0.75;
+                margin-top: 0.5rem;
+                max-width: 620px;
+                line-height: 1.75;
+            }
+
+            .freedom-list {
+                margin-top: 3rem;
+                display: grid;
+                gap: 1rem;
+                max-width: 820px;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 1rem;
+                background: rgba(15,15,15,0.03);
+                border: 1px solid rgba(15,15,15,0.08);
+                border-radius: 1rem;
+            }
+
+            .freedom-item {
+                display: flex;
+                align-items: baseline;
+                gap: 1.5rem;
+                padding: 1.25rem 0;
+                border-bottom: 1px solid rgba(15,15,15,0.08);
+            }
+
+            .freedom-item:last-child { border-bottom: none; }
+
+            .freedom-num {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--rust);
+                white-space: nowrap;
+                flex-shrink: 0;
+                padding-top: 0.2rem;
+            }
+
+            .freedom-text {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(1.4rem, 2.3vw, 2rem);
+                text-transform: uppercase;
+                letter-spacing: -0.5px;
+                line-height: 1.15;
+                color: var(--ink);
+                max-width: 88ch;
+            }
+
+            .freedom-text em {
+                font-style: normal;
+                color: var(--rust);
+                -webkit-text-stroke: 0;
+            }
+
+            .freedom-cta-wrap {
+                margin-top: 3rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                align-items: flex-start;
+                max-width: 720px;
+            }
+
+            .freedom-cta-wrap p {
+                font-family: 'Lora', serif;
+                font-size: 1.05rem;
+                max-width: 580px;
+                line-height: 1.8;
+                opacity: 0.75;
+                margin-bottom: 0;
+            }
+
+            /* ── LAB DISPATCHES FEED ── */
+            .dispatch-section {
+                background: var(--ink);
+                color: var(--paper);
+            }
+            .dispatch-section .section-label { color: var(--yellow); }
+            .dispatch-section .section-title { color: var(--paper); }
+            .dispatch-section .section-title .outline {
+                -webkit-text-stroke-color: var(--yellow);
+            }
+
+            .dispatch-lead {
+                font-family: 'Lora', serif;
+                font-size: clamp(1rem, 1.8vw, 1.2rem);
+                max-width: 600px;
+                margin-bottom: 2.5rem;
+                opacity: 0.85;
+                line-height: 1.6;
+            }
+
+            .dispatch-feed {
+                display: flex;
+                flex-direction: column;
+                border: var(--border-width) solid rgba(246,241,231,0.25);
+                margin-bottom: 1.5rem;
+            }
+
+            .dispatch-row {
+                display: grid;
+                grid-template-columns: 90px 1fr auto;
+                gap: 1.5rem;
+                align-items: center;
+                padding: 1.5rem;
+                border-bottom: 2px solid rgba(246,241,231,0.1);
+                transition: background 0.2s ease;
+            }
+            .dispatch-row:last-child { border-bottom: none; }
+            .dispatch-row:hover { background: rgba(255,255,255,0.04); }
+
+            .dispatch-type {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                padding: 0.3rem 0.5rem;
+                border: 2px solid;
+                text-align: center;
+                text-transform: uppercase;
+                white-space: nowrap;
+            }
+            .dispatch-type--read   { color: var(--yellow); border-color: var(--yellow); }
+            .dispatch-type--listen { color: var(--rust);   border-color: var(--rust); }
+            .dispatch-type--watch  { color: var(--paper);  border-color: var(--paper); background: rgba(246,241,231,0.06); }
+
+            .dispatch-body { display: flex; flex-direction: column; gap: 0.35rem; }
+
+            .dispatch-title {
+                font-family: 'Oswald', sans-serif;
+                font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.02em;
+                color: var(--paper);
+                line-height: 1.2;
+            }
+
+            .dispatch-desc {
+                font-family: 'Lora', serif;
+                font-size: 0.875rem;
+                color: rgba(246,241,231,0.65);
+                line-height: 1.55;
+            }
+
+            .dispatch-action a {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.72rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: var(--yellow);
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                border: 2px solid var(--yellow);
+                white-space: nowrap;
+                display: inline-block;
+                transition: background 0.15s ease, color 0.15s ease;
+            }
+            .dispatch-action a:hover { background: var(--yellow); color: var(--ink); }
+
+            .dispatch-placeholder-note {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                color: rgba(246,241,231,0.35);
+                letter-spacing: 0.05em;
+                margin-bottom: 2rem;
+            }
+
+            .dispatch-cta-wrap { text-align: center; margin-top: 0.5rem; }
+
+            @media (max-width: 640px) {
+                .dispatch-row {
+                    grid-template-columns: 1fr;
+                    gap: 0.75rem;
+                }
+            }
+
+            /* ── KIDS APPROVED SECTION OVERRIDES ── */
+            .kids-approved-section .section-title .outline {
+                -webkit-text-stroke: 2px var(--ink);
+                color: transparent;
+                paint-order: stroke fill;
+            }
+
+            /* ── RESPONSIVE ── */
+            @media (max-width: 768px) {
+                .work-cards { grid-template-columns: 1fr; }
+                .pillars-grid { grid-template-columns: 1fr; }
+                .doors-grid { grid-template-columns: 1fr; }
+                .truth-grid { grid-template-columns: 1fr; }
+                .intro-stats { grid-template-columns: repeat(2, 1fr); }
+                .intro-stat:nth-child(2) { border-right: none; }
+                .intro-stat:nth-child(3) {
+                    border-top: var(--border-width) solid var(--ink);
+                    border-right: var(--border-width) solid var(--ink);
+                }
+                .intro-stat:nth-child(4) { border-top: var(--border-width) solid var(--ink); }
+                .intro-grid { grid-template-columns: 1fr; }
+                .intro-pullquote { transform: none; }
+                .site-footer-nav { gap: 1.2rem; }
+                .site-footer-social { gap: 1.2rem; }
+            }
+        </style>
+    </Fragment>
+
+    <div id="progress-bar"></div>
+
+    <Nav page="home" />
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+        <nav>
+            <a href="#start" class="mob-link"><span class="mob-num">01</span>Start Here</a>
+            <a href="#lab" class="mob-link"><span class="mob-num">02</span>The Lab</a>
+            <a href="/about" class="mob-link"><span class="mob-num">03</span>About</a>
+            <a href="#enlist" class="mob-cta mob-link"><span class="mob-num">→</span>Join The List</a>
+        </nav>
+        <div class="mobile-menu-footer">[ JAYMES COREY ] // Build It Before You're Ready.</div>
+    </div>
+
+    <!-- 02 // HERO -->
+    <section class="hero">
+        <div class="hero-text">
+            <span class="hero-eyebrow">THE CYCLE ENDS WITH ME.</span>
+            <h1><span class="line-1">Company man or family man</span><span class="line-2">should never be a choice.</span></h1>
+            <p class="hero-sub">My parents hustled like hell to provide—the standard path still cost us our time together. I refuse that trade. I&#39;m running raw experiments across my domains to fund a life of total presence with my three kids, and documenting every ugly, honest step so you can start moving, too.</p>
+            <div class="hero-btns">
+                <a href="#enlist" class="btn">FOLLOW THE BUILD</a>
+            </div>
+            <div class="hero-mini-signup">
+                <p>Get the weekly field report straight to your inbox.</p>
+                <form id="hero-signup">
+                    <input type="email" name="fields[email]" placeholder="EMAIL_ADDRESS@FIELD.COM" aria-label="Email address" required>
+                    <button type="submit">FOLLOW THE BUILD</button>
+                    <input type="hidden" name="ml-submit" value="1">
+                    <input type="hidden" name="anticsrf" value="true">
+                </form>
+            </div>
+            <p class="hero-credibility">One email per week. Raw experiments. No fluff. No sponsorships.</p>
+        </div>
+        <div class="hero-image">
+            <div class="portrait-container">
+                <img src="/images/jaymes.webp" alt="Jaymes Corey" class="hero-portrait"
+                     fetchpriority="high"
+                     onerror="this.style.background='#1C1C1C'; this.style.minHeight='400px'; this.alt='';">
+
+                <!-- Mascot Sticker -->
+                <div class="mascot-sticker">
+                    <button class="audio-trigger" id="manifesto-voice" title="Play Manifesto">🔊 Speak</button>
+                    <img src="https://api.iconify.design/ph:dog-bold.svg" alt="Ugly Mascot Running">
+                    <svg class="crown-svg" viewBox="0 0 100 100">
+                        <path d="M10 80 L25 30 L45 60 L55 10 L65 60 L85 30 L100 80 Z" />
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 03 // CREDIBILITY TICKER -->
+    <div class="ticker">
+        <div class="ticker-track">
+            <span class="ticker-item">NAVY VETERAN</span>
+            <span class="ticker-item">DAD OF 3</span>
+            <span class="ticker-item">80+ DOMAINS IN THE LAB</span>
+            <span class="ticker-item">ADDY AWARD WINNER</span>
+            <span class="ticker-item">BUILT IN FL // CA // HI</span>
+            <span class="ticker-item">BUILDING IN PUBLIC</span>
+            <span class="ticker-item">THE CYCLE ENDS WITH MOTION</span>
+            <span class="ticker-item">HOMESCHOOL DAD</span>
+            <span class="ticker-item">NAVY VETERAN</span>
+            <span class="ticker-item">DAD OF 3</span>
+            <span class="ticker-item">80+ DOMAINS IN THE LAB</span>
+            <span class="ticker-item">ADDY AWARD WINNER</span>
+            <span class="ticker-item">BUILT IN FL // CA // HI</span>
+            <span class="ticker-item">BUILDING IN PUBLIC</span>
+            <span class="ticker-item">THE CYCLE ENDS WITH MOTION</span>
+            <span class="ticker-item">HOMESCHOOL DAD</span>
+        </div>
+    </div>
+
+    <!-- 03.1 // HI I'M JAYMES -->
+    <section class="section-padding reveal intro-section" id="about-intro">
+        <span class="section-label">01 // THE BUILDER BEHIND THIS</span>
+        <h2 class="section-title">Hi, I'm<br><span class="outline">Jaymes.</span></h2>
+
+        <div class="intro-stats">
+            <div class="intro-stat">
+                <span class="intro-stat-num">3</span>
+                <span class="intro-stat-label">Kids (+ 2 dogs, 4 cats)</span>
+            </div>
+            <div class="intro-stat">
+                <span class="intro-stat-num">10+</span>
+                <span class="intro-stat-label">Businesses Built</span>
+            </div>
+            <div class="intro-stat">
+                <span class="intro-stat-num">80+</span>
+                <span class="intro-stat-label">Domains in the Lab</span>
+            </div>
+            <div class="intro-stat">
+                <span class="intro-stat-num">$0</span>
+                <span class="intro-stat-label">Outside Investment</span>
+            </div>
+        </div>
+
+        <div class="intro-grid">
+            <div class="intro-body">
+                <p>Navy Vet. I've built service businesses from zero to profit across Florida, Hawaii, and California — no loans, no investors, no safety net. Just work.</p>
+                <p>Then I stopped building for everyone else.</p>
+                <p>I homeschool my kids. The best classroom I can give them isn't a curriculum — it's a front-row seat to watching their Dad actually build something.</p>
+                <p>So I'm documenting every ugly step in public. The wins, the kills, the pivots. All of it.</p>
+                <p class="intro-anchor">That's the whole thing.</p>
+            </div>
+
+            <div class="intro-pullquote" style="--r: 1.5deg;">
+                <div class="tape"></div>
+                <p class="intro-pullquote-text">Not Telling Them How.<br>Showing Them How.</p>
+                <p class="intro-pullquote-attr">// The whole point</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04 // EMAIL CAPTURE -->
+    <section class="section-padding enlist-section enlist-section-yellow" id="enlist">
+        <div class="enlist-inner reveal">
+            <div class="enlist-label">
+                <span class="section-label">04 // JOIN THE LIST</span>
+            </div>
+            <h2 class="enlist-headline">
+                Most People Wait.<br>
+                <span class="enlist-accent">Builders Move.</span>
+            </h2>
+            <p class="enlist-sub">One email. The behind-the-scenes nobody posts — ugly tools, half-baked automations, analytics that don't lie. The messy working parts, not the victory lap. Well, hopefully the victory lap too.</p>
+            <form class="enlist-form" id="enlist-form">
+                <div class="enlist-form-row">
+                    <input type="email" name="fields[email]" placeholder="your@email.com" required aria-label="Email address">
+                    <button type="submit">FOLLOW THE BUILD</button>
+                </div>
+                <input type="hidden" name="ml-submit" value="1">
+                <input type="hidden" name="anticsrf" value="true">
+                <p class="enlist-fine">Unsubscribe anytime. I respect your inbox because I respect mine.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- 05 // HOW CAN I HELP -->
+    <section class="section-padding doors-section" id="start">
+        <span class="section-label">02 // WHERE DO YOU WANT TO START</span>
+        <h2 class="section-title">How Can I<br><span class="outline">Help?</span></h2>
+        <p class="doors-lead">Pick the path that fits where you are right now.</p>
+
+        <div class="doors-rows">
+
+            <div class="doors-row reveal">
+                <div class="doors-row-num">01</div>
+                <div class="doors-row-content">
+                    <div class="doors-row-tag">I want to follow the journey</div>
+                    <h3>Join The Lab</h3>
+                    <p>Every week I document what's working, what died, and what I'm building next. Raw, unfiltered, no polish.</p>
+                </div>
+                <div class="doors-row-cta">
+                    <a href="#enlist" class="btn doors-btn">Follow Along &nbsp;→</a>
+                </div>
+            </div>
+
+            <div class="doors-row reveal">
+                <div class="doors-row-num">02</div>
+                <div class="doors-row-content">
+                    <div class="doors-row-tag">I want to see the experiments</div>
+                    <h3>The Live Lab</h3>
+                    <p>A real-time dashboard of every domain experiment — what's live, what's being built, and what got killed. The whole thing made visible.</p>
+                </div>
+                <div class="doors-row-cta">
+                    <a href="#lab" class="btn doors-btn">See The Experiments &nbsp;→</a>
+                </div>
+            </div>
+
+            <div class="doors-row doors-row--sprint reveal">
+                <div class="tape"></div>
+                <div class="doors-row-num">03</div>
+                <div class="doors-row-content">
+                    <div class="doors-row-tag">I'm ready to stop waiting and start building</div>
+                    <h3>The 30-Day Sprint</h3>
+                    <p>Your idea. My decade of building from zero. 30 days, one-on-one — we map it, build it ugly, and find out if it's real.</p>
+                    <ul class="sprint-bullets">
+                        <li>60–90 minute kickoff strategy call</li>
+                        <li>Three weekly sprint sessions</li>
+                        <li>Email access between calls</li>
+                        <li>A built-for-you launch blueprint</li>
+                    </ul>
+                </div>
+                <div class="doors-row-cta">
+                    <span class="doors-row-price">$2,500</span>
+                    <a href="/sprint" class="btn doors-btn">Join The Waitlist &nbsp;→</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 05 // THE LIVE LAB DASHBOARD -->
+    <section class="section-padding lab-dashboard-section" id="lab">
+        <span class="section-label">03 // THE LIVE EXPERIMENT LAB</span>
+        <h2 class="section-title">The Live<br><span class="outline">Lab.</span></h2>
+        <p class="lab-dashboard-lead">Every domain is an experiment. Some will make money. Some will die. All of it gets documented here — in public, in real time.</p>
+
+        <div class="lab-filters">
+            <button type="button" class="lab-filter active" data-filter="all">All <span class="lab-filter-count">6</span></button>
+            <button type="button" class="lab-filter" data-filter="live">Live <span class="lab-filter-count">1</span></button>
+            <button type="button" class="lab-filter" data-filter="building">Building <span class="lab-filter-count">0</span></button>
+            <button type="button" class="lab-filter" data-filter="killed">Killed <span class="lab-filter-count">1</span></button>
+            <button type="button" class="lab-filter" data-filter="idea">Idea <span class="lab-filter-count">4</span></button>
+        </div>
+
+        <div class="lab-rows" id="labRows">
+
+            <div class="lab-row" data-status="live">
+                <div class="lab-row-status">
+                    <span class="lab-badge lab-badge--live">● Live</span>
+                </div>
+                <div class="lab-row-main">
+                    <div class="lab-row-domain">ConstantMarketing.com</div>
+                    <div class="lab-row-focus">SaaS / AI Marketing App</div>
+                </div>
+                <div class="lab-row-result">Agency model shelved. Rebuilding as an AI app — snap a photo, drop a voice note, get formatted posts across every channel. Marketing in your pocket.</div>
+                <div class="lab-row-progress">
+                    <div class="lab-progress-label">
+                        <span>MVP Progress</span><span>70%</span>
+                    </div>
+                    <div class="lab-progress-track">
+                        <div class="lab-progress-fill lab-progress-fill--live" data-pct="70"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-row" data-status="killed">
+                <div class="lab-row-status">
+                    <span class="lab-badge lab-badge--killed">✕ Killed</span>
+                </div>
+                <div class="lab-row-main">
+                    <div class="lab-row-domain">MountainMarine.com</div>
+                    <div class="lab-row-focus">Marine Parts &amp; Services</div>
+                </div>
+                <div class="lab-row-result">Market too small. Regional suppliers too broken. Killed it before it cost more than time.</div>
+                <div class="lab-row-progress">
+                    <div class="lab-progress-label">
+                        <span>MVP Progress</span><span>15%</span>
+                    </div>
+                    <div class="lab-progress-track">
+                        <div class="lab-progress-fill lab-progress-fill--killed" data-pct="15"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-row" data-status="idea">
+                <div class="lab-row-status">
+                    <span class="lab-badge lab-badge--idea">◌ Idea</span>
+                </div>
+                <div class="lab-row-main">
+                    <div class="lab-row-domain">ClassicAmericanTrucks.com</div>
+                    <div class="lab-row-focus">Content / Community</div>
+                </div>
+                <div class="lab-row-result">Ground zero. Passion project.</div>
+                <div class="lab-row-progress">
+                    <div class="lab-progress-label">
+                        <span>MVP Progress</span><span>0%</span>
+                    </div>
+                    <div class="lab-progress-track">
+                        <div class="lab-progress-fill lab-progress-fill--idea" data-pct="0"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-row" data-status="idea">
+                <div class="lab-row-status">
+                    <span class="lab-badge lab-badge--idea">◌ Idea</span>
+                </div>
+                <div class="lab-row-main">
+                    <div class="lab-row-domain">StartSellingInsurance.com</div>
+                    <div class="lab-row-focus">Education / Niche</div>
+                </div>
+                <div class="lab-row-result">Ground zero. Testing demand.</div>
+                <div class="lab-row-progress">
+                    <div class="lab-progress-label">
+                        <span>MVP Progress</span><span>0%</span>
+                    </div>
+                    <div class="lab-progress-track">
+                        <div class="lab-progress-fill lab-progress-fill--idea" data-pct="0"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-row" data-status="idea">
+                <div class="lab-row-status">
+                    <span class="lab-badge lab-badge--idea">◌ Idea</span>
+                </div>
+                <div class="lab-row-main">
+                    <div class="lab-row-domain">TatteredFox.com</div>
+                    <div class="lab-row-focus">Brand / TBD</div>
+                </div>
+                <div class="lab-row-result">Ground zero. Name felt right.</div>
+                <div class="lab-row-progress">
+                    <div class="lab-progress-label">
+                        <span>MVP Progress</span><span>0%</span>
+                    </div>
+                    <div class="lab-progress-track">
+                        <div class="lab-progress-fill lab-progress-fill--idea" data-pct="0"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-row" data-status="idea">
+                <div class="lab-row-status">
+                    <span class="lab-badge lab-badge--idea">◌ Idea</span>
+                </div>
+                <div class="lab-row-main">
+                    <div class="lab-row-domain">RookieFitness.com</div>
+                    <div class="lab-row-focus">Fitness / Content</div>
+                </div>
+                <div class="lab-row-result">Ground zero. Big market to test.</div>
+                <div class="lab-row-progress">
+                    <div class="lab-progress-label">
+                        <span>MVP Progress</span><span>0%</span>
+                    </div>
+                    <div class="lab-progress-track">
+                        <div class="lab-progress-fill lab-progress-fill--idea" data-pct="0"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="lab-dashboard-note">More experiments drop as they move off the idea shelf.</p>
+    </section>
+
+
+    <!-- 08 // THE MOMENT (ORIGIN STORY) -->
+    <section class="story section-padding reveal" id="themoment">
+        <span class="section-label">05 // THE MOMENT</span>
+        <h2>Why This Site Exists.</h2>
+        <p>I was sitting at the kitchen table watching my kids play.</p>
+        <p>And I realized I was running the same pattern.<br>My dad ran it. His dad ran it.</p>
+        <p>Come home. Check out. Grind until the weekend.<br>Call it providing.</p>
+        <p>I had a list of things I was going to do someday.<br>It had been growing since I was 19.</p>
+        <div class="story-pull">Someday was never going to show up.</div>
+        <p>So I stopped waiting for the perfect moment and started building in public.</p>
+        <p>Life started <span class="reveal-word" data-reveal="// yours can too.">moving</span>.</p>
+
+        <div class="permission-wrap">
+            <button class="permission-btn" id="permissionBtn">[ Get Your Permission Slip ]</button>
+            <p class="permission-msg" id="permissionMsg"></p>
+        </div>
+    </section>
+
+    <!-- 09 // WISH LIST / LIVED LIST -->
+    <section class="lists-cloth-section" id="lists">
+        <div class="lists-header section-padding reveal">
+            <span class="section-label">06 // THE LISTS</span>
+            <h2 class="section-title">Wish List / Lived List</h2>
+            <p class="lists-header-copy">
+                Everyone's got two lists.<br>The one they're living. And the one they keep meaning to start.
+            </p>
+        </div>
+
+        <div class="cloth-container" id="cloth-container">
+            <canvas id="cloth-canvas"></canvas>
+            <span class="cloth-hint" id="cloth-hint">// Grab it.</span>
+            <!-- Fallback for no WebGL -->
+            <div class="cloth-fallback" id="cloth-fallback">
+                <div class="lists-grid">
+                    <div class="list-box">
+                        <h3>Wish List</h3>
+                        <p>Trips unmade.</p>
+                        <p>Ideas untried.</p>
+                        <p>Projects pending.</p>
+                        <p>The right moment.</p>
+                    </div>
+                    <div class="list-box">
+                        <h3>Lived List</h3>
+                        <p>Built 10+ businesses.</p>
+                        <p>Served in the Navy.</p>
+                        <p>Won an ADDY.</p>
+                        <p>Raised a family.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lists-footer section-padding">
+            <p class="lists-quote reveal">Which list are you actually living?</p>
+        </div>
+    </section>
+
+    <script>
+    // @ts-nocheck
+    (function() {
+        var container = document.getElementById('cloth-container');
+        var canvas = document.getElementById('cloth-canvas');
+        var fallback = document.getElementById('cloth-fallback');
+        var hint = document.getElementById('cloth-hint');
+
+        // On mobile, skip WebGL entirely and show the static fallback
+        if (window.innerWidth <= 768) {
+            fallback.style.display = 'block';
+            canvas.style.display = 'none';
+            if (hint) hint.style.display = 'none';
+            return;
+        }
+
+        var gl = canvas.getContext('webgl');
+        if (!gl) {
+            fallback.style.display = 'block';
+            canvas.style.display = 'none';
+            if (hint) hint.style.display = 'none';
+            return;
+        }
+
+        // ── Textures ──
+        function mkTex(drawFn) {
+            var tc = document.createElement('canvas');
+            tc.width = 1024; tc.height = 2048;
+            var c = tc.getContext('2d');
+            c.scale(2, 2);
+            drawFn(c, 512, 1024);
+            var t = gl.createTexture();
+            gl.bindTexture(gl.TEXTURE_2D, t);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, tc);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+            return t;
+        }
+
+        var texWish = mkTex(function(c, W) {
+            var H = 1024;
+
+            // Background — ink dark
+            c.fillStyle = '#1A1A1A';
+            c.fillRect(0, 0, W, H);
+
+            // Subtle dot grid texture
+            c.fillStyle = 'rgba(242,194,48,0.07)';
+            for (var gy = 24; gy < H; gy += 28) {
+                for (var gx = 24; gx < W; gx += 28) { c.fillRect(gx, gy, 2, 2); }
+            }
+
+            // Yellow header band
+            c.fillStyle = '#F2C230';
+            c.fillRect(0, 0, W, 86);
+
+            // Small label in header
+            c.fillStyle = 'rgba(28,28,28,0.55)';
+            c.font = '500 12px monospace';
+            c.textAlign = 'left';
+            c.fillText('00.2 // WISH LIST', 20, 22);
+
+            // "WISH" bold in header band
+            c.fillStyle = '#1C1C1C';
+            c.font = 'bold 58px monospace';
+            c.textAlign = 'center';
+            c.fillText('WISH', W/2, 72);
+
+            // "LIST" large below, in yellow
+            c.fillStyle = '#F2C230';
+            c.font = 'bold 78px monospace';
+            c.fillText('LIST', W/2, 170);
+
+            // Subtitle
+            c.fillStyle = 'rgba(246,241,231,0.38)';
+            c.font = '13px monospace';
+            c.fillText('// THINGS I HAVEN\'T DONE YET', W/2, 198);
+
+            // Yellow rule
+            c.fillStyle = '#F2C230';
+            c.fillRect(24, 214, W-48, 3);
+
+            // Items
+            var items = ['Trips unmade.', 'Ideas untried.', 'Projects pending.', 'The right moment.'];
+            items.forEach(function(item, i) {
+                var y = 290 + i * 95;
+                // Left accent bar
+                c.fillStyle = '#C94A2B';
+                c.fillRect(24, y - 30, 4, 38);
+                // ✗ bullet
+                c.fillStyle = '#C94A2B';
+                c.font = 'bold 22px monospace';
+                c.textAlign = 'left';
+                c.fillText('✗', 40, y);
+                // Item text
+                c.fillStyle = '#F6F1E7';
+                c.font = 'bold 28px monospace';
+                c.fillText(item, 76, y);
+            });
+
+            // Bottom rule
+            c.fillStyle = 'rgba(242,194,48,0.28)';
+            c.fillRect(24, 690, W-48, 2);
+
+            // "SOMEDAY..." ghost stamp
+            c.fillStyle = 'rgba(246,241,231,0.10)';
+            c.font = 'bold 52px monospace';
+            c.textAlign = 'center';
+            c.fillText('SOMEDAY...', W/2, 780);
+
+            // Corner triangle (bottom-right, yellow fold)
+            c.fillStyle = 'rgba(242,194,48,0.35)';
+            c.beginPath();
+            c.moveTo(W-60, H); c.lineTo(W, H-60); c.lineTo(W, H);
+            c.closePath(); c.fill();
+        });
+
+        var texLived = mkTex(function(c, W) {
+            var H = 1024;
+
+            // Background — cream/paper
+            c.fillStyle = '#F6F1E7';
+            c.fillRect(0, 0, W, H);
+
+            // Notebook ruled lines
+            c.strokeStyle = 'rgba(201,74,43,0.07)';
+            c.lineWidth = 1;
+            for (var gy = 120; gy < H; gy += 28) {
+                c.beginPath(); c.moveTo(0, gy); c.lineTo(W, gy); c.stroke();
+            }
+
+            // Margin line (notebook red margin)
+            c.strokeStyle = 'rgba(201,74,43,0.18)';
+            c.lineWidth = 2;
+            c.beginPath(); c.moveTo(54, 0); c.lineTo(54, H); c.stroke();
+
+            // Rust header band
+            c.fillStyle = '#C94A2B';
+            c.fillRect(0, 0, W, 86);
+
+            // Small label in header
+            c.fillStyle = 'rgba(246,241,231,0.45)';
+            c.font = '500 12px monospace';
+            c.textAlign = 'left';
+            c.fillText('02.1 // LIVED LIST', 20, 22);
+
+            // "LIVED" bold in header band
+            c.fillStyle = '#F6F1E7';
+            c.font = 'bold 58px monospace';
+            c.textAlign = 'center';
+            c.fillText('LIVED', W/2, 72);
+
+            // "LIST" large below, in ink
+            c.fillStyle = '#1C1C1C';
+            c.font = 'bold 78px monospace';
+            c.fillText('LIST', W/2, 170);
+
+            // Subtitle
+            c.fillStyle = 'rgba(28,28,28,0.40)';
+            c.font = '13px monospace';
+            c.fillText('// ACTUALLY DID IT', W/2, 198);
+
+            // Rust rule
+            c.fillStyle = '#C94A2B';
+            c.fillRect(24, 214, W-48, 3);
+
+            // Items — Jaymes's specific lived list
+            var items = ['Built 10+ businesses.', 'Served in the Navy.', 'Won an ADDY.', 'Raised a family.'];
+            items.forEach(function(item, i) {
+                var y = 290 + i * 95;
+                // Left accent bar
+                c.fillStyle = '#1C1C1C';
+                c.fillRect(24, y - 30, 4, 38);
+                // ✓ bullet
+                c.fillStyle = '#C94A2B';
+                c.font = 'bold 22px monospace';
+                c.textAlign = 'left';
+                c.fillText('✓', 40, y);
+                // Item text
+                c.fillStyle = '#1C1C1C';
+                c.font = 'bold 28px monospace';
+                c.fillText(item, 76, y);
+            });
+
+            // Bottom rule
+            c.fillStyle = 'rgba(201,74,43,0.28)';
+            c.fillRect(24, 690, W-48, 2);
+
+            // "DO IT UGLY" ghost stamp
+            c.fillStyle = 'rgba(28,28,28,0.08)';
+            c.font = 'bold 48px monospace';
+            c.textAlign = 'center';
+            c.fillText('DO IT UGLY', W/2, 780);
+
+            // URL branding
+            c.fillStyle = 'rgba(201,74,43,0.35)';
+            c.font = '13px monospace';
+            c.fillText('jaymescorey.com', W/2, 830);
+
+            // Corner fold (bottom-right)
+            c.fillStyle = 'rgba(201,74,43,0.2)';
+            c.beginPath();
+            c.moveTo(W-60, H); c.lineTo(W, H-60); c.lineTo(W, H);
+            c.closePath(); c.fill();
+        });
+
+        // ── WebGL Setup ──
+        var aspect = 1;
+        function resize() {
+            canvas.width = container.clientWidth * window.devicePixelRatio;
+            canvas.height = container.clientHeight * window.devicePixelRatio;
+            gl.viewport(0, 0, canvas.width, canvas.height);
+            aspect = canvas.width / canvas.height;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        var vsSource = 'attribute vec3 a_pos;attribute vec3 a_norm;attribute vec2 a_uv;uniform mat4 u_proj;uniform mat4 u_view;varying vec3 v_norm;varying vec2 v_uv;void main(){v_norm=a_norm;v_uv=a_uv;gl_Position=u_proj*u_view*vec4(a_pos,1.0);}';
+        var fsSource = 'precision mediump float;varying vec3 v_norm;varying vec2 v_uv;uniform sampler2D u_tex;void main(){vec3 norm=normalize(v_norm);if(!gl_FrontFacing)norm=-norm;vec3 l1=normalize(vec3(0.4,0.8,0.6));vec3 l2=normalize(vec3(-0.5,-0.2,0.8));float d1=max(dot(norm,l1),0.0);float d2=max(dot(norm,l2),0.0);vec4 c=texture2D(u_tex,v_uv);gl_FragColor=vec4(c.rgb*(0.55+d1*0.4+d2*0.2),c.a);}';
+        function mkShader(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);return s;}
+        var prog=gl.createProgram();
+        gl.attachShader(prog,mkShader(gl.VERTEX_SHADER,vsSource));
+        gl.attachShader(prog,mkShader(gl.FRAGMENT_SHADER,fsSource));
+        gl.linkProgram(prog); gl.useProgram(prog);
+        var aPos=gl.getAttribLocation(prog,'a_pos'),aNorm=gl.getAttribLocation(prog,'a_norm'),aUv=gl.getAttribLocation(prog,'a_uv');
+        var uProj=gl.getUniformLocation(prog,'u_proj'),uView=gl.getUniformLocation(prog,'u_view');
+
+        // ── Shared Geometry ──
+        var nX=20, nY=44, nP=nX*nY, cW=3.6, cH=5.0;
+        var idx: number[] = [];
+        for(var y=0;y<nY-1;y++) for(var x=0;x<nX-1;x++){var i=y*nX+x;idx.push(i,i+1,i+nX,i+1,i+nX+1,i+nX);}
+        var sharedIdxBuf=gl.createBuffer();
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,sharedIdxBuf);
+        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Uint16Array(idx),gl.STATIC_DRAW);
+        var uvD=new Float32Array(nP*2);
+        for(var y=0;y<nY;y++) for(var x=0;x<nX;x++){var i=y*nX+x;uvD[i*2]=x/(nX-1);uvD[i*2+1]=y/(nY-1);}
+        var sharedUvBuf=gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER,sharedUvBuf);
+        gl.bufferData(gl.ARRAY_BUFFER,uvD,gl.STATIC_DRAW);
+
+        // ── Cloth Factory ──
+        function makeCloth(offsetX, tex) {
+            var parts=[],posD=new Float32Array(nP*3),normD=new Float32Array(nP*3);
+            for(var y=0;y<nY;y++) for(var x=0;x<nX;x++){
+                var px=offsetX+(x/(nX-1)-0.5)*cW, py=-(y/(nY-1))*cH;
+                parts.push({x:px,y:py,z:0,ox:px,oy:py,oz:0});
+            }
+            var cons=[];
+            function addC(a,b){var p=parts[a],q=parts[b],dx=q.x-p.x,dy=q.y-p.y,dz=q.z-p.z;cons.push({p1:a,p2:b,rest:Math.sqrt(dx*dx+dy*dy+dz*dz)});}
+            for(var y=0;y<nY;y++) for(var x=0;x<nX;x++){
+                var i=y*nX+x;
+                if(x<nX-1)addC(i,i+1); if(y<nY-1)addC(i,i+nX);
+                if(x<nX-1&&y<nY-1){addC(i,i+nX+1);addC(i+1,i+nX);}
+                if(x<nX-2)addC(i,i+2); if(y<nY-2)addC(i,i+nX*2);
+            }
+            var posBuf=gl.createBuffer(), normBuf=gl.createBuffer();
+            return {parts:parts,cons:cons,posD:posD,normD:normD,posBuf:posBuf,normBuf:normBuf,tex:tex};
+        }
+
+        var cloths = [makeCloth(-2.4, texWish), makeCloth(2.4, texLived)];
+        gl.enable(gl.DEPTH_TEST);
+
+        var proj=new Float32Array(16),view=new Float32Array(16);
+        function setPers(out,fovy,asp,near,far){var f=1/Math.tan(fovy/2),nf=1/(near-far);out.fill(0);out[0]=f/asp;out[5]=f;out[10]=(far+near)*nf;out[11]=-1;out[14]=2*far*near*nf;}
+        function setTrans(out,x,y,z){out.fill(0);out[0]=1;out[5]=1;out[10]=1;out[15]=1;out[12]=x;out[13]=y;out[14]=z;}
+
+        var cam={x:0,y:-2.5,z:7.8}, fov=45*Math.PI/180;
+        var ptrX=0,ptrY=0,rafId: number | null = null,time=0,hintFaded=false;
+        var grabbedCloth=-1,grabIdx=-1,grabD=0;
+
+        function updatePtr(e){var r=canvas.getBoundingClientRect();ptrX=((e.clientX-r.left)/r.width)*2-1;ptrY=-(((e.clientY-r.top)/r.height)*2-1);}
+        function getRay(){var t=Math.tan(fov/2),dx=ptrX*aspect*t,dy=ptrY*t,dz=-1,l=Math.sqrt(dx*dx+dy*dy+dz*dz);return{ox:cam.x,oy:cam.y,oz:cam.z,dx:dx/l,dy:dy/l,dz:dz/l};}
+
+        canvas.addEventListener('pointerdown',function(e){
+            canvas.setPointerCapture(e.pointerId); updatePtr(e);
+            var ray=getRay(),best=-1,bestCl=-1,minD=Infinity;
+            for(var ci=0;ci<2;ci++){
+                var cl=cloths[ci];
+                for(var i=0;i<nP;i++){
+                    var p=cl.parts[i],vx=p.x-ray.ox,vy=p.y-ray.oy,vz=p.z-ray.oz;
+                    var t=vx*ray.dx+vy*ray.dy+vz*ray.dz;
+                    var qx=ray.ox+ray.dx*t-p.x,qy=ray.oy+ray.dy*t-p.y,qz=ray.oz+ray.dz*t-p.z;
+                    var d=Math.sqrt(qx*qx+qy*qy+qz*qz);
+                    if(d<minD&&d<0.8){minD=d;best=i;bestCl=ci;grabD=t;}
+                }
+            }
+            if(best!==-1){grabIdx=best;grabbedCloth=bestCl;if(!hintFaded){hint.style.opacity='0';hintFaded=true;}}
+        });
+        canvas.addEventListener('pointermove',function(e){
+            updatePtr(e);
+            if(grabIdx!==-1&&grabbedCloth!==-1){var ray=getRay(),p=cloths[grabbedCloth].parts[grabIdx];p.x=ray.ox+ray.dx*grabD;p.y=ray.oy+ray.dy*grabD;p.z=ray.oz+ray.dz*grabD;p.ox=p.x;p.oy=p.y;p.oz=p.z;}
+        });
+        canvas.addEventListener('pointerup',function(){grabIdx=-1;grabbedCloth=-1;});
+        canvas.addEventListener('pointercancel',function(){grabIdx=-1;grabbedCloth=-1;});
+
+        function updateCloth(cl: any, grabI: number) {
+            var wX=Math.sin(time*1.5)*0.0015,wZ=Math.cos(time*1.1)*0.0015;
+            for(var i=0;i<nP;i++){
+                if(i<nX||i===grabI)continue;
+                var p=cl.parts[i],vx=(p.x-p.ox)*0.985,vy=(p.y-p.oy)*0.985,vz=(p.z-p.oz)*0.985;
+                p.ox=p.x;p.oy=p.y;p.oz=p.z;
+                var wf=p.y/-cH;
+                p.x+=vx+wX*wf; p.y+=vy-0.007; p.z+=vz+wZ*wf;
+            }
+            for(var iter=0;iter<15;iter++) for(var i=0;i<cl.cons.length;i++){
+                var c=cl.cons[i],p1=cl.parts[c.p1],p2=cl.parts[c.p2];
+                var dx=p2.x-p1.x,dy=p2.y-p1.y,dz=p2.z-p1.z,dist=Math.sqrt(dx*dx+dy*dy+dz*dz);
+                var w1=(c.p1<nX||c.p1===grabI)?0:1,w2=(c.p2<nX||c.p2===grabI)?0:1,ws=w1+w2;
+                if(ws>0){var df=(dist-c.rest)/(dist*ws),ox=dx*df,oy=dy*df,oz=dz*df;if(w1){p1.x+=ox;p1.y+=oy;p1.z+=oz;}if(w2){p2.x-=ox;p2.y-=oy;p2.z-=oz;}}
+            }
+            cl.normD.fill(0);
+            for(var i=0;i<nP;i++){var p=cl.parts[i];cl.posD[i*3]=p.x;cl.posD[i*3+1]=p.y;cl.posD[i*3+2]=p.z;}
+            for(var i=0;i<idx.length;i+=3){
+                var a=idx[i],b=idx[i+1],cc=idx[i+2];
+                var ax=cl.posD[a*3],ay=cl.posD[a*3+1],az=cl.posD[a*3+2];
+                var bx=cl.posD[b*3],by=cl.posD[b*3+1],bz=cl.posD[b*3+2];
+                var cx=cl.posD[cc*3],cy=cl.posD[cc*3+1],cz=cl.posD[cc*3+2];
+                var dx1=bx-ax,dy1=by-ay,dz1=bz-az,dx2=cx-ax,dy2=cy-ay,dz2=cz-az;
+                var nx=dy1*dz2-dz1*dy2,ny=dz1*dx2-dx1*dz2,nz=dx1*dy2-dy1*dx2;
+                cl.normD[a*3]+=nx;cl.normD[a*3+1]+=ny;cl.normD[a*3+2]+=nz;
+                cl.normD[b*3]+=nx;cl.normD[b*3+1]+=ny;cl.normD[b*3+2]+=nz;
+                cl.normD[cc*3]+=nx;cl.normD[cc*3+1]+=ny;cl.normD[cc*3+2]+=nz;
+            }
+        }
+
+        function drawCloth(cl: any) {
+            gl.bindTexture(gl.TEXTURE_2D,cl.tex);
+            gl.bindBuffer(gl.ARRAY_BUFFER,cl.posBuf); gl.bufferData(gl.ARRAY_BUFFER,cl.posD,gl.DYNAMIC_DRAW);
+            gl.enableVertexAttribArray(aPos); gl.vertexAttribPointer(aPos,3,gl.FLOAT,false,0,0);
+            gl.bindBuffer(gl.ARRAY_BUFFER,cl.normBuf); gl.bufferData(gl.ARRAY_BUFFER,cl.normD,gl.DYNAMIC_DRAW);
+            gl.enableVertexAttribArray(aNorm); gl.vertexAttribPointer(aNorm,3,gl.FLOAT,false,0,0);
+            gl.bindBuffer(gl.ARRAY_BUFFER,sharedUvBuf); gl.enableVertexAttribArray(aUv); gl.vertexAttribPointer(aUv,2,gl.FLOAT,false,0,0);
+            gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,sharedIdxBuf);
+            gl.drawElements(gl.TRIANGLES,idx.length,gl.UNSIGNED_SHORT,0);
+        }
+
+        function render() {
+            time+=0.016;
+            updateCloth(cloths[0], grabbedCloth===0 ? grabIdx : -1);
+            updateCloth(cloths[1], grabbedCloth===1 ? grabIdx : -1);
+            gl.clearColor(0.1098,0.1098,0.1098,1.0);
+            gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+            setPers(proj,fov,aspect,0.1,100.0);
+            setTrans(view,-cam.x,-cam.y,-cam.z);
+            gl.uniformMatrix4fv(uProj,false,proj); gl.uniformMatrix4fv(uView,false,view);
+            drawCloth(cloths[0]);
+            drawCloth(cloths[1]);
+            rafId=requestAnimationFrame(render);
+        }
+
+        var visObs=new IntersectionObserver(function(entries: IntersectionObserverEntry[]){
+            if(entries[0].isIntersecting){if(!rafId)rafId=requestAnimationFrame(render);}
+            else{if(rafId){cancelAnimationFrame(rafId);rafId=null;}}
+        },{threshold:0.05});
+        if (container) visObs.observe(container);
+    })();
+    </script>
+
+    <!-- 10 // KIDS APPROVED -->
+    <section class="section-padding kids-approved-section reveal" id="truth">
+        <span class="section-label">07 // THE REVIEW BOARD</span>
+        <h2 class="section-title">The Only Reviews<br><span class="outline">That Matter.</span></h2>
+
+        <div class="kids-stamp-wrap">
+            <div class="kids-stamp">
+                <div class="kids-stamp-ring">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="96" fill="var(--ink)" stroke="var(--yellow)" stroke-width="5"/>
+                        <circle cx="100" cy="100" r="84" fill="none" stroke="var(--yellow)" stroke-width="2" stroke-dasharray="6 4"/>
+                        <path id="kTopArc" d="M 18,100 A 82,82 0 0,1 182,100" fill="none"/>
+                        <text font-family="Anton, sans-serif" font-size="20" fill="var(--paper)" letter-spacing="6">
+                            <textPath href="#kTopArc" startOffset="5%">MY KIDS APPROVE</textPath>
+                        </text>
+                        <path id="kBotArc" d="M 20,104 A 82,82 0 0,0 180,104" fill="none"/>
+                        <text font-family="Space Mono, monospace" font-size="10" fill="var(--paper)" letter-spacing="1.5">
+                            <textPath href="#kBotArc" startOffset="6%">3 KIDS ★ 2 DOGS ★ 4 CATS</textPath>
+                        </text>
+                        <line x1="100" y1="6"   x2="100" y2="17"  stroke="var(--yellow)" stroke-width="3"/>
+                        <line x1="100" y1="183" x2="100" y2="194" stroke="var(--yellow)" stroke-width="3"/>
+                        <line x1="6"   y1="100" x2="17"  y2="100" stroke="var(--yellow)" stroke-width="3"/>
+                        <line x1="183" y1="100" x2="194" y2="100" stroke="var(--yellow)" stroke-width="3"/>
+                    </svg>
+                    <div class="kids-stamp-dog">
+                        <img src="/images/jaymes-corey-do-it-ugly-mascot.png" alt="Do It Ugly Mascot" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="kids-stamp-note">// Three kids. Zero complaints. (So far.)</p>
+    </section>
+
+    <!-- 11 // FREEDOM TO -->
+    <section class="section-padding freedom-section reveal" id="freedom">
+        <span class="section-label">08 // WHY THIS EXISTS</span>
+        <h2 class="section-title">This Is About<br><span class="outline">Freedom.</span></h2>
+        <p class="freedom-lead">Not the word on a poster. The actual thing. Time on your terms. Work that's yours. A life you didn't have to ask permission for.</p>
+
+        <div class="freedom-list">
+            <div class="freedom-item">
+                <span class="freedom-num">01 //</span>
+                <span class="freedom-text">Freedom to be home when my kids <em>get off the bus.</em></span>
+            </div>
+            <div class="freedom-item">
+                <span class="freedom-num">02 //</span>
+                <span class="freedom-text">Freedom to kill a project without <em>losing everything.</em></span>
+            </div>
+            <div class="freedom-item">
+                <span class="freedom-num">03 //</span>
+                <span class="freedom-text">Freedom to take the trip without <em>checking the balance first.</em></span>
+            </div>
+            <div class="freedom-item">
+                <span class="freedom-num">04 //</span>
+                <span class="freedom-text">Freedom to ship something <em>imperfect</em> instead of waiting for something perfect that <em>never ships.</em></span>
+            </div>
+            <div class="freedom-item">
+                <span class="freedom-num">05 //</span>
+                <span class="freedom-text">Freedom to hand my kids a <em>blueprint,</em> not a warning.</span>
+            </div>
+        </div>
+
+        <div class="freedom-cta-wrap">
+            <p>That's the list I'm building toward. One real move at a time. If any of that sounds familiar — join me.</p>
+            <a href="#enlist" class="btn">FOLLOW THE BUILD &nbsp;→</a>
+        </div>
+    </section>
+
+    <!-- 12 // FINAL EMAIL CAPTURE -->
+    <section class="footer-cta" id="join">
+        <h2 class="big-title">Move One Thing<br><span class="accent">To The</span><br>Lived List.</h2>
+        <p>No gurus. No perfect plans. One weekly email from someone actually building in public.</p>
+
+        <div class="signup-form">
+            <form id="footer-signup">
+                <input type="email" name="fields[email]" placeholder="EMAIL_ADDRESS@FIELD.COM" aria-label="Email" required>
+                <input type="hidden" name="ml-submit" value="1">
+                <input type="hidden" name="anticsrf" value="true">
+                <button type="submit">FOLLOW THE BUILD</button>
+            </form>
+        </div>
+
+        <div class="share-nudge">
+            <span class="share-label">// Know someone who needs this?</span>
+            <button id="share-btn" class="share-btn">Send This Page →</button>
+            <span id="share-confirm" class="share-confirm">Link copied.</span>
+        </div>
+
+    </section>
+
+    <!-- 11 // FOOTER -->
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <a href="/" class="site-footer-logo">Jaymes Corey</a>
+
+            <nav class="site-footer-nav">
+                <a href="/portfolio">What I Build</a>
+                <a href="#pillars">What I Think</a>
+                <a href="/about">About</a>
+                <a href="#join">Join The List</a>
+            </nav>
+
+            <div class="site-footer-social">
+                <a href="https://www.instagram.com/jaymescorey" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://www.linkedin.com/in/jaymescorey" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://x.com/jaymescorey" target="_blank" rel="noopener">X</a>
+                <a href="https://www.youtube.com/@jaymescorey" target="_blank" rel="noopener">YouTube</a>
+            </div>
+
+            <div class="site-footer-divider"></div>
+
+            <div class="site-footer-tags">
+                <span>[ STATUS: BUILDING ]</span>
+                <span>[ PHILOSOPHY: DO IT UGLY ]</span>
+            </div>
+
+            <p class="site-footer-copy">&copy; 2026 Jaymes Corey. Sacramento, CA.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ── MANIFESTO AUDIO (Web Speech API) ──
+        const manifesto = `Do it ugly. Life gets busy. Dreams quietly move to a shelf called someday. You don't need the perfect moment to begin. You just need one small step forward. Move one thing from the wish list to the lived list. Bite first. Polish later.`;
+        const manifestoVoiceBtn = document.getElementById('manifesto-voice');
+
+        if (manifestoVoiceBtn) {
+            const button = manifestoVoiceBtn as HTMLButtonElement;
+            button.addEventListener('click', function () {
+                if ('speechSynthesis' in window) {
+                    if (window.speechSynthesis.speaking) {
+                        window.speechSynthesis.cancel();
+                        button.textContent = '🔊 Speak';
+                        button.classList.remove('speaking');
+                        return;
+                    }
+                    const utterance = new SpeechSynthesisUtterance(manifesto);
+                    utterance.rate = 0.95;
+                    utterance.pitch = 0.9;
+                    utterance.onend = () => {
+                        button.textContent = '🔊 Speak';
+                        button.classList.remove('speaking');
+                    };
+                    button.textContent = '[ Stop ]';
+                    button.classList.add('speaking');
+                    window.speechSynthesis.speak(utterance);
+                } else {
+                    button.textContent = 'No Audio';
+                    button.disabled = true;
+                }
+            });
+        }
+
+        // ── MAILERLITE SUBSCRIBE ──
+        const ML_URL = 'https://assets.mailerlite.com/jsonp/2182045/forms/181670405383128491/subscribe';
+
+        function subscribeEmail(form: HTMLFormElement, onSuccess: () => void) {
+            const formData = new FormData(form);
+            fetch(ML_URL, { method: 'POST', body: formData })
+                .then(() => onSuccess())
+                .catch(() => onSuccess()); // show success either way — MailerLite JSONP doesn't need a response
+        }
+
+        function showSuccess(form: HTMLFormElement, headline: string, sub: string) {
+            const msg = document.createElement('div');
+            msg.className = 'signup-success';
+            msg.innerHTML = `<span class="signup-success-mark">✓</span><strong>${headline}</strong><p>${sub}</p>`;
+            if (form.parentNode) {
+                form.parentNode.replaceChild(msg, form);
+            }
+            requestAnimationFrame(() => msg.classList.add('visible'));
+        }
+
+        // ── SIGNUP HANDLERS ──
+        const footerSignup = document.getElementById('footer-signup') as HTMLFormElement | null;
+        if (footerSignup) {
+            footerSignup.addEventListener('submit', function (this: HTMLFormElement, e) {
+                e.preventDefault();
+                subscribeEmail(this, () => {
+                    showSuccess(this, 'One Thing Moved.', 'Check your inbox — your first field report is on its way.');
+                });
+            });
+        }
+
+        // ── ENLIST FORM ──
+        const enlistForm = document.getElementById('enlist-form') as HTMLFormElement | null;
+        if (enlistForm) {
+            enlistForm.addEventListener('submit', function (this: HTMLFormElement, e) {
+                e.preventDefault();
+                subscribeEmail(this, () => {
+                    showSuccess(this, "You're In.", "One email per week. No fluff. No sponsorships. Welcome to the ugly side.");
+                });
+            });
+        }
+
+        const heroSignup = document.getElementById('hero-signup') as HTMLFormElement | null;
+        if (heroSignup) {
+            heroSignup.addEventListener('submit', function (this: HTMLFormElement, e) {
+                e.preventDefault();
+                subscribeEmail(this, () => {
+                    showSuccess(this, "You're In.", "One email per week. No fluff. No sponsorships. Welcome to the ugly side.");
+                });
+            });
+        }
+
+        // ── SCROLL REVEAL ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll<HTMLElement>('.reveal').forEach(el => observer.observe(el));
+
+
+        // ── STORY PARAGRAPH STAGGER ──
+        document.querySelectorAll<HTMLElement>('.story h2, .story p').forEach((el, i) => {
+            el.style.transitionDelay = `${0.15 + i * 0.12}s`;
+        });
+
+        // ── CURSOR RING ──
+        if (window.matchMedia('(hover: hover)').matches) {
+            const ring = document.createElement('div');
+            ring.className = 'cursor-ring';
+            document.body.appendChild(ring);
+            let mx = 0, my = 0, rx = 0, ry = 0;
+            document.addEventListener('mousemove', (e: MouseEvent) => { mx = e.clientX; my = e.clientY; ring.style.opacity = '1'; });
+            document.addEventListener('mouseleave', () => { ring.style.opacity = '0'; });
+            (function loopRing() {
+                rx += (mx - rx) * 0.12;
+                ry += (my - ry) * 0.12;
+                ring.style.left = rx + 'px';
+                ring.style.top = ry + 'px';
+                requestAnimationFrame(loopRing);
+            })();
+            document.querySelectorAll<HTMLElement>('a, button, input').forEach(el => {
+                el.addEventListener('mouseenter', () => { ring.style.width = '44px'; ring.style.height = '44px'; ring.style.borderColor = 'var(--yellow)'; });
+                el.addEventListener('mouseleave', () => { ring.style.width = '28px'; ring.style.height = '28px'; ring.style.borderColor = 'var(--rust)'; });
+            });
+        }
+
+        // ── LAB DASHBOARD FILTERS ──
+        const labFilters = document.querySelectorAll<HTMLElement>('.lab-filter');
+        const labRows = document.querySelectorAll<HTMLElement>('.lab-row');
+
+        labFilters.forEach(btn => {
+            btn.addEventListener('click', () => {
+                labFilters.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                labRows.forEach(row => {
+                    const show = filter === 'all' || row.dataset.status === filter;
+                    row.style.display = show ? '' : 'none';
+                });
+            });
+        });
+
+        // ── LAB PROGRESS BAR ANIMATION ──
+        const progressObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll<HTMLElement>('.lab-progress-fill').forEach(fill => {
+                        fill.style.width = (fill.dataset.pct ?? '0') + '%';
+                    });
+                    progressObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        const labSection = document.getElementById('lab');
+        if (labSection) progressObserver.observe(labSection);
+
+        // ── DOORS CARD TILT ──
+        document.querySelectorAll<HTMLElement>('.doors-card').forEach(card => {
+            card.addEventListener('mousemove', (e: MouseEvent) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const cx = rect.width / 2;
+                const cy = rect.height / 2;
+                const rotX = ((y - cy) / cy) * -5;
+                const rotY = ((x - cx) / cx) * 5;
+                const isFeatured = card.classList.contains('doors-card--featured');
+                const baseY = isFeatured ? -26 : -10;
+                card.style.transform = `translateY(${baseY}px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                const isFeatured = card.classList.contains('doors-card--featured');
+                card.style.transform = isFeatured ? 'translateY(-16px)' : '';
+            });
+        });
+
+        // ── PERMISSION BUTTON ──
+        (function() {
+            var messages = [
+                'Ship the ugly draft.',
+                'You don\'t need to be ready. You need to start.',
+                'The right moment isn\'t coming. This one will do.',
+                'Good enough and shipped beats perfect and stuck.',
+                'You have permission. Go.',
+                'Nobody gets it right the first time. That\'s not a bug.',
+                'Start before you\'re ready. Edit after you\'ve learned.',
+                'Done is a version of perfect.',
+                'The people who built things all started before they were ready.',
+                'Your draft doesn\'t need to be good. It needs to exist.',
+                'Permission granted. No signature required.',
+                'Move one thing today.'
+            ];
+            const btn = document.getElementById('permissionBtn') as HTMLElement | null;
+            const msg = document.getElementById('permissionMsg') as HTMLElement | null;
+            if (!btn || !msg) return;
+            let last = -1;
+            btn.addEventListener('click', function() {
+                let idx: number;
+                do { idx = Math.floor(Math.random() * messages.length); } while (idx === last && messages.length > 1);
+                last = idx;
+                msg.classList.remove('visible');
+                setTimeout(function() {
+                    msg.textContent = '\u201c' + messages[idx] + '\u201d';
+                    msg.classList.add('visible');
+                }, 120);
+            });
+        })();
+
+        // ── PORTRAIT PARALLAX ──
+        const portrait = document.querySelector('.portrait-container') as HTMLElement | null;
+        if (portrait) {
+            window.addEventListener('scroll', () => {
+                portrait.style.transform = `rotate(1deg) translateY(${window.scrollY * 0.08}px)`;
+            }, { passive: true });
+        }
+    </script>
+    <script>
+        const navHamburger = document.getElementById('navHamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        if (navHamburger && mobileMenu && mobileMenuClose) {
+            const hamburger = navHamburger as HTMLElement;
+            const mobileMenuEl = mobileMenu as HTMLElement;
+            const closeBtn = mobileMenuClose as HTMLElement;
+
+            function closeMobileMenu() {
+                hamburger.classList.remove('open');
+                hamburger.setAttribute('aria-expanded', 'false');
+                mobileMenuEl.classList.remove('open');
+                document.body.style.overflow = '';
+                mobileMenuEl.querySelectorAll('.mob-link').forEach(function(link) {
+                    const linkEl = link as HTMLElement;
+                    linkEl.style.animation = 'none';
+                    linkEl.style.opacity = '0';
+                    void linkEl.offsetWidth; // force reflow
+                    linkEl.style.animation = '';
+                });
+            }
+
+            hamburger.addEventListener('click', function() {
+                const isOpen = mobileMenuEl.classList.toggle('open');
+                hamburger.classList.toggle('open', isOpen);
+                hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            closeBtn.addEventListener('click', closeMobileMenu);
+
+            // Close menu when any nav link is tapped
+            mobileMenuEl.querySelectorAll('.mob-link').forEach(function(link) {
+                const linkEl = link as HTMLElement;
+                linkEl.addEventListener('click', function() {
+                    // Small delay lets the scroll start before menu closes
+                    setTimeout(closeMobileMenu, 80);
+                });
+            });
+        }
+    </script>
+
+    <script>
+        const progressBar = document.getElementById('progress-bar') as HTMLElement | null;
+        if (progressBar) {
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+            }, { passive: true });
+        }
+
+        const shareBtn = document.getElementById('share-btn') as HTMLElement | null;
+        const shareConfirm = document.getElementById('share-confirm') as HTMLElement | null;
+        if (shareBtn && shareConfirm) {
+            shareBtn.addEventListener('click', function() {
+                const url = 'https://jaymescorey.com';
+                if (navigator.share) {
+                    navigator.share({ title: 'Jaymes Corey — Do It Ugly', url });
+                } else {
+                    navigator.clipboard.writeText(url).then(function() {
+                        shareConfirm.classList.add('visible');
+                        setTimeout(function() { shareConfirm.classList.remove('visible'); }, 2500);
+                    });
+                }
+            });
+        }
+    </script>
+
+</BaseLayout>

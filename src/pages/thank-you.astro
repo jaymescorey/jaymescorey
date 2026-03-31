@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're In — Jaymes Corey</title>
+    <meta name="description" content="You're in. Now let's build something real.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── Variables ── */
+        :root {
+            --yellow: #F2C230;
+            --ink: #0F0F0F;
+            --poster-black: #1C1C1C;
+            --paper: #F6F1E7;
+            --rust: #C94A2B;
+            --cream: #FAF7F0;
+            --border: 4px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Lora', serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ── Grain ── */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ── Reveal ── */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal.d1 { transition-delay: 0.1s; }
+        .reveal.d2 { transition-delay: 0.2s; }
+        .reveal.d3 { transition-delay: 0.3s; }
+        .reveal.d4 { transition-delay: 0.45s; }
+
+        /* ── Labels ── */
+        .section-label {
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.55;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ── Buttons ── */
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            font-family: 'Anton', sans-serif;
+            font-size: 1.2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--ink);
+            color: var(--yellow);
+            border: var(--border) solid var(--ink);
+            box-shadow: 6px 6px 0px var(--rust);
+            transition: transform 0.15s, box-shadow 0.15s;
+            cursor: pointer;
+        }
+        .btn:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px var(--rust); }
+
+        .btn-yellow {
+            background: var(--yellow);
+            color: var(--ink);
+            border-color: var(--ink);
+            box-shadow: 6px 6px 0px var(--ink);
+        }
+        .btn-yellow:hover { transform: translate(-2px, -2px); box-shadow: 10px 10px 0px var(--ink); }
+
+        .btn-big {
+            font-size: 1.5rem;
+            padding: 1.4rem 3.5rem;
+            box-shadow: 8px 8px 0px var(--rust);
+        }
+        .btn-big:hover { transform: translate(-2px, -2px); box-shadow: 12px 12px 0px var(--rust); }
+
+        /* ════════════════════════════════
+           CONFIRMATION HERO
+        ════════════════════════════════ */
+        .confirm-hero {
+            min-height: 78vh;
+            background-color: var(--yellow);
+            background-image: radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 3px 3px;
+            display: flex;
+            align-items: center;
+            padding: 5rem 10%;
+            border-bottom: var(--border) solid var(--ink);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Watermark text */
+        .confirm-hero::after {
+            content: "CONFIRMED // CONFIRMED // CONFIRMED // CONFIRMED //";
+            position: absolute;
+            bottom: 1.5rem; left: 0; right: 0;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: rgba(15,15,15,0.1);
+            white-space: nowrap;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .confirm-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .confirm-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--ink);
+            color: var(--yellow);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            padding: 6px 14px;
+            margin-bottom: 1.5rem;
+        }
+
+        .confirm-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--rust);
+            border-radius: 50%;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .confirm-headline {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(5rem, 14vw, 10rem);
+            line-height: 0.88;
+            text-transform: uppercase;
+            letter-spacing: -4px;
+            color: var(--ink);
+            margin-bottom: 1.75rem;
+        }
+
+        .confirm-headline .line-2 {
+            display: block;
+            color: var(--paper);
+            -webkit-text-stroke: 4px var(--ink);
+            paint-order: stroke fill;
+        }
+
+        .confirm-sub {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+            text-transform: uppercase;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: var(--poster-black);
+            max-width: 520px;
+            margin-bottom: 2.5rem;
+            line-height: 1.45;
+        }
+
+        /* ════════════════════════════════
+           TICKER
+        ════════════════════════════════ */
+        .ticker {
+            background: var(--ink);
+            padding: 1rem 0;
+            border-bottom: 6px solid var(--rust);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-track { display: flex; animation: tickerScroll 38s linear infinite; }
+        .ticker:hover .ticker-track { animation-duration: 14s; }
+        .ticker-item {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.5rem;
+            color: var(--yellow);
+            text-transform: uppercase;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+        }
+        .ticker-item::after {
+            content: "";
+            display: inline-block;
+            width: 10px; height: 10px;
+            background: var(--rust);
+            margin-left: 2rem;
+            transform: rotate(45deg);
+        }
+        @keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ════════════════════════════════
+           ARROW DIVIDER
+        ════════════════════════════════ */
+        .arrow-divider {
+            background: var(--paper);
+            border-bottom: var(--border) solid var(--ink);
+            text-align: center;
+            padding: 2.5rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .arrow-divider.dark {
+            background: var(--poster-black);
+            border-color: var(--yellow);
+        }
+        .arrow-divider.rust-bg {
+            background: var(--rust);
+            border-color: var(--ink);
+        }
+
+        .arrow-divider-label {
+            display: block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--rust);
+            margin-bottom: 0.5rem;
+        }
+        .arrow-divider.dark .arrow-divider-label { color: var(--yellow); opacity: 0.6; }
+        .arrow-divider.rust-bg .arrow-divider-label { color: var(--ink); opacity: 0.6; }
+
+        .arrow-glyph {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(4rem, 10vw, 7rem);
+            line-height: 1;
+            color: var(--ink);
+            display: block;
+            animation: arrowBounce 1.8s ease-in-out infinite;
+        }
+        .arrow-divider.dark .arrow-glyph { color: var(--yellow); }
+        .arrow-divider.rust-bg .arrow-glyph { color: var(--ink); }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(10px); }
+        }
+
+        /* ════════════════════════════════
+           BUILDER SESSION OFFER  (dark)
+        ════════════════════════════════ */
+        .builder-section {
+            background: var(--poster-black);
+            padding: 6rem 10%;
+            border-bottom: var(--border) solid var(--yellow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .builder-section::before {
+            content: "BUILDER SESSION // BUILDER SESSION // BUILDER SESSION //";
+            position: absolute;
+            top: 1.5rem; left: 0; right: 0;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: rgba(242,194,48,0.07);
+            white-space: nowrap;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .builder-section .section-label { color: var(--yellow); opacity: 0.55; }
+
+        .builder-inner {
+            display: flex;
+            align-items: flex-start;
+            gap: 5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .builder-content { flex: 1.1; min-width: 0; }
+
+        .builder-portrait-col {
+            flex: 0 0 320px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 2.5rem;
+        }
+
+        .builder-portrait-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            transform: rotate(-1.5deg);
+        }
+
+        .builder-portrait {
+            width: 100%;
+            border: var(--border) solid var(--yellow);
+            box-shadow: 16px 16px 0px var(--rust);
+            filter: grayscale(100%) contrast(115%);
+            display: block;
+            min-height: 340px;
+            background: var(--ink);
+        }
+
+        /* Small caption below portrait */
+        .builder-portrait-caption {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: rgba(242,194,48,0.35);
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .builder-kicker {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--rust);
+            margin-bottom: 1.25rem;
+            display: block;
+        }
+
+        .builder-headline {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3.5rem, 9vw, 7rem);
+            text-transform: uppercase;
+            line-height: 0.88;
+            letter-spacing: -3px;
+            color: var(--paper);
+            margin-bottom: 0.5rem;
+        }
+
+        .builder-headline .yellow { color: var(--yellow); }
+
+        .builder-tagline {
+            font-family: 'Lora', serif;
+            font-style: italic;
+            font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+            color: rgba(246,241,231,0.55);
+            margin-bottom: 3rem;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+
+        /* Price badge */
+        .price-stamp {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            background: var(--rust);
+            border: var(--border) solid var(--yellow);
+            padding: 0.75rem 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .price-amount {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            letter-spacing: -2px;
+            color: var(--yellow);
+            line-height: 1;
+        }
+
+        .price-detail {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(242,194,48,0.7);
+            line-height: 1.4;
+        }
+
+        /* What you get — manifesto rows */
+        .session-lines {
+            margin-bottom: 3.5rem;
+        }
+
+        .session-line {
+            display: flex;
+            align-items: stretch;
+            border: var(--border) solid rgba(246,241,231,0.12);
+            border-bottom: none;
+            transition: background 0.2s, border-color 0.2s;
+            position: relative;
+        }
+        .session-line:last-child { border-bottom: var(--border) solid rgba(246,241,231,0.12); }
+        .session-line:hover { background: rgba(242,194,48,0.05); border-color: rgba(242,194,48,0.3); }
+
+        .session-num {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--rust);
+            background: rgba(242,194,48,0.08);
+            padding: 1.25rem 1rem;
+            border-right: var(--border) solid rgba(246,241,231,0.12);
+            display: flex;
+            align-items: center;
+            min-width: 56px;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .session-text {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(1.2rem, 2.8vw, 2rem);
+            text-transform: uppercase;
+            letter-spacing: 0;
+            color: var(--paper);
+            padding: 1.1rem 1.75rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .session-btn-wrap {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .builder-note {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            color: rgba(246,241,231,0.25);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ════════════════════════════════
+           BACK / FOOTER
+        ════════════════════════════════ */
+        .back-section {
+            background: var(--paper);
+            padding: 4rem 10%;
+            text-align: center;
+            border-bottom: var(--border) solid var(--ink);
+        }
+
+        .back-link {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(15,15,15,0.35);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--ink); }
+        .back-link::before { content: "← "; }
+
+        .site-footer {
+            background: var(--ink);
+            padding: 1.75rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-top: 2px solid rgba(242,194,48,0.12);
+        }
+        .site-footer p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            color: rgba(246,241,231,0.25);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .site-footer a { color: rgba(246,241,231,0.25); text-decoration: none; transition: color 0.2s; }
+        .site-footer a:hover { color: var(--yellow); }
+
+        /* ════════════════════════════════
+           RESPONSIVE
+        ════════════════════════════════ */
+        @media (max-width: 900px) {
+            .builder-inner { gap: 3rem; }
+            .builder-portrait-col { flex: 0 0 220px; }
+        }
+
+        @media (max-width: 768px) {
+            .confirm-hero, .builder-section, .back-section { padding-left: 6%; padding-right: 6%; }
+            .confirm-hero { min-height: auto; padding-top: 4rem; padding-bottom: 4rem; }
+            .builder-inner { flex-direction: column-reverse; gap: 2.5rem; }
+            .builder-portrait-col { flex: none; width: 100%; padding-top: 0; }
+            .builder-portrait-wrap { max-width: 220px; margin: 0 auto; }
+        }
+
+        @media (max-width: 560px) {
+            .site-footer { flex-direction: column; text-align: center; }
+            .session-btn-wrap { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ════════════════════════════════
+         CONFIRMATION HERO
+    ════════════════════════════════ -->
+    <section class="confirm-hero">
+        <div class="confirm-inner">
+            <div class="confirm-badge reveal">
+                <span class="confirm-badge-dot"></span>
+                Confirmed // Field Guide Incoming
+            </div>
+            <h1 class="confirm-headline reveal d1">
+                You're In.
+                <span class="line-2">Check Email.</span>
+            </h1>
+            <p class="confirm-sub reveal d2">
+                The field guide is on its way.<br>
+                While you wait &mdash; if you're serious about building something, keep reading.
+            </p>
+            <a href="#builder" class="btn btn-big reveal d3">Keep Reading ↓</a>
+        </div>
+    </section>
+
+    <!-- ════════════════════════════════
+         TICKER
+    ════════════════════════════════ -->
+    <div class="ticker">
+        <div class="ticker-track">
+            <span class="ticker-item">The guide is on its way.</span>
+            <span class="ticker-item">Now let's build something real.</span>
+            <span class="ticker-item">Bite First. Polish Later.</span>
+            <span class="ticker-item">Stop planning. Start building.</span>
+            <span class="ticker-item">The guide is on its way.</span>
+            <span class="ticker-item">Now let's build something real.</span>
+            <span class="ticker-item">Bite First. Polish Later.</span>
+            <span class="ticker-item">Stop planning. Start building.</span>
+        </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow-divider dark">
+        <span class="arrow-divider-label">// If you're serious</span>
+        <span class="arrow-glyph">↓</span>
+    </div>
+
+    <!-- ════════════════════════════════
+         BUILDER SESSION OFFER
+    ════════════════════════════════ -->
+    <section class="builder-section" id="builder">
+        <div class="builder-inner">
+          <div class="builder-content">
+            <span class="section-label reveal">01 // Go Deeper</span>
+            <span class="builder-kicker reveal d1">One session. Real results.</span>
+            <h2 class="builder-headline reveal d2">
+                Builder<br><span class="yellow">Session.</span>
+            </h2>
+            <p class="builder-tagline reveal d3">Turn your idea into something real in 45 minutes.</p>
+
+            <div class="price-stamp reveal d3">
+                <span class="price-amount">$250</span>
+                <span class="price-detail">One session.<br>45 minutes.<br>Real results.</span>
+            </div>
+
+            <div class="session-lines">
+                <div class="session-line reveal d2">
+                    <span class="session-num">01</span>
+                    <span class="session-text">Cut through overthinking fast.</span>
+                </div>
+                <div class="session-line reveal d3">
+                    <span class="session-num">02</span>
+                    <span class="session-text">Map your next 7–30 days of action.</span>
+                </div>
+                <div class="session-line reveal d4">
+                    <span class="session-num">03</span>
+                    <span class="session-text">Leave with a plan you can execute today.</span>
+                </div>
+            </div>
+
+            <div class="session-btn-wrap reveal d4">
+                <!-- ════════════════════════════════════════════════════════
+                     CALENDLY LINK — Replace the href below with your actual
+                     Calendly booking URL before going live.
+                ════════════════════════════════════════════════════════ -->
+                <a href="https://calendly.com/your-link" target="_blank" rel="noopener" class="btn btn-big btn-yellow">Book Your Builder Session</a>
+                <p class="builder-note">Limited spots &mdash; no fluff &mdash; 45 minutes.</p>
+            </div>
+          </div><!-- /.builder-content -->
+
+          <div class="builder-portrait-col reveal d2">
+              <div class="builder-portrait-wrap">
+                  <img src="/images/jaymes.webp"
+                       alt="Jaymes Corey"
+                       class="builder-portrait"
+                       onerror="this.style.background='#2a2a2a'; this.style.minHeight='340px'; this.alt='';">
+                  <p class="builder-portrait-caption">Jaymes Corey</p>
+              </div>
+          </div>
+
+        </div><!-- /.builder-inner -->
+    </section>
+
+    <!-- Arrow -->
+    <div class="arrow-divider rust-bg">
+        <span class="arrow-divider-label">// No pressure</span>
+        <span class="arrow-glyph">↓</span>
+    </div>
+
+    <!-- Back link -->
+    <section class="back-section">
+        <a href="/landing" class="back-link reveal">Back to start</a>
+    </section>
+
+    <!-- ════════════════════════════════
+         FOOTER
+    ════════════════════════════════ -->
+    <footer>
+        <div class="site-footer">
+            <p>&copy; 2025 Jaymes Corey</p>
+            <p><a href="https://jaymescorey.com">jaymescorey.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // ── Scroll Reveal ──
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealEls.forEach(el => observer.observe(el));
+
+        // ── Top elements fire immediately ──
+        document.querySelectorAll('.confirm-hero .reveal').forEach(el => {
+            setTimeout(() => el.classList.add('visible'), 100);
+        });
+    </script>
+
+</body>
+</html>

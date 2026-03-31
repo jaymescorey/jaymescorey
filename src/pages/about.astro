@@ -1,0 +1,842 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<BaseLayout
+    title="About | Jaymes Corey — Creative Strategist & Builder"
+    description="The story behind Do It Ugly. Jaymes Corey is a creative strategist, writer, and builder. ADDY Award winner. Founder of BRAVND. Believer in starting before you're ready."
+    canonicalUrl="https://jaymescorey.com/about"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "ProfilePage",
+          "name": "About Jaymes Corey",
+          "url": "https://jaymescorey.com/about",
+          "mainEntity": {
+            "@type": "Person",
+            "name": "Jaymes Corey",
+            "url": "https://jaymescorey.com",
+            "image": "https://jaymescorey.com/images/og-jaymes.jpg",
+            "jobTitle": "Creative Strategist & Builder",
+            "description": "Creative strategist, writer, and builder. ADDY Award winner. Founder of BRAVND. Believer in starting before you're ready.",
+            "sameAs": [
+              "https://www.linkedin.com/in/jaymescorey",
+              "https://x.com/jaymescorey",
+              "https://www.instagram.com/jaymescorey"
+            ],
+            "worksFor": {
+              "@type": "Organization",
+              "name": "BRAVND"
+            }
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jaymescorey.com/" },
+              { "@type": "ListItem", "position": 2, "name": "About", "item": "https://jaymescorey.com/about" }
+            ]
+          }
+        }
+        `}</script>
+
+        <style>
+            /* ── ABOUT HERO ── */
+            .about-hero {
+                background: var(--ink);
+                border-bottom: 6px solid var(--yellow);
+                padding: 7rem 10% 6rem;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .about-hero::before {
+                content: "JAYMES COREY // JAYMES COREY // JAYMES COREY // JAYMES COREY // JAYMES COREY //";
+                position: absolute;
+                bottom: 1.5rem;
+                left: 0; right: 0;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 3px;
+                color: rgba(242,194,48,0.10);
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .about-hero::after {
+                content: "";
+                position: absolute;
+                top: 0; left: 40px; bottom: 0;
+                width: 2px;
+                background: rgba(201, 74, 43, 0.25);
+            }
+
+            .about-hero-inner {
+                position: relative;
+                z-index: 2;
+            }
+
+            .about-hero h1 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(5rem, 13vw, 10rem);
+                line-height: 0.9;
+                color: var(--yellow);
+                letter-spacing: -3px;
+                margin-bottom: 1.5rem;
+            }
+
+            .about-hero h1 em {
+                display: block;
+                color: var(--paper);
+                -webkit-text-stroke: 3px var(--yellow);
+                paint-order: stroke fill;
+                font-style: normal;
+            }
+
+            .about-hero-sub {
+                font-family: 'Lora', serif;
+                font-style: italic;
+                font-size: clamp(1.1rem, 2vw, 1.5rem);
+                color: rgba(246, 241, 231, 0.75);
+                max-width: 600px;
+                line-height: 1.5;
+            }
+
+            .about-hero-tags {
+                margin-top: 2.5rem;
+                display: flex;
+                gap: 0.75rem;
+                flex-wrap: wrap;
+            }
+
+            .about-hero-tag {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                font-weight: 700;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--ink);
+                background: var(--yellow);
+                padding: 0.35rem 0.75rem;
+            }
+
+            /* ── TICKER ── */
+            .ticker {
+                background: var(--ink);
+                border-top: 3px solid var(--rust);
+                border-bottom: 3px solid var(--rust);
+                padding: 0.7rem 0;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            .ticker-inner {
+                display: inline-block;
+                animation: ticker-scroll 22s linear infinite;
+            }
+
+            .ticker-inner span {
+                font-family: 'Anton', sans-serif;
+                font-size: 1rem;
+                letter-spacing: 3px;
+                color: var(--yellow);
+                text-transform: uppercase;
+                margin-right: 0.4rem;
+            }
+
+            .ticker-sep {
+                color: var(--rust) !important;
+                margin: 0 0.4rem !important;
+            }
+
+            @keyframes ticker-scroll {
+                0%   { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+            }
+
+            /* ── BIO SECTION ── */
+            .about-bio {
+                padding: 7rem 10%;
+                background: var(--paper);
+            }
+
+            .about-bio-grid {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                gap: 5rem;
+                align-items: start;
+            }
+
+            .about-portrait-wrap {
+                position: relative;
+                transform: rotate(-1.5deg);
+            }
+
+            .about-portrait-img {
+                width: 100%;
+                display: block;
+                border: var(--border-width) solid var(--ink);
+                box-shadow: 10px 10px 0px var(--rust);
+                filter: grayscale(100%) contrast(115%);
+                object-fit: cover;
+            }
+
+            .about-portrait-tape {
+                position: absolute;
+                top: -14px;
+                left: 50%;
+                transform: translateX(-50%) rotate(-1deg);
+                width: 80px;
+                height: 22px;
+                background: rgba(242, 194, 48, 0.75);
+                z-index: 2;
+            }
+
+            .about-portrait-caption {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.6rem;
+                font-weight: 700;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--ink);
+                margin-top: 0.75rem;
+                opacity: 0.55;
+            }
+
+            .about-bio-name {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(3rem, 7vw, 5.5rem);
+                line-height: 0.9;
+                letter-spacing: -2px;
+                margin-bottom: 1.5rem;
+                color: var(--ink);
+            }
+
+            .about-bio-name .outline {
+                -webkit-text-stroke: 3px var(--ink);
+                color: transparent;
+                display: block;
+            }
+
+            .about-bio-copy {
+                font-family: 'Lora', serif;
+                font-size: 1.05rem;
+                line-height: 1.8;
+                color: var(--ink);
+                max-width: 560px;
+            }
+
+            .about-bio-copy p + p {
+                margin-top: 1.2rem;
+            }
+
+            /* ── PHILOSOPHY SECTION ── */
+            .about-philosophy {
+                background: var(--poster-black);
+                border-top: 4px solid var(--rust);
+                border-bottom: 4px solid var(--rust);
+                padding: 7rem 10%;
+            }
+
+            .about-philosophy-inner {
+                max-width: 800px;
+            }
+
+            .philosophy-headline {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(3.5rem, 9vw, 7rem);
+                line-height: 0.9;
+                letter-spacing: -2px;
+                color: var(--yellow);
+                margin-bottom: 2.5rem;
+            }
+
+            .philosophy-headline em {
+                display: block;
+                color: var(--poster-black);
+                -webkit-text-stroke: 3px var(--yellow);
+                paint-order: stroke fill;
+                font-style: normal;
+            }
+
+            .philosophy-copy {
+                font-family: 'Lora', serif;
+                font-style: italic;
+                font-size: clamp(1.1rem, 2vw, 1.4rem);
+                color: rgba(246, 241, 231, 0.85);
+                line-height: 1.7;
+                max-width: 620px;
+            }
+
+            .philosophy-copy p + p {
+                margin-top: 1.2rem;
+            }
+
+            /* ── LIVED LIST ── */
+            .about-lived {
+                padding: 7rem 10%;
+                background: var(--cream);
+            }
+
+            .lived-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 2rem;
+                margin-top: 2.5rem;
+            }
+
+            .lived-card {
+                background: var(--paper);
+                border: var(--border-width) solid var(--ink);
+                padding: 1.75rem;
+                position: relative;
+                transform: rotate(var(--r, 0deg));
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+
+            .lived-card:hover {
+                transform: rotate(0deg) translate(-3px, -3px);
+                box-shadow: 8px 8px 0px var(--rust);
+            }
+
+            .lived-card-tape {
+                position: absolute;
+                top: -12px;
+                left: 50%;
+                transform: translateX(-50%) rotate(-1deg);
+                width: 60px;
+                height: 18px;
+                background: rgba(242, 194, 48, 0.7);
+            }
+
+            .lived-card-num {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.6rem;
+                font-weight: 700;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                color: var(--rust);
+                margin-bottom: 0.5rem;
+            }
+
+            .lived-card-title {
+                font-family: 'Anton', sans-serif;
+                font-size: 1.4rem;
+                letter-spacing: 0.5px;
+                color: var(--ink);
+                margin-bottom: 0.5rem;
+                line-height: 1.1;
+            }
+
+            .lived-card-body {
+                font-family: 'Lora', serif;
+                font-size: 0.9rem;
+                line-height: 1.65;
+                color: rgba(15, 15, 15, 0.72);
+            }
+
+            /* ── STATS ── */
+            .about-stats {
+                background: var(--ink);
+                border-top: 4px solid var(--yellow);
+                border-bottom: 4px solid var(--yellow);
+                padding: 4rem 10%;
+            }
+
+            .stats-row {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .stat-block {
+                flex: 1;
+                min-width: 160px;
+                border-right: 2px solid rgba(242,194,48,0.2);
+                padding: 1.5rem 2.5rem;
+                text-align: center;
+            }
+
+            .stat-block:last-child {
+                border-right: none;
+            }
+
+            .stat-block .stat-num {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(3rem, 7vw, 5rem);
+                color: var(--yellow);
+                line-height: 1;
+                letter-spacing: -2px;
+            }
+
+            .stat-block .stat-label {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                color: rgba(246,241,231,0.45);
+                margin-top: 0.4rem;
+            }
+
+            /* ── CTA ── */
+            .about-cta {
+                padding: 7rem 10%;
+                background: var(--paper);
+                text-align: center;
+            }
+
+            .about-cta h2 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(3rem, 8vw, 6rem);
+                line-height: 0.9;
+                letter-spacing: -2px;
+                color: var(--ink);
+                margin-bottom: 1.5rem;
+            }
+
+            .about-cta h2 .accent {
+                color: var(--rust);
+            }
+
+            .about-cta p {
+                font-family: 'Lora', serif;
+                font-size: 1.1rem;
+                color: rgba(15,15,15,0.65);
+                max-width: 480px;
+                margin: 0 auto 2.5rem;
+                line-height: 1.75;
+            }
+
+            .about-cta-btns {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            /* ── FOOTER ── */
+            .about-footer {
+                background: var(--ink);
+                border-top: 4px solid var(--yellow);
+                padding: 2rem 10%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .about-footer a {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.75rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--yellow);
+                text-decoration: none;
+            }
+
+            .about-footer a:hover {
+                text-decoration: underline;
+            }
+
+            .about-footer-meta {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.6rem;
+                letter-spacing: 2px;
+                color: rgba(246,241,231,0.3);
+                text-transform: uppercase;
+            }
+
+            /* ── DRAGGABLE MASCOT ── */
+            .mascot-drag {
+                position: fixed;
+                right: 7%;
+                top: 200px;
+                z-index: 500;
+                width: 180px;
+                cursor: grab;
+                user-select: none;
+                -webkit-user-select: none;
+                filter: drop-shadow(6px 6px 0px var(--rust));
+                animation: mascot-bob 3.5s ease-in-out infinite;
+            }
+
+            .mascot-drag img {
+                width: 100%;
+                display: block;
+                pointer-events: none;
+            }
+
+            .mascot-hint {
+                display: block;
+                text-align: center;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.55rem;
+                letter-spacing: 2px;
+                color: rgba(242, 194, 48, 0.65);
+                margin-top: 0.5rem;
+                transition: opacity 0.6s ease;
+            }
+
+            .mascot-drag.has-moved .mascot-hint {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .mascot-drag.is-dragging {
+                animation: none;
+                cursor: grabbing;
+                filter: drop-shadow(8px 8px 0px var(--rust));
+            }
+
+            @keyframes mascot-bob {
+                0%, 100% { transform: rotate(-3deg) translateY(0px); }
+                50%       { transform: rotate(-3deg) translateY(-10px); }
+            }
+
+            @media (max-width: 768px) {
+                .mascot-drag { width: 120px; right: 4%; top: 160px; }
+            }
+
+            /* ── RESPONSIVE ── */
+            @media (max-width: 768px) {
+                .about-bio-grid {
+                    grid-template-columns: 1fr;
+                    gap: 3rem;
+                }
+
+                .about-portrait-wrap {
+                    max-width: 220px;
+                }
+
+                .stats-row {
+                    flex-direction: column;
+                }
+
+                .stat-block {
+                    border-right: none;
+                    border-bottom: 2px solid rgba(242,194,48,0.2);
+                }
+
+                .stat-block:last-child {
+                    border-bottom: none;
+                }
+            }
+        </style>
+    </Fragment>
+
+    <div id="progress-bar"></div>
+
+    <Nav page="about" />
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+        <nav>
+            <a href="/" class="mob-link"><span class="mob-num">01 /</span>Home</a>
+            <a href="/about" class="mob-link"><span class="mob-num">02 /</span>About</a>
+            <a href="/#join" class="mob-link"><span class="mob-num">03 /</span>Field Report</a>
+            <a href="/portfolio" class="mob-cta mob-link"><span class="mob-num">&#8594;</span>The Work</a>
+        </nav>
+        <div class="mobile-menu-footer">[ DO_IT_UGLY ] // Build It Before You're Ready.</div>
+    </div>
+
+    <!-- ── DRAGGABLE MASCOT ── -->
+    <div class="mascot-drag" id="mascotDrag" title="Drag me anywhere">
+        <img src="/images/jaymes-corey-do-it-ugly-mascot.png" alt="Do It Ugly Mascot" draggable="false">
+        <span class="mascot-hint">[ DRAG ME ]</span>
+    </div>
+
+    <!-- ── HERO ── -->
+    <section class="about-hero">
+        <div class="about-hero-inner">
+            <span class="section-label" style="color: var(--yellow); opacity: 0.7;">00.0 // The Person</span>
+            <h1>Who<br><em>Is This.</em></h1>
+            <p class="about-hero-sub">
+                Creative strategist. Writer. Builder. Someone who has tried a lot of
+                things in this life &mdash; and plans to try a few more before it's over.
+            </p>
+            <div class="about-hero-tags">
+                <span class="about-hero-tag">Creative Strategist</span>
+                <span class="about-hero-tag">ADDY Award 2025</span>
+                <span class="about-hero-tag">BRAVND</span>
+                <span class="about-hero-tag">Always Building</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TICKER ── -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker-inner">
+            <span>WRITER</span><span class="ticker-sep">&#9670;</span>
+            <span>CREATIVE STRATEGIST</span><span class="ticker-sep">&#9670;</span>
+            <span>BRAND BUILDER</span><span class="ticker-sep">&#9670;</span>
+            <span>ADDY AWARD WINNER</span><span class="ticker-sep">&#9670;</span>
+            <span>DO IT UGLY</span><span class="ticker-sep">&#9670;</span>
+            <span>BRAVND</span><span class="ticker-sep">&#9670;</span>
+            <span>ALWAYS BUILDING</span><span class="ticker-sep">&#9670;</span>
+            <span>WRITER</span><span class="ticker-sep">&#9670;</span>
+            <span>CREATIVE STRATEGIST</span><span class="ticker-sep">&#9670;</span>
+            <span>BRAND BUILDER</span><span class="ticker-sep">&#9670;</span>
+            <span>ADDY AWARD WINNER</span><span class="ticker-sep">&#9670;</span>
+            <span>DO IT UGLY</span><span class="ticker-sep">&#9670;</span>
+            <span>BRAVND</span><span class="ticker-sep">&#9670;</span>
+            <span>ALWAYS BUILDING</span><span class="ticker-sep">&#9670;</span>
+        </div>
+    </div>
+
+    <!-- ── BIO ── -->
+    <section class="about-bio">
+        <div class="about-bio-grid">
+            <div class="about-portrait-wrap reveal">
+                <div class="about-portrait-tape"></div>
+                <img src="/images/jaymes.webp"
+                     alt="Jaymes Corey"
+                     class="about-portrait-img"
+                     loading="eager"
+                     fetchpriority="high">
+                <p class="about-portrait-caption">// Jaymes Corey &mdash; Field Operative</p>
+            </div>
+
+            <div class="reveal">
+                <span class="section-label">00.1 // The Person</span>
+                <h2 class="about-bio-name">Jaymes<br><span class="outline">Corey.</span></h2>
+                <div class="about-bio-copy">
+                    <p>I'm a <span class="redacted">WRITER &amp; EXPLORER</span>. Someone who has tried a lot of things in this life. And plans to try a few more before it's over.</p>
+                    <p>By trade, I'm a creative strategist. I build brands, develop campaigns, and help people figure out what they're actually trying to say &mdash; then say it louder. I work through <strong>BRAVND</strong>, a creative strategy practice at the intersection of brand and culture.</p>
+                    <p>In 2025, a campaign concept I developed won an <strong>ADDY Award</strong> &mdash; the advertising industry's version of proof that the weird idea was actually the right idea.</p>
+                    <p>But more than the work, I care about the philosophy behind it: that starting matters more than starting perfectly. That the ugly first draft is still a first draft. That motion beats perfection every single time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── PHILOSOPHY ── -->
+    <section class="about-philosophy">
+        <div class="about-philosophy-inner reveal">
+            <span class="section-label" style="color: var(--rust);">00.2 // The Philosophy</span>
+            <h2 class="philosophy-headline">Do It<br><em>Ugly.</em></h2>
+            <div class="philosophy-copy">
+                <p>Life gets busy. Dreams quietly move to a shelf called <em>someday</em>. And someday rarely shows up.</p>
+                <p>Do It Ugly is a philosophy and a practice. Stop waiting for the perfect moment. The perfect draft. The perfect anything. Start before you're ready. Move one thing from the Wish List to the Lived List.</p>
+                <p>Bite first. Polish later.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── LIVED LIST ── -->
+    <section class="about-lived">
+        <span class="section-label">00.3 // The Lived List</span>
+        <div class="lived-grid">
+
+            <div class="lived-card reveal" style="--r: -1.5deg;">
+                <div class="lived-card-tape"></div>
+                <div class="lived-card-num">01 //</div>
+                <div class="lived-card-title">ADDY Award Winner</div>
+                <p class="lived-card-body">2025. AAF District 15. A coffee brand campaign concept built around a literary character &mdash; judged by advertising pros who decided the weird idea was the right idea.</p>
+            </div>
+
+            <div class="lived-card reveal" style="--r: 1deg;">
+                <div class="lived-card-tape"></div>
+                <div class="lived-card-num">02 //</div>
+                <div class="lived-card-title">Built BRAVND</div>
+                <p class="lived-card-body">A creative strategy practice built from the ground up. Brand development, campaigns, and positioning for people who have something real to say and need help saying it right.</p>
+            </div>
+
+            <div class="lived-card reveal" style="--r: -0.5deg;">
+                <div class="lived-card-tape"></div>
+                <div class="lived-card-num">03 //</div>
+                <div class="lived-card-title">Academy of Art</div>
+                <p class="lived-card-body">Studied advertising and creative at the Academy of Art University in San Francisco. Learned how to break the rules by learning them first.</p>
+            </div>
+
+            <div class="lived-card reveal" style="--r: 1.5deg;">
+                <div class="lived-card-tape"></div>
+                <div class="lived-card-num">04 //</div>
+                <div class="lived-card-title">Started Do It Ugly</div>
+                <p class="lived-card-body">A newsletter and a brand for everyone stuck in the gap between idea and execution. Perfection keeps people stuck. Motion brings life back.</p>
+            </div>
+
+            <div class="lived-card reveal" style="--r: -1deg;">
+                <div class="lived-card-tape"></div>
+                <div class="lived-card-num">05 //</div>
+                <div class="lived-card-title">Writer. Always.</div>
+                <p class="lived-card-body">Before any of the above &mdash; and underneath all of it. Words are the tool. Everything else is just the application of that tool in different rooms.</p>
+            </div>
+
+            <div class="lived-card reveal" style="--r: 0.5deg;">
+                <div class="lived-card-tape"></div>
+                <div class="lived-card-num">06 //</div>
+                <div class="lived-card-title">Still Building</div>
+                <p class="lived-card-body">This isn't a finished story. That's the whole point. New experiments. New failures. New things moved from the Wish List to the Lived List.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── STATS ── -->
+    <div class="about-stats">
+        <div class="stats-row">
+            <div class="stat-block">
+                <div class="stat-num">00</div>
+                <div class="stat-label">Perfect Moments</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num">&#8734;</div>
+                <div class="stat-label">Ugly Steps Taken</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num">01</div>
+                <div class="stat-label">ADDY Award</div>
+            </div>
+            <div class="stat-block">
+                <div class="stat-num">01</div>
+                <div class="stat-label">Life To Live</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── CTA ── -->
+    <section class="about-cta">
+        <span class="section-label">00.4 // What's Next</span>
+        <h2>Move One Thing<br>To The <span class="accent">Lived</span> List.</h2>
+        <p>Weekly field notes from the front lines. No fluff. No sponsorships. Just real dispatches from someone in the middle of figuring it out.</p>
+        <div class="about-cta-btns">
+            <a href="/#join" class="btn">Get The Field Report &#8594;</a>
+            <a href="/portfolio" class="btn btn-secondary">See The Work &#8594;</a>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="about-footer">
+        <a href="/">&larr; Back to Home</a>
+        <span class="about-footer-meta">[ STATUS: BUILDING ] [ JAYMES COREY ] [ DO_IT_UGLY ]</span>
+        <a href="/portfolio">The Work &rarr;</a>
+    </footer>
+
+    <script>
+        // ── SCROLL REVEAL ──
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ── PROGRESS BAR ──
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            document.getElementById('progress-bar').style.width = (scrolled / total * 100) + '%';
+        }, { passive: true });
+
+        // ── CURSOR RING ──
+        if (window.matchMedia('(hover: hover)').matches) {
+            const ring = document.createElement('div');
+            ring.className = 'cursor-ring';
+            document.body.appendChild(ring);
+            let mx = 0, my = 0, rx = 0, ry = 0;
+            document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; ring.style.opacity = '1'; });
+            document.addEventListener('mouseleave', () => { ring.style.opacity = '0'; });
+            (function loopRing() {
+                rx += (mx - rx) * 0.12;
+                ry += (my - ry) * 0.12;
+                ring.style.left = rx + 'px';
+                ring.style.top = ry + 'px';
+                requestAnimationFrame(loopRing);
+            })();
+            document.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('mouseenter', () => { ring.style.width = '44px'; ring.style.height = '44px'; ring.style.borderColor = 'var(--yellow)'; });
+                el.addEventListener('mouseleave', () => { ring.style.width = '28px'; ring.style.height = '28px'; ring.style.borderColor = 'var(--rust)'; });
+            });
+        }
+
+        // ── MOBILE MENU ──
+        var hamburger = document.getElementById('navHamburger');
+        var mobileMenu = document.getElementById('mobileMenu');
+        var closeBtn = document.getElementById('mobileMenuClose');
+
+        function closeMobileMenu() {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', function() {
+            var isOpen = mobileMenu.classList.toggle('open');
+            hamburger.classList.toggle('open', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        closeBtn.addEventListener('click', closeMobileMenu);
+
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) closeMobileMenu();
+        });
+
+        // ── DRAGGABLE MASCOT ──
+        (function() {
+            var el = document.getElementById('mascotDrag');
+            if (!el) return;
+            var dragging = false;
+            var startX, startY, origLeft, origTop;
+
+            function startDrag(cx, cy) {
+                dragging = true;
+                var rect = el.getBoundingClientRect();
+                origLeft = rect.left;
+                origTop  = rect.top;
+                startX = cx;
+                startY = cy;
+                el.style.left   = origLeft + 'px';
+                el.style.top    = origTop  + 'px';
+                el.style.right  = 'auto';
+                el.classList.add('is-dragging');
+            }
+
+            function moveDrag(cx, cy) {
+                if (!dragging) return;
+                el.style.left = (origLeft + cx - startX) + 'px';
+                el.style.top  = (origTop  + cy - startY) + 'px';
+            }
+
+            function endDrag() {
+                if (!dragging) return;
+                dragging = false;
+                el.classList.remove('is-dragging');
+                el.classList.add('has-moved');
+            }
+
+            el.addEventListener('mousedown', function(e) {
+                startDrag(e.clientX, e.clientY);
+                e.preventDefault();
+            });
+            document.addEventListener('mousemove', function(e) { moveDrag(e.clientX, e.clientY); });
+            document.addEventListener('mouseup', endDrag);
+
+            el.addEventListener('touchstart', function(e) {
+                var t = e.touches[0];
+                startDrag(t.clientX, t.clientY);
+                e.preventDefault();
+            }, { passive: false });
+            document.addEventListener('touchmove', function(e) {
+                if (!dragging) return;
+                var t = e.touches[0];
+                moveDrag(t.clientX, t.clientY);
+                e.preventDefault();
+            }, { passive: false });
+            document.addEventListener('touchend', endDrag);
+        })();
+
+        // ── REDACTED REVEAL on click ──
+        document.querySelectorAll('.redacted').forEach(el => {
+            el.addEventListener('click', function() {
+                this.style.background = 'var(--yellow)';
+                this.style.color = 'var(--ink)';
+            });
+        });
+    </script>
+
+</BaseLayout>

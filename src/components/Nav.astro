@@ -1,0 +1,61 @@
+---
+interface Props {
+    page?: 'home' | 'about' | 'portfolio';
+}
+const { page = 'home' } = Astro.props;
+---
+
+<nav>
+    {page === 'home' ? (
+        <a href="/" class="nav-logo">Jaymes Corey</a>
+    ) : (
+        <a href="/" class="nav-logo">Jaymes Corey</a>
+    )}
+    {page === 'home' && (
+        <div class="nav-links">
+            <a href="#start">Start Here</a>
+            <a href="#lab">The Lab</a>
+            <a href="/about">About</a>
+            <a href="#enlist" class="nav-cta">Join The List</a>
+        </div>
+    )}
+    {page === 'about' && (
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about" class="active">About</a>
+            <a href="/portfolio" class="nav-cta">The Work</a>
+            <a href="/#join">Field Report</a>
+        </div>
+    )}
+    {page === 'portfolio' && (
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/portfolio" class="nav-cta active" aria-current="page">The Work</a>
+            <a href="/about">About</a>
+            <a href="/#join">Field Report</a>
+        </div>
+    )}
+    {page === 'home' && (
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    )}
+    {page === 'about' && (
+        <>
+            <span class="nav-tag">[ ABOUT_ME ]</span>
+            <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </>
+    )}
+    {page === 'portfolio' && (
+        <>
+            <span class="nav-tag">[ PORTFOLIO_v1.0 ]</span>
+            <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </>
+    )}
+</nav>
