@@ -4,15 +4,15 @@ import Nav from '../components/Nav.astro';
 ---
 
 <BaseLayout
-    title="About | Jaymes Corey — Creative Strategist & Builder"
-    description="The story behind Do It Ugly. Jaymes Corey is a creative strategist, writer, and builder. ADDY Award winner. Founder of BRAVND. Believer in starting before you're ready."
+    title="About | Jaymes Corey — Builder, Strategist, Writer"
+    description="Why Jaymes builds in public and teaches his kids through imperfect action. The story behind the work, the motion, and the freedom that comes from doing rather than waiting."
     canonicalUrl="https://jaymescorey.com/about"
 >
     <Fragment slot="head">
         <script type="application/ld+json">{`
         {
           "@context": "https://schema.org",
-          "@type": "ProfilePage",
+          "@type": "AboutPage",
           "name": "About Jaymes Corey",
           "url": "https://jaymescorey.com/about",
           "mainEntity": {
@@ -21,7 +21,7 @@ import Nav from '../components/Nav.astro';
             "url": "https://jaymescorey.com",
             "image": "https://jaymescorey.com/images/og-jaymes.jpg",
             "jobTitle": "Creative Strategist & Builder",
-            "description": "Creative strategist, writer, and builder. ADDY Award winner. Founder of BRAVND. Believer in starting before you're ready.",
+            "description": "Creative strategist, writer, and builder. Founder of BRAVND. Believer in motion over perfection and teaching freedom through doing.",
             "sameAs": [
               "https://www.linkedin.com/in/jaymescorey",
               "https://x.com/jaymescorey",
@@ -536,7 +536,7 @@ import Nav from '../components/Nav.astro';
         <nav>
             <a href="/" class="mob-link"><span class="mob-num">01 /</span>Home</a>
             <a href="/about" class="mob-link"><span class="mob-num">02 /</span>About</a>
-            <a href="/#join" class="mob-link"><span class="mob-num">03 /</span>Field Report</a>
+            <a href="/field-report" class="mob-link"><span class="mob-num">03 /</span>Field Report</a>
             <a href="/portfolio" class="mob-cta mob-link"><span class="mob-num">&#8594;</span>The Work</a>
         </nav>
         <div class="mobile-menu-footer">[ DO_IT_UGLY ] // Build It Before You're Ready.</div>
@@ -726,10 +726,13 @@ import Nav from '../components/Nav.astro';
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         // ── PROGRESS BAR ──
+        const progressBar = document.getElementById('progress-bar');
         window.addEventListener('scroll', () => {
             const scrolled = window.scrollY;
             const total = document.documentElement.scrollHeight - window.innerHeight;
-            document.getElementById('progress-bar').style.width = (scrolled / total * 100) + '%';
+            if (progressBar) {
+                progressBar.style.width = (scrolled / total * 100) + '%';
+            }
         }, { passive: true });
 
         // ── CURSOR RING ──
@@ -754,59 +757,66 @@ import Nav from '../components/Nav.astro';
         }
 
         // ── MOBILE MENU ──
-        var hamburger = document.getElementById('navHamburger');
-        var mobileMenu = document.getElementById('mobileMenu');
-        var closeBtn = document.getElementById('mobileMenuClose');
+        const hamburger = document.getElementById('navHamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeBtn = document.getElementById('mobileMenuClose');
 
-        function closeMobileMenu() {
-            hamburger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
+        if (hamburger && mobileMenu && closeBtn) {
+            const navHamburger = hamburger;
+            const navMobileMenu = mobileMenu;
+            const navCloseBtn = closeBtn;
+
+            const closeMobileMenu = () => {
+                navHamburger.classList.remove('open');
+                navMobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            };
+
+            navHamburger.addEventListener('click', function() {
+                const isOpen = navMobileMenu.classList.toggle('open');
+                navHamburger.classList.toggle('open', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            navCloseBtn.addEventListener('click', closeMobileMenu);
+
+            navMobileMenu.addEventListener('click', function(e) {
+                if (e.target === navMobileMenu) closeMobileMenu();
+            });
         }
-
-        hamburger.addEventListener('click', function() {
-            var isOpen = mobileMenu.classList.toggle('open');
-            hamburger.classList.toggle('open', isOpen);
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        });
-
-        closeBtn.addEventListener('click', closeMobileMenu);
-
-        mobileMenu.addEventListener('click', function(e) {
-            if (e.target === mobileMenu) closeMobileMenu();
-        });
 
         // ── DRAGGABLE MASCOT ──
         (function() {
-            var el = document.getElementById('mascotDrag');
+            const el = document.getElementById('mascotDrag');
             if (!el) return;
-            var dragging = false;
-            var startX, startY, origLeft, origTop;
+            const mascot = el as HTMLElement;
+            let dragging = false;
+            let startX = 0, startY = 0, origLeft = 0, origTop = 0;
 
-            function startDrag(cx, cy) {
+            function startDrag(cx: number, cy: number) {
                 dragging = true;
-                var rect = el.getBoundingClientRect();
+                const rect = mascot.getBoundingClientRect();
                 origLeft = rect.left;
                 origTop  = rect.top;
                 startX = cx;
                 startY = cy;
-                el.style.left   = origLeft + 'px';
-                el.style.top    = origTop  + 'px';
-                el.style.right  = 'auto';
-                el.classList.add('is-dragging');
+                mascot.style.left   = origLeft + 'px';
+                mascot.style.top    = origTop  + 'px';
+                mascot.style.right  = 'auto';
+                mascot.classList.add('is-dragging');
             }
 
-            function moveDrag(cx, cy) {
+            function moveDrag(cx: number, cy: number) {
                 if (!dragging) return;
-                el.style.left = (origLeft + cx - startX) + 'px';
-                el.style.top  = (origTop  + cy - startY) + 'px';
+                mascot.style.left = (origLeft + cx - startX) + 'px';
+                mascot.style.top  = (origTop  + cy - startY) + 'px';
             }
 
             function endDrag() {
                 if (!dragging) return;
                 dragging = false;
-                el.classList.remove('is-dragging');
-                el.classList.add('has-moved');
+                mascot.classList.remove('is-dragging');
+                mascot.classList.add('has-moved');
             }
 
             el.addEventListener('mousedown', function(e) {
@@ -831,10 +841,10 @@ import Nav from '../components/Nav.astro';
         })();
 
         // ── REDACTED REVEAL on click ──
-        document.querySelectorAll('.redacted').forEach(el => {
+        document.querySelectorAll<HTMLElement>('.redacted').forEach(el => {
             el.addEventListener('click', function() {
-                this.style.background = 'var(--yellow)';
-                this.style.color = 'var(--ink)';
+                (this as HTMLElement).style.background = 'var(--yellow)';
+                (this as HTMLElement).style.color = 'var(--ink)';
             });
         });
     </script>

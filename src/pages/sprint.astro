@@ -4,8 +4,8 @@ import Nav from '../components/Nav.astro';
 ---
 
 <BaseLayout
-    title="The 30-Day Sprint | Jaymes Corey"
-    description="Your idea. My decade of building from zero. 30 days, one-on-one — we map it, build it ugly, and find out if it's real. Only 10 spots available."
+    title="The 30-Day Sprint | Launch Your Idea in 30 Days"
+    description="A one-on-one sprint to push your idea from stalled to launched. Real progress, imperfect action, and momentum over perfection. Only 10 spots available."
     canonicalUrl="https://jaymescorey.com/sprint"
     ogImage="https://jaymescorey.com/images/og-jaymes.jpg"
 >
@@ -16,7 +16,7 @@ import Nav from '../components/Nav.astro';
           "@type": "Service",
           "name": "The 30-Day Sprint",
           "url": "https://jaymescorey.com/sprint",
-          "description": "One-on-one 30-day build sprint with Jaymes Corey. Your idea, his decade of experience, zero theory.",
+          "description": "A one-on-one sprint to push your idea from stalled to launched. Real progress, imperfect action, and momentum over perfection.",
           "provider": {
             "@type": "Person",
             "name": "Jaymes Corey",
@@ -738,27 +738,31 @@ import Nav from '../components/Nav.astro';
         // Modal
         const modal = document.getElementById('waitlist-modal');
         const closeBtn = document.getElementById('modal-close');
+        const modalForm = document.getElementById('modal-form');
+        const modalConfirm = document.getElementById('modal-confirm');
 
-        document.querySelectorAll('.apply-trigger').forEach(btn => {
-            btn.addEventListener('click', () => modal.classList.add('open'));
-        });
+        if (modal && closeBtn) {
+            document.querySelectorAll<HTMLElement>('.apply-trigger').forEach(btn => {
+                btn.addEventListener('click', () => modal.classList.add('open'));
+            });
 
-        closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+            closeBtn.addEventListener('click', () => modal.classList.remove('open'));
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.classList.remove('open');
-        });
+            modal.addEventListener('click', (e: Event) => {
+                if (e.target === modal) modal.classList.remove('open');
+            });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') modal.classList.remove('open');
-        });
+            document.addEventListener('keydown', (e: KeyboardEvent) => {
+                if (e.key === 'Escape') modal.classList.remove('open');
+            });
+        }
 
-        // Waitlist form submit
-        document.getElementById('modal-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const confirm = document.getElementById('modal-confirm');
-            this.style.display = 'none';
-            confirm.classList.add('visible');
-        });
+        if (modalForm && modalConfirm) {
+            modalForm.addEventListener('submit', function(e: Event) {
+                e.preventDefault();
+                this.style.display = 'none';
+                modalConfirm.classList.add('visible');
+            });
+        }
     </script>
 </BaseLayout>

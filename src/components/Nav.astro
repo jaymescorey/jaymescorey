@@ -1,6 +1,6 @@
 ---
 interface Props {
-    page?: 'home' | 'about' | 'portfolio';
+    page?: 'home' | 'about' | 'portfolio' | 'fieldReport';
 }
 const { page = 'home' } = Astro.props;
 ---
@@ -16,6 +16,7 @@ const { page = 'home' } = Astro.props;
             <a href="#start">Start Here</a>
             <a href="#lab">The Lab</a>
             <a href="/about">About</a>
+            <a href="/field-report">Field Report</a>
             <a href="#enlist" class="nav-cta">Join The List</a>
         </div>
     )}
@@ -23,8 +24,8 @@ const { page = 'home' } = Astro.props;
         <div class="nav-links">
             <a href="/">Home</a>
             <a href="/about" class="active">About</a>
-            <a href="/portfolio" class="nav-cta">The Work</a>
-            <a href="/#join">Field Report</a>
+            <a href="/portfolio">The Work</a>
+            <a href="/field-report" class="nav-cta">Field Report</a>
         </div>
     )}
     {page === 'portfolio' && (
@@ -32,7 +33,15 @@ const { page = 'home' } = Astro.props;
             <a href="/">Home</a>
             <a href="/portfolio" class="nav-cta active" aria-current="page">The Work</a>
             <a href="/about">About</a>
-            <a href="/#join">Field Report</a>
+            <a href="/field-report">Field Report</a>
+        </div>
+    )}
+    {page === 'fieldReport' && (
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/portfolio">The Work</a>
+            <a href="/field-report" class="active" aria-current="page">Field Report</a>
         </div>
     )}
     {page === 'home' && (
@@ -53,6 +62,14 @@ const { page = 'home' } = Astro.props;
     {page === 'portfolio' && (
         <>
             <span class="nav-tag">[ PORTFOLIO_v1.0 ]</span>
+            <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </>
+    )}
+    {page === 'fieldReport' && (
+        <>
+            <span class="nav-tag">[ FIELD_REPORT ]</span>
             <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
                 <span></span><span></span><span></span>
             </button>

@@ -3,29 +3,35 @@
 
   <url>
     <loc>https://jaymescorey.com/</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://jaymescorey.com/portfolio.html</loc>
-    <lastmod>2026-03-16</lastmod>
+    <loc>https://jaymescorey.com/portfolio</loc>
+    <lastmod>2026-03-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://jaymescorey.com/about.html</loc>
-    <lastmod>2026-03-17</lastmod>
+    <loc>https://jaymescorey.com/about</loc>
+    <lastmod>2026-03-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://jaymescorey.com/field-report</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
   <url>
     <loc>https://jaymescorey.com/sprint</loc>
-    <lastmod>2026-03-30</lastmod>
+    <lastmod>2026-03-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

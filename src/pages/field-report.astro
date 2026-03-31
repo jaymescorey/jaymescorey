@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<BaseLayout
+    title="Field Report | Jaymes Corey — Notes, Voice, Video"
+    description="Field Report from the lab — written updates, voice notes, and video dispatches from the work. Follow what moved this week and how imperfect action creates momentum."
+    canonicalUrl="https://jaymescorey.com/field-report"
+    ogImage="https://jaymescorey.com/images/og-jaymes.jpg"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Field Report — Jaymes Corey",
+          "url": "https://jaymescorey.com/field-report",
+          "description": "Field Report from the lab — written updates, voice notes, and video dispatches from the work.",
+          "author": {
+            "@type": "Person",
+            "name": "Jaymes Corey",
+            "url": "https://jaymescorey.com"
+          }
+        }
+        `}</script>
+
+        <style>
+            .field-hero {
+                background: var(--ink);
+                color: var(--paper);
+                padding: 7rem 10% 6rem;
+                position: relative;
+                overflow: hidden;
+                border-bottom: var(--border-width) solid var(--yellow);
+            }
+
+            .field-hero::before {
+                content: "FIELD REPORT // FIELD REPORT // FIELD REPORT //";
+                position: absolute;
+                bottom: 1.5rem;
+                left: 0;
+                right: 0;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 3px;
+                color: rgba(242,194,48,0.08);
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .field-hero .section-label {
+                display: inline-block;
+                font-family: 'Space Mono', monospace;
+                font-size: 0.72rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--yellow);
+                opacity: 0.85;
+                margin-bottom: 1rem;
+            }
+
+            .field-hero h1 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(4rem, 8vw, 7rem);
+                line-height: 0.92;
+                margin-bottom: 1.5rem;
+                color: var(--paper);
+            }
+
+            .field-hero p {
+                font-family: 'Lora', serif;
+                font-size: clamp(1rem, 1.8vw, 1.25rem);
+                line-height: 1.8;
+                max-width: 760px;
+                color: rgba(246,241,231,0.88);
+            }
+
+            .field-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                padding: 6rem 10%;
+                background: var(--paper);
+            }
+
+            .field-card {
+                background: white;
+                border: var(--border-width) solid var(--ink);
+                box-shadow: 8px 8px 0px var(--rust);
+                padding: 2.25rem;
+                min-height: 320px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .field-card h3 {
+                font-family: 'Anton', sans-serif;
+                font-size: 1.6rem;
+                text-transform: uppercase;
+                letter-spacing: -0.5px;
+                margin-bottom: 1rem;
+                color: var(--ink);
+                line-height: 1.1;
+            }
+
+            .field-card p {
+                font-family: 'Lora', serif;
+                font-size: 0.95rem;
+                line-height: 1.75;
+                color: var(--ink);
+                opacity: 0.85;
+                margin-bottom: 2rem;
+            }
+
+            .field-card span {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.7rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: var(--rust);
+            }
+
+            .field-footer {
+                padding: 6rem 10%;
+                background: var(--ink);
+                color: var(--paper);
+                border-top: var(--border-width) solid var(--yellow);
+                text-align: center;
+            }
+
+            .field-footer h2 {
+                font-family: 'Anton', sans-serif;
+                font-size: clamp(3rem, 7vw, 5rem);
+                margin-bottom: 1.25rem;
+                line-height: 0.9;
+            }
+
+            .field-footer p {
+                font-family: 'Lora', serif;
+                font-size: 1rem;
+                line-height: 1.8;
+                max-width: 680px;
+                margin: 0 auto 2rem;
+                color: rgba(246,241,231,0.85);
+            }
+
+            .field-footer .btn {
+                margin-top: 1rem;
+            }
+
+            @media (max-width: 900px) {
+                .field-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width: 640px) {
+                .field-hero { padding: 5rem 6vw 4rem; }
+                .field-hero h1 { font-size: clamp(3rem, 11vw, 5rem); }
+                .field-card { padding: 1.75rem; }
+            }
+        </style>
+    </Fragment>
+
+    <div id="progress-bar"></div>
+
+    <Nav page="fieldReport" />
+
+    <div class="mobile-menu-overlay" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+        <nav>
+            <a href="/" class="mob-link"><span class="mob-num">01 /</span>Home</a>
+            <a href="/about" class="mob-link"><span class="mob-num">02 /</span>About</a>
+            <a href="/portfolio" class="mob-link"><span class="mob-num">03 /</span>The Work</a>
+            <a href="/field-report" class="mob-cta mob-link"><span class="mob-num">→</span>Field Report</a>
+        </nav>
+        <div class="mobile-menu-footer">[ FIELD_REPORT ] // No fluff dispatches.</div>
+    </div>
+
+    <section class="field-hero">
+        <span class="section-label">00.0 // Field Report</span>
+        <h1>Notes, voice, video from the lab.</h1>
+        <p>Field updates from the work that’s actually moving. Sometimes written. Sometimes audio. Sometimes video. Always real. This is where the raw progress lands.</p>
+    </section>
+
+    <section class="field-grid">
+        <article class="field-card">
+            <span>WRITTEN</span>
+            <h3>Quick dispatches</h3>
+            <p>Short notes on what moved, what didn’t, and what changed in the lab. No polished essay — just what matters this week.</p>
+        </article>
+        <article class="field-card">
+            <span>VOICE</span>
+            <h3>Audio check-ins</h3>
+            <p>Voice notes from the work day. The messy thinking, the next move, and the story behind each imperfect action.</p>
+        </article>
+        <article class="field-card">
+            <span>VIDEO</span>
+            <h3>Behind-the-scenes</h3>
+            <p>Short video clips from the process, the tools, and the place where the build actually happens — with the kids in view.</p>
+        </article>
+    </section>
+
+    <section class="field-footer">
+        <h2>Follow the field report.</h2>
+        <p>No hype. No perfect posts. Just the work, the movement, and the stories that teach the next step.</p>
+        <a href="/" class="btn btn-yellow">Follow The Build</a>
+    </section>
+</BaseLayout>

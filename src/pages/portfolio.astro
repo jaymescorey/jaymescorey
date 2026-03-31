@@ -4,8 +4,8 @@ import Nav from '../components/Nav.astro';
 ---
 
 <BaseLayout
-    title="The Work | Jaymes Corey — Brand Strategy & Creative Campaigns"
-    description="Brand strategy, creative campaigns, and speculative design from Jaymes Corey. ADDY Award-winning work. Big ideas executed with intention."
+    title="Work | Jaymes Corey — Built to Move"
+    description="A collection of work built to move ideas forward. Permission-based brand strategy and creative campaigns made for real momentum, not just polish."
     canonicalUrl="https://jaymescorey.com/portfolio"
     ogImage="https://jaymescorey.com/images/og-jaymes.jpg"
 >
@@ -16,7 +16,7 @@ import Nav from '../components/Nav.astro';
           "@type": "CollectionPage",
           "name": "The Work — Jaymes Corey",
           "url": "https://jaymescorey.com/portfolio",
-          "description": "Brand strategy, creative campaigns, and speculative design from Jaymes Corey. ADDY Award-winning work.",
+          "description": "A collection of work built to move ideas forward. Permission-based brand strategy and creative campaigns made for real momentum.",
           "author": {
             "@type": "Person",
             "name": "Jaymes Corey",
@@ -709,7 +709,7 @@ import Nav from '../components/Nav.astro';
         <nav>
             <a href="/" class="mob-link"><span class="mob-num">01 /</span>Home</a>
             <a href="/about" class="mob-link"><span class="mob-num">02 /</span>About</a>
-            <a href="/#join" class="mob-link"><span class="mob-num">03 /</span>Field Report</a>
+            <a href="/field-report" class="mob-link"><span class="mob-num">03 /</span>Field Report</a>
             <a href="/portfolio" class="mob-cta mob-link"><span class="mob-num">&#8594;</span>The Work</a>
         </nav>
         <div class="mobile-menu-footer">[ DO_IT_UGLY ] // Build It Before You're Ready.</div>
@@ -1076,20 +1076,20 @@ import Nav from '../components/Nav.astro';
 
     <script>
         // ── CASE STUDY OVERLAY ──
-        function openCase(id) {
-            var overlay = document.getElementById('case-' + id);
+        function openCase(id: string) {
+            const overlay = document.getElementById('case-' + id);
             if (!overlay) return;
             overlay.classList.add('open');
             overlay.scrollTop = 0;
             document.documentElement.style.overflow = 'hidden';
             document.body.style.overflow = 'hidden';
             history.pushState({ overlay: id }, '', '#' + id);
-            var shareBtn = overlay.querySelector('.case-overlay-share');
+            const shareBtn = overlay.querySelector<HTMLElement>('.case-overlay-share');
             if (shareBtn) { shareBtn.textContent = 'Share This →'; shareBtn.classList.remove('copied'); }
         }
 
         function closeCase() {
-            document.querySelectorAll('.case-overlay.open').forEach(function(o) {
+            document.querySelectorAll<HTMLElement>('.case-overlay.open').forEach(function(o) {
                 o.classList.remove('open');
             });
             document.documentElement.style.overflow = '';
@@ -1097,8 +1097,8 @@ import Nav from '../components/Nav.astro';
             history.pushState(null, '', window.location.pathname);
         }
 
-        function shareCase(id, btn) {
-            var url = window.location.origin + window.location.pathname + '#' + id;
+        function shareCase(id: string, btn: HTMLElement) {
+            const url = window.location.origin + window.location.pathname + '#' + id;
             if (navigator.share) {
                 navigator.share({ title: document.title, url: url });
             } else {
@@ -1114,15 +1114,25 @@ import Nav from '../components/Nav.astro';
         }
 
         // Wire up open/close buttons
-        document.getElementById('open-alice').addEventListener('click', function() { openCase('alice-strange-brew'); });
-        document.getElementById('close-alice-top').addEventListener('click', closeCase);
-        document.getElementById('close-alice-bottom').addEventListener('click', closeCase);
-        document.getElementById('share-alice').addEventListener('click', function() { shareCase('alice-strange-brew', this); });
+        const openAliceBtn = document.getElementById('open-alice');
+        const closeAliceTop = document.getElementById('close-alice-top');
+        const closeAliceBottom = document.getElementById('close-alice-bottom');
+        const shareAliceBtn = document.getElementById('share-alice');
 
-        document.getElementById('open-allbirds').addEventListener('click', function() { openCase('all-birds'); });
-        document.getElementById('close-allbirds-top').addEventListener('click', closeCase);
-        document.getElementById('close-allbirds-bottom').addEventListener('click', closeCase);
-        document.getElementById('share-allbirds').addEventListener('click', function() { shareCase('all-birds', this); });
+        const openAllbirdsBtn = document.getElementById('open-allbirds');
+        const closeAllbirdsTop = document.getElementById('close-allbirds-top');
+        const closeAllbirdsBottom = document.getElementById('close-allbirds-bottom');
+        const shareAllbirdsBtn = document.getElementById('share-allbirds');
+
+        if (openAliceBtn) openAliceBtn.addEventListener('click', function() { openCase('alice-strange-brew'); });
+        if (closeAliceTop) closeAliceTop.addEventListener('click', closeCase);
+        if (closeAliceBottom) closeAliceBottom.addEventListener('click', closeCase);
+        if (shareAliceBtn) shareAliceBtn.addEventListener('click', function(this: HTMLElement) { shareCase('alice-strange-brew', this); });
+
+        if (openAllbirdsBtn) openAllbirdsBtn.addEventListener('click', function() { openCase('all-birds'); });
+        if (closeAllbirdsTop) closeAllbirdsTop.addEventListener('click', closeCase);
+        if (closeAllbirdsBottom) closeAllbirdsBottom.addEventListener('click', closeCase);
+        if (shareAllbirdsBtn) shareAllbirdsBtn.addEventListener('click', function(this: HTMLElement) { shareCase('all-birds', this); });
 
         // Browser back button closes overlay
         window.addEventListener('popstate', function() {
@@ -1175,7 +1185,7 @@ import Nav from '../components/Nav.astro';
         }
 
         // ── TEXT SCRAMBLE on hero ──
-        function scrambleEl(el, finalText, delay) {
+        function scrambleEl(el: HTMLElement, finalText: string, delay: number) {
             const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ?!#$%*>';
             let n = 0;
             setTimeout(() => {
@@ -1191,28 +1201,34 @@ import Nav from '../components/Nav.astro';
         }
 
         window.addEventListener('load', () => {
-            const em = document.querySelector('.port-hero h1 em');
+            const em = document.querySelector<HTMLElement>('.port-hero h1 em');
             if (em) scrambleEl(em, 'Work.', 500);
         });
 
         // ── MOBILE MENU ──
-        var hamburger = document.getElementById('navHamburger');
-        var mobileMenu = document.getElementById('mobileMenu');
-        var closeBtn = document.getElementById('mobileMenuClose');
+        (function() {
+            const hamburger = document.getElementById('navHamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeBtn = document.getElementById('mobileMenuClose');
+            if (!hamburger || !mobileMenu || !closeBtn) return;
 
-        function closeMobileMenu() {
-            hamburger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
-        }
+            const navHamburger = hamburger;
+            const navMobileMenu = mobileMenu;
+            const navCloseBtn = closeBtn;
 
-        hamburger.addEventListener('click', function() {
-            var isOpen = mobileMenu.classList.toggle('open');
-            hamburger.classList.toggle('open', isOpen);
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        });
+            const closeMobileMenu = () => {
+                navHamburger.classList.remove('open');
+                navMobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            };
 
-        closeBtn.addEventListener('click', closeMobileMenu);
-    </script>
+            navHamburger.addEventListener('click', function() {
+                const isOpen = navMobileMenu.classList.toggle('open');
+                navHamburger.classList.toggle('open', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            });
+
+            navCloseBtn.addEventListener('click', closeMobileMenu);
+        })();    </script>
 
 </BaseLayout>

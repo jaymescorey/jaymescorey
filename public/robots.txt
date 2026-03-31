@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /landing.html
-Disallow: /thank-you.html
+Disallow: /landing
+Disallow: /thank-you
 
 Sitemap: https://jaymescorey.com/sitemap.xml
