@@ -21,6 +21,7 @@ src/
     landing.astro     — LinkedIn traffic landing page (noindex, email capture → upsell)
     thank-you.astro   — Post-signup confirmation (noindex, pitches Builder Session)
     sprint.astro      — 30-Day Sprint offer page ($2,500, max 10 clients at a time)
+    own-your-income.astro — SEO-targeted long-form sales page for "Own Your Income" course ($97, Stripe checkout)
     field-report.astro         — Field Report index (featured post + feed list layout)
     field-report/
       building-in-public.astro
@@ -200,6 +201,7 @@ Add to `public/sitemap.xml` for every new public page:
 - Gallery images in portfolio overlays keep `loading="eager"` per existing convention.
 
 ## Pending / Not Yet Done
+- **Own Your Income course** — Course content not yet built. Stripe payment link placeholder (`href="#"`) on `own-your-income.astro` — replace with live Stripe link when ready. Two TODO comments in the file mark the checkout buttons. Testimonials on the page are placeholder — replace with real quotes once collected.
 - **hi@jaymescorey.com** — Set up domain email. Once live, replace sprint waitlist modal with a real application form.
 - **MailerLite** — Set up a separate group/segment for Sprint waitlist vs newsletter subscribers. Verify signups land correctly end-to-end.
 - **Calendly URL** — `thank-you.astro` Builder Session button still points to `https://calendly.com/your-link`. Replace before sending traffic.

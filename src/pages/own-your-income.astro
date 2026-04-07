@@ -1,0 +1,1859 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<BaseLayout
+    title="Own Your Income — The $97 Course by Jaymes Corey"
+    description="Stop renting your time to someone else's dream. Own Your Income is the no-fluff $97 course that shows you how to build your first real income stream — no guru promises, no passive income myths, no waiting."
+    canonicalUrl="https://jaymescorey.com/own-your-income"
+    ogImage="https://jaymescorey.com/images/og-jaymes.jpg"
+    ogImageAlt="Own Your Income — The $97 Course by Jaymes Corey"
+    ogType="product"
+>
+    <Fragment slot="head">
+
+        <!-- Course structured data (Google rich results eligible) -->
+        <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "Course",
+          "name": "Own Your Income",
+          "description": "The no-fluff course that shows you how to build your first real income stream — without quitting your job, without a huge following, and without waiting for the perfect moment.",
+          "url": "https://jaymescorey.com/own-your-income",
+          "image": "https://jaymescorey.com/images/og-jaymes.jpg",
+          "provider": {
+            "@type": "Person",
+            "name": "Jaymes Corey",
+            "url": "https://jaymescorey.com",
+            "sameAs": ["https://www.linkedin.com/in/jaymescorey"]
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Jaymes Corey",
+            "url": "https://jaymescorey.com"
+          },
+          "educationalLevel": "Beginner",
+          "courseMode": "Online",
+          "teaches": [
+            "How to build your first income stream",
+            "How to create and price a digital offer",
+            "How to get your first paying customer without a large audience",
+            "How to build repeatable income systems",
+            "How to stack multiple income streams as a one-person business"
+          ],
+          "about": {
+            "@type": "Thing",
+            "name": "Building a one-person income stream",
+            "description": "How to own your income by building a real, independent income stream from scratch"
+          },
+          "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "Online",
+            "courseWorkload": "PT2H",
+            "instructor": {
+              "@type": "Person",
+              "name": "Jaymes Corey",
+              "url": "https://jaymescorey.com",
+              "description": "Navy Vet, Dad of 3, and one-person business builder who has built service businesses from zero to profit across multiple states."
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "97",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://jaymescorey.com/own-your-income",
+              "validFrom": "2026-04-07",
+              "seller": {
+                "@type": "Person",
+                "name": "Jaymes Corey"
+              }
+            }
+          }
+        }
+        `}</script>
+
+        <!-- BreadcrumbList structured data -->
+        <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://jaymescorey.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Own Your Income",
+              "item": "https://jaymescorey.com/own-your-income"
+            }
+          ]
+        }
+        `}</script>
+
+        <!-- FAQ structured data (Google FAQ rich results) -->
+        <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Do I need a business idea before I start Own Your Income?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Module 2 walks you through picking your income stream from scratch. If you already have an idea, we will sharpen it. If you do not, we will find one that fits your actual life."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does it take to get through the Own Your Income course?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Six modules. If you move, you can finish in a weekend. If you implement as you go, plan on two to four weeks. It is built for people with full lives, not people with infinite free time."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Will Own Your Income work if I have a full-time job and limited time?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. This course is built for that situation specifically. You do not quit your job to start building. You build while you have the safety net, so that by the time you want to make a bigger move, you have already got something working."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What if I have zero audience and zero following?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Module 4 covers exactly this. You do not need an audience to own your income. You need one customer. The course covers how to get that first customer without social media follower counts, without paid ads, and without waiting years to build an audience first."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the refund policy for Own Your Income?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "If you complete the course and do the work and it does not move you toward owning your income, reach out. The goal is not to keep $97 from someone who genuinely put in the effort."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why does Own Your Income cost $97?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "$97 is real money — enough that you will actually open it — but not so much that it becomes the excuse not to start. Free courses get ignored. $997 courses become a thing you have to wait until the finances are better for. $97 is the number that makes you move without making you wait."
+              }
+            }
+          ]
+        }
+        `}</script>
+
+    </Fragment>
+
+    <Nav />
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- HERO -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-hero">
+        <div class="oyi-hero-inner">
+            <span class="oyi-eyebrow">// The $97 Course — Instant Access</span>
+            <h1>
+                Own Your<br>
+                <span class="oyi-hero-outline">Income.</span>
+            </h1>
+            <p class="oyi-hero-sub">
+                You don't have an income problem. You have a permission problem. You're waiting for someone else to tell you it's okay to build something of your own — and that wait is costing you more than you know.
+            </p>
+            <p class="oyi-hero-sub oyi-hero-sub--bold">
+                This course ends the wait.
+            </p>
+            <a href="#checkout" class="btn oyi-cta-btn">Get Instant Access — $97 &nbsp;→</a>
+            <div class="oyi-hero-meta">
+                <span class="oyi-meta-pill">✓ Instant Access</span>
+                <span class="oyi-meta-pill">✓ Go At Your Own Pace</span>
+                <span class="oyi-meta-pill">✓ No Fluff. No Guru. Real Moves.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- TICKER -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div class="oyi-ticker" aria-hidden="true">
+        <div class="oyi-ticker-track">
+            <span>Own Your Income</span>
+            <span class="oyi-tick-sep">◆</span>
+            <span>Stop Renting Your Time</span>
+            <span class="oyi-tick-sep">◆</span>
+            <span>Build One Thing</span>
+            <span class="oyi-tick-sep">◆</span>
+            <span>Your First Income Stream</span>
+            <span class="oyi-tick-sep">◆</span>
+            <span>No Guru. No Gimmicks.</span>
+            <span class="oyi-tick-sep">◆</span>
+            <span>$97 — Start Today</span>
+            <span class="oyi-tick-sep">◆</span>
+            <span>Own Your Income</span>
+            <span class="oyi-tick-sep">◆</span>
+            <span>Stop Renting Your Time</span>
+            <span class="oyi-tick-sep">◆</span>
+            <span>Build One Thing</span>
+            <span class="oyi-tick-sep">◆</span>
+            <span>Your First Income Stream</span>
+            <span class="oyi-tick-sep">◆</span>
+            <span>No Guru. No Gimmicks.</span>
+            <span class="oyi-tick-sep">◆</span>
+            <span>$97 — Start Today</span>
+            <span class="oyi-tick-sep">◆</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- THE LIE -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-paper oyi-reveal">
+        <div class="oyi-inner">
+            <span class="section-label">01 // The Lie</span>
+            <h2 class="oyi-section-h2">
+                They Sold You<br>
+                <span class="oyi-outline-ink">"Passive Income."</span>
+            </h2>
+            <div class="oyi-prose-cols">
+                <div class="oyi-prose">
+                    <p>You've heard it a thousand times. Build a course. Start a dropshipping store. Create content. Set up a funnel. Sleep while the money rolls in.</p>
+                    <p>So you researched. You watched hours of YouTube. You bought a course from someone with a rented Lamborghini in the thumbnail. You signed up for the email list of a guru who charges $5,000 to tell you what you could've figured out for free.</p>
+                    <p>And now you're here — still searching, still reading, still waiting for the idea that finally feels real enough to start.</p>
+                    <div class="oyi-pull">
+                        The passive income promise is designed to keep you consuming, not building.
+                    </div>
+                    <p>The people selling you "passive income" make their money by selling the <em>idea</em> of passive income. That's their income stream. And it's not passive for you — it's another thing you bought that's sitting unfinished in a browser tab.</p>
+                    <p>Here's the truth nobody says out loud: owning your income is not passive. Not at first. It requires building something real, and it requires you to actually start.</p>
+                    <p>That's what this course is about.</p>
+                </div>
+                <div class="oyi-aside-card oyi-reveal">
+                    <div class="tape"></div>
+                    <p class="oyi-aside-stat">87%</p>
+                    <p class="oyi-aside-label">of people who buy online courses never finish them.</p>
+                    <p class="oyi-aside-note">// This one is built to be finished. Six modules. One clear outcome. No fluff.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- THE COST OF WAITING -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-dark oyi-reveal">
+        <div class="oyi-inner">
+            <span class="section-label" style="color: var(--yellow);">02 // The Real Cost</span>
+            <h2 class="oyi-section-h2" style="color: var(--paper);">
+                Another Year.<br>
+                <span style="-webkit-text-stroke: 2px var(--yellow); color: transparent;">Same Situation.</span>
+            </h2>
+            <p class="oyi-section-lead" style="color: rgba(246,241,231,0.75);">
+                Let's do the math on waiting.
+            </p>
+            <div class="oyi-cost-grid">
+                <div class="oyi-cost-card">
+                    <span class="oyi-cost-num">52</span>
+                    <span class="oyi-cost-label">weeks you spend waiting for the right time</span>
+                </div>
+                <div class="oyi-cost-card">
+                    <span class="oyi-cost-num">$0</span>
+                    <span class="oyi-cost-label">in income from streams you haven't built yet</span>
+                </div>
+                <div class="oyi-cost-card">
+                    <span class="oyi-cost-num">1</span>
+                    <span class="oyi-cost-label">income source — your employer — who can cut it tomorrow</span>
+                </div>
+                <div class="oyi-cost-card">
+                    <span class="oyi-cost-num">0</span>
+                    <span class="oyi-cost-label">income streams that built themselves while you waited</span>
+                </div>
+            </div>
+            <p class="oyi-dark-prose">
+                You're not waiting for the right idea. You have the idea. You're waiting for permission. You want someone to tell you that it's real enough, safe enough, ready enough to start.
+            </p>
+            <p class="oyi-dark-prose">
+                I'm telling you now: it never feels ready. You build it ready. You own your income by moving, not by waiting.
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- WHAT "OWN YOUR INCOME" ACTUALLY MEANS -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-cream oyi-reveal">
+        <div class="oyi-inner">
+            <span class="section-label">03 // The Reframe</span>
+            <h2 class="oyi-section-h2">
+                What It Really<br>
+                <span class="oyi-outline-ink">Means to Own Your Income.</span>
+            </h2>
+            <div class="oyi-reframe-grid">
+                <div class="oyi-reframe-block">
+                    <span class="oyi-reframe-x">×</span>
+                    <h3>It Does Not Mean</h3>
+                    <ul class="oyi-reframe-list oyi-reframe-list--no">
+                        <li>Quitting your job tomorrow</li>
+                        <li>Building a 7-figure business from scratch</li>
+                        <li>Going viral or growing a massive audience</li>
+                        <li>Having a perfect idea before you move</li>
+                        <li>Knowing exactly how it ends before it starts</li>
+                        <li>Replacing your income overnight</li>
+                    </ul>
+                </div>
+                <div class="oyi-reframe-divider"></div>
+                <div class="oyi-reframe-block">
+                    <span class="oyi-reframe-check">→</span>
+                    <h3>It Means</h3>
+                    <ul class="oyi-reframe-list oyi-reframe-list--yes">
+                        <li>Having at least one income stream you control</li>
+                        <li>Building something real that earns without a boss attached</li>
+                        <li>Knowing how to create income — not just how to earn it</li>
+                        <li>Not being one bad performance review from crisis</li>
+                        <li>Moving toward total presence with the people that matter</li>
+                        <li>Starting ugly and making it real through action</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="oyi-reframe-bottom">
+                <p>Owning your income isn't a destination. It's a decision — the decision to stop being dependent on a single source of money that someone else controls. This course teaches you how to make that decision real.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- WHO THIS IS FOR -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-paper oyi-reveal">
+        <div class="oyi-inner">
+            <span class="section-label">04 // Who This Is For</span>
+            <h2 class="oyi-section-h2">
+                You've Been Here<br>
+                <span class="oyi-outline-ink">Before.</span>
+            </h2>
+            <p class="oyi-section-lead">If any of these sound familiar, you're in the right place.</p>
+            <div class="oyi-persona-grid">
+                <div class="oyi-persona-card oyi-reveal">
+                    <div class="tape"></div>
+                    <span class="oyi-persona-num">01</span>
+                    <h3>The Frustrated Employee</h3>
+                    <p>You're good at your job. Maybe really good. But you're working hard to build someone else's dream and somewhere deep down it's eating at you. You want something that's yours. You just don't know where to start.</p>
+                </div>
+                <div class="oyi-persona-card oyi-reveal">
+                    <div class="tape"></div>
+                    <span class="oyi-persona-num">02</span>
+                    <h3>The Side Hustle Seeker</h3>
+                    <p>You've tried a few things. Maybe Etsy, maybe freelancing, maybe dropshipping. Nothing stuck. You need a clear process — not another idea — so you can actually finish something and get paid for it.</p>
+                </div>
+                <div class="oyi-persona-card oyi-reveal">
+                    <div class="tape"></div>
+                    <span class="oyi-persona-num">03</span>
+                    <h3>The Passive Income Skeptic</h3>
+                    <p>You've been burned by the gurus. The $2,000 courses that delivered generic advice. The "just start a podcast" crowd. You want someone who's actually done it — without the hype — to show you the real path.</p>
+                </div>
+                <div class="oyi-persona-card oyi-reveal">
+                    <div class="tape"></div>
+                    <span class="oyi-persona-num">04</span>
+                    <h3>The Almost-Started</h3>
+                    <p>You have the idea. You've had it for a while. You know what you want to build. You just haven't pulled the trigger yet. You need a structure that forces you to move and someone to hold the standard while you do.</p>
+                </div>
+                <div class="oyi-persona-card oyi-reveal">
+                    <div class="tape"></div>
+                    <span class="oyi-persona-num">05</span>
+                    <h3>The Safety Net Builder</h3>
+                    <p>You're not trying to blow up. You just want one income stream that you own — something between you and the worst-case scenario. A cushion. A backup. A start. That's all. That's the right reason to be here.</p>
+                </div>
+                <div class="oyi-persona-card oyi-reveal">
+                    <div class="tape"></div>
+                    <span class="oyi-persona-num">06</span>
+                    <h3>The Present Parent</h3>
+                    <p>You've done the math. The way you're working right now doesn't add up to the life you want to live with your kids. You need income that isn't chained to a desk, a commute, or someone else's schedule. Same.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- THE METHOD -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-yellow oyi-reveal">
+        <div class="oyi-inner">
+            <span class="section-label">05 // The Approach</span>
+            <h2 class="oyi-section-h2 oyi-h2-ink">
+                Build Ugly.<br>Earn Real.
+            </h2>
+            <div class="oyi-method-grid">
+                <div class="oyi-method-text">
+                    <p class="oyi-method-p">This is not a theory course. There are no slides full of frameworks that sound smart but fall apart the second you try to apply them to your actual life.</p>
+                    <p class="oyi-method-p">Every module in Own Your Income is built around one principle: <strong>the move is the method.</strong> You learn by doing. You build by shipping. You own your income by building something and putting it in front of a real person who can pay for it.</p>
+                    <p class="oyi-method-p">That's it. That's the whole approach. Ugly action beats perfect inaction every single time.</p>
+                    <p class="oyi-method-p">I've built service businesses from zero in three different states. I've launched experiments across dozens of domains. I homeschool my kids and run income streams in public so people can see exactly what works and what doesn't. Not hypothetically. Actually.</p>
+                    <p class="oyi-method-p">This course is what I wish someone had handed me before I wasted years waiting for the right moment.</p>
+                </div>
+                <div class="oyi-method-card">
+                    <div class="tape"></div>
+                    <p class="oyi-method-card-text">The move<br>is the<br>method.</p>
+                    <span class="oyi-method-card-sub">// Everything else is just delay</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- WHAT'S INSIDE THE COURSE -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-dark oyi-reveal">
+        <div class="oyi-inner">
+            <span class="section-label" style="color: var(--yellow);">06 // Inside the Course</span>
+            <h2 class="oyi-section-h2" style="color: var(--paper);">
+                Six Modules.<br>
+                <span style="-webkit-text-stroke: 2px var(--yellow); color: transparent;">One Outcome.</span>
+            </h2>
+            <p class="oyi-section-lead" style="color: rgba(246,241,231,0.65);">
+                Own Your Income is six focused modules. No bloat. No filler. Every lesson moves you closer to a real income stream that you own.
+            </p>
+
+            <div class="oyi-modules">
+
+                <div class="oyi-module oyi-reveal">
+                    <div class="oyi-module-num">01</div>
+                    <div class="oyi-module-body">
+                        <span class="oyi-module-label">The Mindset Reset</span>
+                        <h3 class="oyi-module-title">Why "Passive Income" Is Keeping You Broke</h3>
+                        <p class="oyi-module-desc">We burn the passive income fantasy down and replace it with something that actually works: the ownership model. You'll finish this module with a clear understanding of what owning your income requires, why it's possible for you specifically, and the single mental switch that separates people who build from people who browse.</p>
+                        <ul class="oyi-module-bullets">
+                            <li>The myth that keeps most people consuming instead of building</li>
+                            <li>What "owning your income" actually demands of you</li>
+                            <li>The permission problem — and how to kill it permanently</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="oyi-module oyi-reveal">
+                    <div class="oyi-module-num">02</div>
+                    <div class="oyi-module-body">
+                        <span class="oyi-module-label">The One Thing Rule</span>
+                        <h3 class="oyi-module-title">Stop Starting Everything. Pick One.</h3>
+                        <p class="oyi-module-desc">The fastest way to own nothing is to try to build everything at once. This module gives you a clear framework for picking the one income stream that fits your skills, your life, and your actual schedule. We cover the four types of income streams that work for one-person builders — and how to choose yours without second-guessing it to death.</p>
+                        <ul class="oyi-module-bullets">
+                            <li>The four income stream types and which one fits you</li>
+                            <li>How to stop chasing shiny objects and go deep on one thing</li>
+                            <li>The "ugly filter" — your one-question test for any idea</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="oyi-module oyi-reveal">
+                    <div class="oyi-module-num">03</div>
+                    <div class="oyi-module-body">
+                        <span class="oyi-module-label">Build Your First Offer</span>
+                        <h3 class="oyi-module-title">What to Sell, How to Price It, and Why It Has to Be Real</h3>
+                        <p class="oyi-module-desc">Most people spend months "building" something that nobody ever sees. This module breaks the cycle. You'll build your first offer using the Ugly Offer Method — minimum viable, maximum clarity — so you can put something in front of a real buyer before you feel ready. Because feeling ready is not a prerequisite for getting paid.</p>
+                        <ul class="oyi-module-bullets">
+                            <li>The Ugly Offer Method — build it fast, price it right, ship it today</li>
+                            <li>Pricing psychology for first-time income builders</li>
+                            <li>How to write an offer page that converts without a copywriting degree</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="oyi-module oyi-reveal">
+                    <div class="oyi-module-num">04</div>
+                    <div class="oyi-module-body">
+                        <span class="oyi-module-label">Your First Customer</span>
+                        <h3 class="oyi-module-title">How to Get Paid Without a Big Audience, Ads, or Years of Grinding</h3>
+                        <p class="oyi-module-desc">You don't need 10,000 followers to own your income. You need one paying customer first — and then the second one becomes a system. This module covers the exact outreach, positioning, and conversation moves that get you to a first sale without spending money on ads or begging the algorithm for attention.</p>
+                        <ul class="oyi-module-bullets">
+                            <li>The warm market method — your fastest path to a first sale</li>
+                            <li>How to position your offer so people self-select in</li>
+                            <li>The exact message framework for getting your first yes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="oyi-module oyi-reveal">
+                    <div class="oyi-module-num">05</div>
+                    <div class="oyi-module-body">
+                        <span class="oyi-module-label">The System</span>
+                        <h3 class="oyi-module-title">Make It Repeatable So It Doesn't Own You</h3>
+                        <p class="oyi-module-desc">The goal isn't to own your income and then have it own your time instead. This module is about building the basic systems that make your income stream work without you having to manually push it every single day. Simple, ugly, functional systems. Not automation fantasies — real repeatable processes that let you earn without burning out.</p>
+                        <ul class="oyi-module-bullets">
+                            <li>The three systems every income stream needs to run without you</li>
+                            <li>How to build a simple delivery process that scales</li>
+                            <li>When to automate vs. when to keep it manual</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="oyi-module oyi-reveal">
+                    <div class="oyi-module-num">06</div>
+                    <div class="oyi-module-body">
+                        <span class="oyi-module-label">Stack It</span>
+                        <h3 class="oyi-module-title">What Happens After One Stream Is Working</h3>
+                        <p class="oyi-module-desc">Once you own one income stream, the game changes. You're no longer guessing — you have proof that you can build something and get paid for it. This final module shows you how to layer a second stream without tanking the first one, how to recognize when you're ready to scale, and how to think about income as a compounding asset instead of a monthly scramble.</p>
+                        <ul class="oyi-module-bullets">
+                            <li>The stacking sequence — how to add streams without losing focus</li>
+                            <li>Income compounding: how each stream makes the next one easier</li>
+                            <li>Signs you're ready to go deeper vs. wider</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="oyi-bonus oyi-reveal">
+                <span class="oyi-bonus-label">// Bonus</span>
+                <h3 class="oyi-bonus-title">The Income Experiment Tracker</h3>
+                <p class="oyi-bonus-desc">The same spreadsheet I use to track my own income experiments across multiple domains — what's running, what's earning, what's getting killed. Free with the course. Because you can't own your income if you don't know what's working.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- WHAT CHANGES AFTER -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-paper oyi-reveal">
+        <div class="oyi-inner">
+            <span class="section-label">07 // The Outcome</span>
+            <h2 class="oyi-section-h2">
+                What Changes<br>
+                <span class="oyi-outline-ink">After This Course.</span>
+            </h2>
+            <div class="oyi-outcomes-grid">
+                <div class="oyi-outcome-item oyi-reveal">
+                    <span class="oyi-outcome-arrow">→</span>
+                    <div>
+                        <h3>You stop depending on one source of income</h3>
+                        <p>You'll have a live income stream that you built, you own, and you can grow — independent of any employer, client, or algorithm deciding your worth.</p>
+                    </div>
+                </div>
+                <div class="oyi-outcome-item oyi-reveal">
+                    <span class="oyi-outcome-arrow">→</span>
+                    <div>
+                        <h3>You stop researching and start building</h3>
+                        <p>The loop of consuming content about building breaks. You'll have a clear process, a real offer, and the first moves already made.</p>
+                    </div>
+                </div>
+                <div class="oyi-outcome-item oyi-reveal">
+                    <span class="oyi-outcome-arrow">→</span>
+                    <div>
+                        <h3>You know what you're building and why</h3>
+                        <p>No more picking random ideas because they sound good. You'll have a framework to evaluate any income opportunity and move on the right one fast.</p>
+                    </div>
+                </div>
+                <div class="oyi-outcome-item oyi-reveal">
+                    <span class="oyi-outcome-arrow">→</span>
+                    <div>
+                        <h3>You have proof you can do this</h3>
+                        <p>Nothing kills self-doubt faster than a real sale. This course is designed to get you to your first transaction — and that changes everything about how you see what's possible.</p>
+                    </div>
+                </div>
+                <div class="oyi-outcome-item oyi-reveal">
+                    <span class="oyi-outcome-arrow">→</span>
+                    <div>
+                        <h3>You have a repeatable system, not a one-time win</h3>
+                        <p>The moves you learn here apply to every income stream you build for the rest of your life. You're not buying a trick. You're buying a way of operating.</p>
+                    </div>
+                </div>
+                <div class="oyi-outcome-item oyi-reveal">
+                    <span class="oyi-outcome-arrow">→</span>
+                    <div>
+                        <h3>You move closer to total presence</h3>
+                        <p>This is the big one. Owning your income is what buys back your time. More presence with your kids. Less panic about what happens if one paycheck disappears. That's what this is really about.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- ABOUT JAYMES -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-dark oyi-reveal">
+        <div class="oyi-inner">
+            <span class="section-label" style="color: var(--yellow);">08 // Who Built This</span>
+            <div class="oyi-about-grid">
+                <div class="oyi-about-text">
+                    <h2 class="oyi-section-h2" style="color: var(--paper);">
+                        Not a Guru.<br>
+                        <span style="-webkit-text-stroke: 2px var(--yellow); color: transparent;">A Builder.</span>
+                    </h2>
+                    <p class="oyi-about-p">I'm Jaymes Corey. Navy Vet. Dad of 3. I've built service businesses from zero to profitable in Florida, Hawaii, and California — no loans, no investors, no safety net. Started with $0 and a work ethic developed in the military.</p>
+                    <p class="oyi-about-p">I don't sell courses about building from a theory. I build things in public so you can watch the real process — the wins, the dead ends, the ugly pivots — and learn from actual results instead of polished presentations.</p>
+                    <p class="oyi-about-p">I homeschool my kids. I run income experiments across multiple domains at the same time. I document everything publicly because I believe the cycle of "company man or family man" is a choice nobody should have to make — and owning your income is what breaks that cycle.</p>
+                    <p class="oyi-about-p">This course exists because someone handed me bad advice for years before I figured out the real moves. I'm handing you the real moves at $97 because the information shouldn't cost more than the action.</p>
+                    <a href="#checkout" class="btn oyi-about-cta">Own Your Income — $97 &nbsp;→</a>
+                </div>
+                <div class="oyi-about-portrait">
+                    <div class="oyi-portrait-wrap">
+                        <div class="tape"></div>
+                        <img
+                            src="/images/jaymes.webp"
+                            alt="Jaymes Corey — Navy Vet, Dad of 3, one-person business builder"
+                            loading="lazy"
+                            class="oyi-portrait-img"
+                        >
+                        <div class="oyi-portrait-caption">
+                            <p>Jaymes Corey</p>
+                            <span>// Navy Vet. Dad of 3. Builder.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SOCIAL PROOF PLACEHOLDER -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-cream oyi-reveal">
+        <div class="oyi-inner">
+            <span class="section-label">09 // What Builders Say</span>
+            <h2 class="oyi-section-h2">
+                Real People.<br>
+                <span class="oyi-outline-ink">Real Moves.</span>
+            </h2>
+            <div class="oyi-testimonials">
+                <div class="oyi-testimonial oyi-reveal">
+                    <div class="tape"></div>
+                    <p class="oyi-testimonial-quote">"I had been 'about to start' for two years. After module three I had my first offer live. It wasn't perfect — but it was real. That matters more than I expected."</p>
+                    <span class="oyi-testimonial-name">— Early Student, Own Your Income</span>
+                </div>
+                <div class="oyi-testimonial oyi-reveal">
+                    <div class="tape"></div>
+                    <p class="oyi-testimonial-quote">"Every other course I bought was someone teaching what they learned from someone else teaching. Jaymes has actually built things. You can feel the difference in how he explains it."</p>
+                    <span class="oyi-testimonial-name">— Early Student, Own Your Income</span>
+                </div>
+                <div class="oyi-testimonial oyi-reveal">
+                    <div class="tape"></div>
+                    <p class="oyi-testimonial-quote">"Module four changed how I think about getting customers. Stopped waiting for people to find me. Went and got my first sale. $97 was the best ROI I've seen on anything I've bought online."</p>
+                    <span class="oyi-testimonial-name">— Early Student, Own Your Income</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- THE OFFER -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-yellow oyi-reveal" id="checkout">
+        <div class="oyi-inner oyi-offer-inner">
+            <span class="section-label">10 // The Investment</span>
+            <h2 class="oyi-section-h2 oyi-h2-ink">
+                Own Your Income.<br>Start Today.
+            </h2>
+            <div class="oyi-offer-box">
+                <div class="tape"></div>
+                <div class="oyi-offer-price-block">
+                    <span class="oyi-offer-price">$97</span>
+                    <span class="oyi-offer-price-label">// One-time. Instant Access. No Subscription.</span>
+                </div>
+                <div class="oyi-offer-includes">
+                    <h3>Everything That's Included:</h3>
+                    <ul class="oyi-offer-list">
+                        <li>✓ Module 1 — The Mindset Reset</li>
+                        <li>✓ Module 2 — The One Thing Rule</li>
+                        <li>✓ Module 3 — Build Your First Offer</li>
+                        <li>✓ Module 4 — Your First Customer</li>
+                        <li>✓ Module 5 — The System</li>
+                        <li>✓ Module 6 — Stack It</li>
+                        <li>✓ Bonus: The Income Experiment Tracker</li>
+                        <li>✓ Lifetime Access — Course updates included</li>
+                    </ul>
+                </div>
+                {/* TODO: Replace href with live Stripe payment link */}
+                <a href="#" class="oyi-buy-btn">Get Instant Access — $97 &nbsp;→</a>
+                <p class="oyi-offer-fine">Secure checkout via Stripe. One-time payment. No recurring charges.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- RIGHT FIT / WRONG FIT -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-paper oyi-reveal">
+        <div class="oyi-inner">
+            <span class="section-label">11 // Is This For You</span>
+            <h2 class="oyi-section-h2">
+                Right Fit.<br>
+                <span class="oyi-outline-ink">Wrong Fit.</span>
+            </h2>
+            <div class="oyi-fit-grid">
+                <div class="oyi-fit-col oyi-fit-col--yes">
+                    <h3>Own Your Income Is For You If —</h3>
+                    <ul class="oyi-fit-list">
+                        <li>You're tired of a single income source someone else controls</li>
+                        <li>You've been researching and consuming — but not building</li>
+                        <li>You want a real process, not another idea</li>
+                        <li>You're ready to start ugly and make it real through action</li>
+                        <li>You want financial independence for your family — not just a side hustle</li>
+                        <li>You've had an idea long enough that it's starting to feel like a regret</li>
+                        <li>$97 is something you can do, and you're willing to bet it on yourself</li>
+                    </ul>
+                </div>
+                <div class="oyi-fit-col oyi-fit-col--no">
+                    <h3>This Is Not For You If —</h3>
+                    <ul class="oyi-fit-list">
+                        <li>You want someone to build it for you</li>
+                        <li>You need a guarantee you'll never have to work again</li>
+                        <li>You're looking for a magic formula with zero effort</li>
+                        <li>You're not willing to move before things are perfect</li>
+                        <li>You have no intention of doing the modules — just collecting courses</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FAQ -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-dark oyi-reveal">
+        <div class="oyi-inner">
+            <span class="section-label" style="color: var(--yellow);">12 // FAQ</span>
+            <h2 class="oyi-section-h2" style="color: var(--paper);">
+                Real Questions.<br>
+                <span style="-webkit-text-stroke: 2px var(--yellow); color: transparent;">Straight Answers.</span>
+            </h2>
+            <div class="oyi-faq-list">
+
+                <div class="oyi-faq-item oyi-reveal">
+                    <h3 class="oyi-faq-q">Do I need a business idea before I start?</h3>
+                    <p class="oyi-faq-a">No. Module 2 walks you through picking your income stream from scratch. If you already have an idea, great — we'll sharpen it. If you don't, we'll find one that fits your actual life.</p>
+                </div>
+
+                <div class="oyi-faq-item oyi-reveal">
+                    <h3 class="oyi-faq-q">How long does it take to get through the course?</h3>
+                    <p class="oyi-faq-a">Six modules. If you move, you can finish in a weekend. If you implement as you go — which is the point — plan on two to four weeks. It's built for people with full lives, not people with infinite free time.</p>
+                </div>
+
+                <div class="oyi-faq-item oyi-reveal">
+                    <h3 class="oyi-faq-q">Is this about dropshipping? Affiliate marketing? NFTs?</h3>
+                    <p class="oyi-faq-a">No. This course is about building real income streams — service businesses, productized services, digital products, and offers built around what you actually know. Nothing trendy. Nothing that requires you to find a new platform every six months.</p>
+                </div>
+
+                <div class="oyi-faq-item oyi-reveal">
+                    <h3 class="oyi-faq-q">What if I've tried to start before and failed?</h3>
+                    <p class="oyi-faq-a">Good. Failed attempts mean you've already paid some tuition. This course gives you the process that the previous attempts were missing. Most people don't fail because they're not capable — they fail because they have no clear next move. This is the clear next move.</p>
+                </div>
+
+                <div class="oyi-faq-item oyi-reveal">
+                    <h3 class="oyi-faq-q">Will this work if I have a full-time job and limited time?</h3>
+                    <p class="oyi-faq-a">Yes. This is built for that situation specifically. You don't quit your job to start building. You build while you have the safety net, so that by the time you want to make a bigger move, you've already got something working.</p>
+                </div>
+
+                <div class="oyi-faq-item oyi-reveal">
+                    <h3 class="oyi-faq-q">What if I have zero audience and zero following?</h3>
+                    <p class="oyi-faq-a">Module 4 covers exactly this. You don't need an audience to own your income. You need one customer. We cover how to get that first customer without social media follower counts, without paid ads, and without waiting years to "build an audience first."</p>
+                </div>
+
+                <div class="oyi-faq-item oyi-reveal">
+                    <h3 class="oyi-faq-q">Is there a refund policy?</h3>
+                    <p class="oyi-faq-a">If you complete the course and do the work and it doesn't move you toward owning your income, reach out. I'm not interested in keeping $97 from someone who genuinely put in the effort. I am interested in keeping it from people who want a refund as a safety net before they start.</p>
+                </div>
+
+                <div class="oyi-faq-item oyi-reveal">
+                    <h3 class="oyi-faq-q">Why $97? Why not free, or $997?</h3>
+                    <p class="oyi-faq-a">$97 is real money — enough that you'll actually open it — but not so much that it becomes the excuse not to start. Free courses get ignored. $997 courses become a thing you "have to wait until the finances are better" for. $97 is the number that makes you move without making you wait.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FINAL CTA -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="oyi-section oyi-ink-cta oyi-reveal">
+        <div class="oyi-inner oyi-cta-inner">
+            <h2 class="oyi-final-h2">
+                Stop Waiting.<br>
+                <span class="oyi-final-accent">Own Your Income.</span>
+            </h2>
+            <p class="oyi-final-sub">Six modules. One real income stream. $97. The cycle ends here.</p>
+            {/* TODO: Replace href with live Stripe payment link */}
+            <a href="#checkout" class="oyi-buy-btn oyi-buy-btn--light">Get Instant Access — $97 &nbsp;→</a>
+            <p class="oyi-final-fine">Instant access via Stripe. Go at your own pace. Lifetime access included.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FOOTER -->
+    <!-- ═══════════════════════════════════════════ -->
+    <footer class="oyi-footer">
+        <a href="/">← Back to Jaymes Corey</a>
+    </footer>
+
+</BaseLayout>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- STYLES -->
+<!-- ═══════════════════════════════════════════════ -->
+<style is:global>
+
+    /* ── HERO ── */
+    .oyi-hero {
+        background: var(--ink);
+        color: var(--paper);
+        min-height: 92svh;
+        display: flex;
+        align-items: center;
+        padding: 6rem 10%;
+        border-bottom: var(--border-width) solid var(--yellow);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .oyi-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(242,194,48,0.05) 1px, transparent 1px);
+        background-size: 3px 3px;
+    }
+
+    .oyi-hero-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 860px;
+    }
+
+    .oyi-eyebrow {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--yellow);
+        background: rgba(242,194,48,0.08);
+        border: 1px solid rgba(242,194,48,0.25);
+        display: inline-block;
+        padding: 5px 14px;
+        margin-bottom: 1.75rem;
+    }
+
+    .oyi-hero h1 {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(4rem, 11vw, 8.5rem);
+        line-height: 0.9;
+        text-transform: uppercase;
+        letter-spacing: -3px;
+        color: var(--paper);
+        margin-bottom: 2rem;
+    }
+
+    .oyi-hero-outline {
+        -webkit-text-stroke: 3px var(--yellow);
+        color: transparent;
+        display: block;
+    }
+
+    .oyi-hero-sub {
+        font-family: 'Lora', serif;
+        font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+        line-height: 1.75;
+        color: rgba(246,241,231,0.75);
+        max-width: 620px;
+        margin-bottom: 1.25rem;
+    }
+
+    .oyi-hero-sub--bold {
+        font-weight: 700;
+        font-style: italic;
+        color: var(--paper);
+        margin-bottom: 2.5rem;
+    }
+
+    .oyi-cta-btn {
+        display: inline-block;
+        margin-bottom: 2rem;
+        font-size: 1.05rem;
+    }
+
+    .oyi-hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .oyi-meta-pill {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: rgba(246,241,231,0.5);
+    }
+
+    /* ── TICKER ── */
+    .oyi-ticker {
+        background: var(--ink);
+        border-top: var(--border-width) solid var(--yellow);
+        border-bottom: var(--border-width) solid var(--yellow);
+        padding: 0.9rem 0;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .oyi-ticker-track {
+        display: inline-flex;
+        gap: 2rem;
+        animation: oyi-tick 30s linear infinite;
+    }
+
+    .oyi-ticker-track span {
+        font-family: 'Anton', sans-serif;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--yellow);
+        flex-shrink: 0;
+    }
+
+    .oyi-tick-sep {
+        color: var(--rust) !important;
+    }
+
+    @keyframes oyi-tick {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* ── SHARED SECTION ── */
+    .oyi-section {
+        padding: 7rem 10%;
+        border-bottom: var(--border-width) solid var(--ink);
+    }
+
+    .oyi-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .oyi-paper  { background: var(--paper); }
+    .oyi-cream  { background: var(--cream); }
+    .oyi-dark   { background: var(--poster-black); }
+    .oyi-yellow { background: var(--yellow); border-bottom-color: var(--ink); }
+
+    .oyi-section-h2 {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(3rem, 7vw, 5.5rem);
+        text-transform: uppercase;
+        letter-spacing: -2px;
+        line-height: 0.92;
+        color: var(--ink);
+        margin: 1.25rem 0 2.5rem;
+    }
+
+    .oyi-h2-ink { color: var(--ink); }
+
+    .oyi-outline-ink {
+        -webkit-text-stroke: 2px var(--ink);
+        color: transparent;
+        display: block;
+    }
+
+    .oyi-section-lead {
+        font-family: 'Lora', serif;
+        font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+        line-height: 1.75;
+        color: var(--ink);
+        max-width: 680px;
+        margin-bottom: 3rem;
+    }
+
+    /* ── THE LIE ── */
+    .oyi-prose-cols {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    .oyi-prose p {
+        font-family: 'Lora', serif;
+        font-size: clamp(1rem, 1.6vw, 1.15rem);
+        line-height: 1.85;
+        color: var(--ink);
+        margin-bottom: 1.25rem;
+    }
+
+    .oyi-prose p em { font-style: italic; }
+
+    .oyi-pull {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        line-height: 1.1;
+        color: var(--ink);
+        border-left: 6px solid var(--yellow);
+        padding-left: 1.5rem;
+        margin: 2.5rem 0;
+    }
+
+    .oyi-aside-card {
+        background: var(--ink);
+        border: var(--border-width) solid var(--ink);
+        box-shadow: 8px 8px 0px var(--rust);
+        padding: 2.5rem 2rem;
+        transform: rotate(1.5deg);
+        position: sticky;
+        top: 2rem;
+    }
+
+    .oyi-aside-stat {
+        font-family: 'Anton', sans-serif;
+        font-size: 4.5rem;
+        line-height: 1;
+        color: var(--yellow);
+        letter-spacing: -2px;
+        margin: 0 0 0.5rem;
+    }
+
+    .oyi-aside-label {
+        font-family: 'Lora', serif;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: rgba(246,241,231,0.75);
+        margin: 0 0 1.5rem;
+    }
+
+    .oyi-aside-note {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: rgba(246,241,231,0.4);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* ── COST GRID ── */
+    .oyi-cost-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin: 3rem 0;
+    }
+
+    .oyi-cost-card {
+        background: rgba(246,241,231,0.04);
+        border: var(--border-width) solid rgba(242,194,48,0.25);
+        padding: 2rem 1.5rem;
+        text-align: center;
+        position: relative;
+    }
+
+    .oyi-cost-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: var(--yellow);
+    }
+
+    .oyi-cost-num {
+        display: block;
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(2.5rem, 4vw, 3.5rem);
+        letter-spacing: -2px;
+        line-height: 1;
+        color: var(--yellow);
+        margin-bottom: 0.75rem;
+    }
+
+    .oyi-cost-label {
+        font-family: 'Lora', serif;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: rgba(246,241,231,0.65);
+    }
+
+    .oyi-dark-prose {
+        font-family: 'Lora', serif;
+        font-size: clamp(1rem, 1.6vw, 1.15rem);
+        line-height: 1.85;
+        color: rgba(246,241,231,0.88);
+        max-width: 720px;
+        margin-bottom: 1.25rem;
+    }
+
+    /* ── REFRAME ── */
+    .oyi-reframe-grid {
+        display: grid;
+        grid-template-columns: 1fr 3px 1fr;
+        gap: 3rem;
+        margin: 3rem 0;
+        align-items: start;
+    }
+
+    .oyi-reframe-divider {
+        background: var(--light-rule);
+        width: 3px;
+        min-height: 300px;
+        align-self: stretch;
+    }
+
+    .oyi-reframe-block h3 {
+        font-family: 'Anton', sans-serif;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        color: var(--ink);
+        margin-bottom: 1.5rem;
+    }
+
+    .oyi-reframe-x {
+        font-family: 'Space Mono', monospace;
+        font-size: 2rem;
+        color: var(--rust);
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .oyi-reframe-check {
+        font-family: 'Space Mono', monospace;
+        font-size: 2rem;
+        color: var(--ink);
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .oyi-reframe-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+
+    .oyi-reframe-list li {
+        font-family: 'Lora', serif;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--ink);
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .oyi-reframe-list--no li::before {
+        content: '×';
+        position: absolute;
+        left: 0;
+        font-family: 'Space Mono', monospace;
+        color: var(--rust);
+        font-weight: 700;
+    }
+
+    .oyi-reframe-list--yes li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        font-family: 'Space Mono', monospace;
+        color: var(--ink);
+        font-weight: 700;
+    }
+
+    .oyi-reframe-bottom {
+        max-width: 700px;
+        margin-top: 3rem;
+        border-top: 3px solid var(--light-rule);
+        padding-top: 2.5rem;
+    }
+
+    .oyi-reframe-bottom p {
+        font-family: 'Lora', serif;
+        font-size: clamp(1rem, 1.6vw, 1.15rem);
+        line-height: 1.85;
+        color: var(--ink);
+    }
+
+    /* ── PERSONA CARDS ── */
+    .oyi-persona-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .oyi-persona-card {
+        background: var(--cream);
+        border: var(--border-width) solid var(--ink);
+        box-shadow: 5px 5px 0px var(--rust);
+        padding: 2rem 1.75rem;
+        position: relative;
+    }
+
+    .oyi-persona-num {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--rust);
+        display: block;
+        margin-bottom: 0.75rem;
+    }
+
+    .oyi-persona-card h3 {
+        font-family: 'Anton', sans-serif;
+        font-size: 1.35rem;
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        color: var(--ink);
+        margin-bottom: 0.85rem;
+        line-height: 1.1;
+    }
+
+    .oyi-persona-card p {
+        font-family: 'Lora', serif;
+        font-size: 0.95rem;
+        line-height: 1.75;
+        color: var(--ink);
+        opacity: 0.8;
+    }
+
+    /* ── THE METHOD ── */
+    .oyi-method-grid {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 3rem;
+    }
+
+    .oyi-method-p {
+        font-family: 'Lora', serif;
+        font-size: clamp(1rem, 1.6vw, 1.15rem);
+        line-height: 1.85;
+        color: var(--ink);
+        margin-bottom: 1.25rem;
+    }
+
+    .oyi-method-p strong {
+        font-weight: 700;
+    }
+
+    .oyi-method-card {
+        background: var(--ink);
+        border: var(--border-width) solid var(--ink);
+        box-shadow: 8px 8px 0px var(--rust);
+        padding: 2.5rem 2rem;
+        transform: rotate(-1.5deg);
+        position: relative;
+    }
+
+    .oyi-method-card-text {
+        font-family: 'Anton', sans-serif;
+        font-size: 2.2rem;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+        line-height: 1.05;
+        color: var(--yellow);
+        margin: 0 0 1.25rem;
+    }
+
+    .oyi-method-card-sub {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: rgba(246,241,231,0.35);
+        display: block;
+    }
+
+    /* ── MODULES ── */
+    .oyi-modules {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 3rem;
+        border: var(--border-width) solid rgba(242,194,48,0.2);
+    }
+
+    .oyi-module {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 0;
+        border-bottom: 2px solid rgba(242,194,48,0.15);
+    }
+
+    .oyi-module:last-child { border-bottom: none; }
+
+    .oyi-module-num {
+        font-family: 'Anton', sans-serif;
+        font-size: 3rem;
+        letter-spacing: -2px;
+        color: var(--yellow);
+        opacity: 0.25;
+        padding: 2.5rem 1.5rem;
+        border-right: 2px solid rgba(242,194,48,0.15);
+        display: flex;
+        align-items: flex-start;
+        line-height: 1;
+    }
+
+    .oyi-module-body {
+        padding: 2.5rem 2.5rem 2.5rem 2rem;
+    }
+
+    .oyi-module-label {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--yellow);
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .oyi-module-title {
+        font-family: 'Oswald', sans-serif;
+        font-size: clamp(1.15rem, 2vw, 1.45rem);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--paper);
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    .oyi-module-desc {
+        font-family: 'Lora', serif;
+        font-size: 0.98rem;
+        line-height: 1.85;
+        color: rgba(246,241,231,0.80);
+        margin-bottom: 1.25rem;
+    }
+
+    .oyi-module-bullets {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .oyi-module-bullets li {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: rgba(242,194,48,0.6);
+        padding-left: 1.25rem;
+        position: relative;
+    }
+
+    .oyi-module-bullets li::before {
+        content: '//';
+        position: absolute;
+        left: 0;
+        color: var(--rust);
+    }
+
+    /* ── BONUS ── */
+    .oyi-bonus {
+        margin-top: 2.5rem;
+        background: rgba(242,194,48,0.07);
+        border: 2px solid rgba(242,194,48,0.25);
+        border-left: 6px solid var(--yellow);
+        padding: 2rem 2.5rem;
+    }
+
+    .oyi-bonus-label {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--yellow);
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .oyi-bonus-title {
+        font-family: 'Anton', sans-serif;
+        font-size: 1.6rem;
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        color: var(--paper);
+        margin-bottom: 0.75rem;
+    }
+
+    .oyi-bonus-desc {
+        font-family: 'Lora', serif;
+        font-size: 0.98rem;
+        line-height: 1.75;
+        color: rgba(246,241,231,0.65);
+        margin: 0;
+    }
+
+    /* ── OUTCOMES ── */
+    .oyi-outcomes-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .oyi-outcome-item {
+        display: grid;
+        grid-template-columns: 3rem 1fr;
+        gap: 1.5rem;
+        align-items: start;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid var(--light-rule);
+    }
+
+    .oyi-outcome-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .oyi-outcome-arrow {
+        font-family: 'Space Mono', monospace;
+        font-size: 1.5rem;
+        color: var(--rust);
+        margin-top: 0.15rem;
+        flex-shrink: 0;
+    }
+
+    .oyi-outcome-item h3 {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        color: var(--ink);
+        margin-bottom: 0.5rem;
+        line-height: 1.1;
+    }
+
+    .oyi-outcome-item p {
+        font-family: 'Lora', serif;
+        font-size: 1rem;
+        line-height: 1.75;
+        color: var(--ink);
+        opacity: 0.8;
+        margin: 0;
+    }
+
+    /* ── ABOUT ── */
+    .oyi-about-grid {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 5rem;
+        align-items: center;
+        margin-top: 2rem;
+    }
+
+    .oyi-about-p {
+        font-family: 'Lora', serif;
+        font-size: clamp(1rem, 1.6vw, 1.1rem);
+        line-height: 1.85;
+        color: rgba(246,241,231,0.88);
+        margin-bottom: 1.25rem;
+    }
+
+    .oyi-about-cta {
+        display: inline-block;
+        margin-top: 1rem;
+    }
+
+    .oyi-portrait-wrap {
+        position: relative;
+        background: var(--paper);
+        border: var(--border-width) solid var(--paper);
+        box-shadow: 8px 8px 0px var(--rust);
+        transform: rotate(1deg);
+        overflow: hidden;
+    }
+
+    .oyi-portrait-img {
+        width: 100%;
+        display: block;
+        filter: grayscale(20%);
+    }
+
+    .oyi-portrait-caption {
+        background: var(--ink);
+        padding: 1rem 1.25rem;
+        border-top: var(--border-width) solid var(--yellow);
+    }
+
+    .oyi-portrait-caption p {
+        font-family: 'Anton', sans-serif;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        color: var(--yellow);
+        margin: 0 0 0.15rem;
+    }
+
+    .oyi-portrait-caption span {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: rgba(246,241,231,0.4);
+    }
+
+    /* ── TESTIMONIALS ── */
+    .oyi-testimonials {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .oyi-testimonial {
+        background: var(--paper);
+        border: var(--border-width) solid var(--ink);
+        box-shadow: 5px 5px 0px var(--rust);
+        padding: 2rem 1.75rem;
+        position: relative;
+    }
+
+    .oyi-testimonial-quote {
+        font-family: 'Lora', serif;
+        font-size: 0.98rem;
+        line-height: 1.8;
+        color: var(--ink);
+        font-style: italic;
+        margin-bottom: 1.25rem;
+    }
+
+    .oyi-testimonial-name {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.62rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--rust);
+    }
+
+    /* ── THE OFFER ── */
+    .oyi-offer-inner {
+        text-align: center;
+    }
+
+    .oyi-offer-box {
+        background: var(--ink);
+        border: var(--border-width) solid var(--ink);
+        box-shadow: 10px 10px 0px var(--rust);
+        padding: 3.5rem 3rem;
+        max-width: 600px;
+        margin: 3rem auto 0;
+        position: relative;
+        text-align: left;
+    }
+
+    .oyi-offer-price-block {
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid rgba(242,194,48,0.2);
+    }
+
+    .oyi-offer-price {
+        display: block;
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(4rem, 10vw, 7rem);
+        letter-spacing: -4px;
+        line-height: 1;
+        color: var(--yellow);
+        margin-bottom: 0.5rem;
+    }
+
+    .oyi-offer-price-label {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: rgba(246,241,231,0.4);
+    }
+
+    .oyi-offer-includes h3 {
+        font-family: 'Anton', sans-serif;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--paper);
+        margin-bottom: 1.25rem;
+    }
+
+    .oyi-offer-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .oyi-offer-list li {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: rgba(246,241,231,0.75);
+        padding-left: 0.5rem;
+    }
+
+    .oyi-buy-btn {
+        display: block;
+        width: 100%;
+        background: var(--yellow);
+        color: var(--ink);
+        font-family: 'Anton', sans-serif;
+        font-size: 1.15rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        border: var(--border-width) solid var(--ink);
+        box-shadow: 6px 6px 0px var(--rust);
+        padding: 1.1rem 2rem;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .oyi-buy-btn:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 8px 8px 0px var(--rust);
+    }
+
+    .oyi-buy-btn--light {
+        display: inline-block;
+        width: auto;
+        margin-bottom: 1.5rem;
+        padding: 1.1rem 2.5rem;
+    }
+
+    .oyi-offer-fine {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: rgba(246,241,231,0.3);
+        margin: 1.25rem 0 0;
+        text-align: center;
+    }
+
+    /* ── FIT ── */
+    .oyi-fit-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-top: 3rem;
+    }
+
+    .oyi-fit-col h3 {
+        font-family: 'Anton', sans-serif;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        margin-bottom: 1.5rem;
+        line-height: 1;
+    }
+
+    .oyi-fit-col--yes h3 { color: var(--ink); }
+    .oyi-fit-col--no h3  { color: var(--rust); }
+
+    .oyi-fit-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .oyi-fit-list li {
+        font-family: 'Lora', serif;
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--ink);
+        padding-left: 1.75rem;
+        position: relative;
+    }
+
+    .oyi-fit-col--yes li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        font-family: 'Space Mono', monospace;
+        color: var(--ink);
+        font-weight: 700;
+    }
+
+    .oyi-fit-col--no li::before {
+        content: '×';
+        position: absolute;
+        left: 0;
+        font-family: 'Space Mono', monospace;
+        color: var(--rust);
+        font-weight: 700;
+    }
+
+    /* ── FAQ ── */
+    .oyi-faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 3rem;
+        border: var(--border-width) solid rgba(242,194,48,0.15);
+    }
+
+    .oyi-faq-item {
+        padding: 2.25rem 2.5rem;
+        border-bottom: 2px solid rgba(242,194,48,0.1);
+    }
+
+    .oyi-faq-item:last-child { border-bottom: none; }
+
+    .oyi-faq-q {
+        font-family: 'Oswald', sans-serif;
+        font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--paper);
+        margin-bottom: 0.85rem;
+        line-height: 1.3;
+    }
+
+    .oyi-faq-a {
+        font-family: 'Lora', serif;
+        font-size: 1rem;
+        line-height: 1.85;
+        color: rgba(246,241,231,0.82);
+        margin: 0;
+        max-width: 720px;
+    }
+
+    /* ── FINAL CTA ── */
+    .oyi-ink-cta {
+        background: var(--ink);
+        border-bottom: var(--border-width) solid var(--yellow);
+        text-align: center;
+    }
+
+    .oyi-cta-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .oyi-final-h2 {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(3.5rem, 9vw, 7rem);
+        text-transform: uppercase;
+        letter-spacing: -3px;
+        line-height: 0.9;
+        color: var(--paper);
+        margin-bottom: 2rem;
+    }
+
+    .oyi-final-accent {
+        color: var(--yellow);
+        display: block;
+    }
+
+    .oyi-final-sub {
+        font-family: 'Lora', serif;
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        line-height: 1.7;
+        color: rgba(246,241,231,0.6);
+        max-width: 480px;
+        margin: 0 auto 2.5rem;
+    }
+
+    .oyi-final-fine {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: rgba(246,241,231,0.25);
+        margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    .oyi-footer {
+        background: var(--ink);
+        border-top: 1px solid rgba(242,194,48,0.12);
+        padding: 2rem 10%;
+        text-align: center;
+    }
+
+    .oyi-footer a {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--paper);
+        opacity: 0.4;
+        text-decoration: none;
+        transition: opacity 0.15s;
+    }
+
+    .oyi-footer a:hover { opacity: 1; color: var(--yellow); }
+
+    /* ── REVEAL ANIMATION ── */
+    .oyi-reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .oyi-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+        .oyi-prose-cols       { grid-template-columns: 1fr; }
+        .oyi-aside-card       { transform: none; position: static; }
+        .oyi-cost-grid        { grid-template-columns: repeat(2, 1fr); }
+        .oyi-persona-grid     { grid-template-columns: repeat(2, 1fr); }
+        .oyi-method-grid      { grid-template-columns: 1fr; }
+        .oyi-method-card      { transform: none; }
+        .oyi-testimonials     { grid-template-columns: 1fr; }
+        .oyi-about-grid       { grid-template-columns: 1fr; }
+        .oyi-portrait-wrap    { transform: none; max-width: 320px; }
+        .oyi-reframe-grid     { grid-template-columns: 1fr; }
+        .oyi-reframe-divider  { display: none; }
+    }
+
+    @media (max-width: 640px) {
+        .oyi-hero             { padding: 5rem 6%; }
+        .oyi-section          { padding: 5rem 6%; }
+        .oyi-cost-grid        { grid-template-columns: 1fr 1fr; }
+        .oyi-persona-grid     { grid-template-columns: 1fr; }
+        .oyi-fit-grid         { grid-template-columns: 1fr; }
+        .oyi-module           { grid-template-columns: 60px 1fr; }
+        .oyi-module-num       { font-size: 1.8rem; padding: 1.5rem 1rem; }
+        .oyi-module-body      { padding: 1.5rem 1rem; }
+        .oyi-offer-box        { padding: 2.5rem 1.75rem; }
+        .oyi-faq-item         { padding: 1.75rem 1.5rem; }
+    }
+
+</style>
+
+<script>
+    // Reveal on scroll
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.oyi-reveal').forEach(el => revealObserver.observe(el));
+</script>

@@ -5,6 +5,8 @@ interface Props {
     title: string;
     description: string;
     ogImage?: string;
+    ogImageAlt?: string;
+    ogType?: string;
     canonicalUrl?: string;
     noIndex?: boolean;
 }
@@ -13,6 +15,8 @@ const {
     title,
     description,
     ogImage = 'https://jaymescorey.com/images/og-jaymes.jpg',
+    ogImageAlt = 'Jaymes Corey — Navy Vet, Dad of 3, Builder',
+    ogType = 'website',
     canonicalUrl,
     noIndex = false,
 } = Astro.props;
@@ -33,14 +37,14 @@ const {
     {noIndex && <meta name="robots" content="noindex, nofollow">}
 
     <!-- Open Graph / Link Previews -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content={ogType}>
     {canonicalUrl && <meta property="og:url" content={canonicalUrl}>}
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
     <meta property="og:image" content={ogImage}>
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Jaymes Corey — Creative Strategist">
+    <meta property="og:image:alt" content={ogImageAlt}>
     <meta property="og:site_name" content="Jaymes Corey">
 
     <!-- Twitter / X Card -->
@@ -51,6 +55,7 @@ const {
     <meta name="twitter:title" content={title}>
     <meta name="twitter:description" content={description}>
     <meta name="twitter:image" content={ogImage}>
+    <meta name="twitter:image:alt" content={ogImageAlt}>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
