@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+import PostImage from '../../components/PostImage.astro';
+import YouTube from '../../components/YouTube.astro';
+import Callout from '../../components/Callout.astro';
+import PostCTA from '../../components/PostCTA.astro';
+import PostButton from '../../components/PostButton.astro';
+
+export async function getStaticPaths() {
+    const posts = await getCollection('field-report');
+    return posts.map(entry => ({
+        params: { slug: entry.id },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<PostLayout
+    title={entry.data.title}
+    description={entry.data.description}
+    pubDate={entry.data.pubDate}
+    readTime={entry.data.readTime}
+    category={entry.data.category}
+    slug={entry.id}
+    ogImage={entry.data.ogImage}
+>
+    <Content components={{ PostImage, YouTube, Callout, PostCTA, PostButton }} />
+</PostLayout>

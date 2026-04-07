@@ -1,0 +1,56 @@
+---
+interface Props {
+    href: string;
+    theme?: 'yellow' | 'dark' | 'outline';
+    external?: boolean;
+}
+
+const { href, theme = 'yellow', external = false } = Astro.props;
+const attrs = external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+---
+
+<a href={href} class:list={['post-btn', `post-btn--${theme}`]} {...attrs}>
+    <slot /> &nbsp;→
+</a>
+
+<style is:global>
+    .post-btn {
+        display: inline-block;
+        font-family: 'Anton', sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 0.75rem 1.5rem;
+        border: var(--border-width) solid var(--ink);
+        margin: 1rem 0;
+        transition: box-shadow 0.15s, transform 0.15s;
+    }
+
+    .post-btn--yellow {
+        background: var(--yellow);
+        color: var(--ink);
+        box-shadow: 4px 4px 0px var(--rust);
+    }
+
+    .post-btn--dark {
+        background: var(--ink);
+        color: var(--yellow);
+        box-shadow: 4px 4px 0px var(--rust);
+    }
+
+    .post-btn--outline {
+        background: transparent;
+        color: var(--ink);
+        box-shadow: 4px 4px 0px var(--ink);
+    }
+
+    .post-btn:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 7px 7px 0px var(--rust);
+    }
+
+    .post-btn--outline:hover {
+        box-shadow: 7px 7px 0px var(--ink);
+    }
+</style>

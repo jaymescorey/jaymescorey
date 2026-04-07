@@ -1,54 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
+import { getCollection } from 'astro:content';
 
-const posts = [
-    {
-        slug: 'building-in-public',
-        title: 'Why I Stopped Waiting to Be Ready (And Started Building in Public)',
-        excerpt: 'Most people wait for perfect. I waited for years. Here\'s what changed when I started building out loud — and what imperfect action actually buys you.',
-        date: 'Mar 15, 2026',
-        readTime: '6 min',
-        category: 'WRITTEN',
-        num: '01',
-    },
-    {
-        slug: 'one-person-business-model',
-        title: 'The One-Person Business Model: Build Without a Team, Funding, or Permission',
-        excerpt: 'The old startup playbook is broken for most people. Here\'s the model that actually works — and how to start this week with what you have.',
-        date: 'Mar 8, 2026',
-        readTime: '7 min',
-        category: 'WRITTEN',
-        num: '02',
-    },
-    {
-        slug: 'navy-discipline-entrepreneur',
-        title: 'What 4 Years in the Navy Taught Me About Building a Business',
-        excerpt: 'Mission clarity. Shipping ugly. Adapting without perfect intel. The Navy built habits that turned out to matter more than any business course.',
-        date: 'Mar 1, 2026',
-        readTime: '6 min',
-        category: 'WRITTEN',
-        num: '03',
-    },
-    {
-        slug: 'present-dad-entrepreneur',
-        title: 'The Real ROI: Why Presence With Your Kids Is Worth Building For',
-        excerpt: 'Money is a terrible reason to build a business. Presence is the real return. Here\'s what I\'m actually trying to buy with every experiment I run.',
-        date: 'Feb 22, 2026',
-        readTime: '5 min',
-        category: 'WRITTEN',
-        num: '04',
-    },
-    {
-        slug: 'zero-dollar-startup',
-        title: 'The $0 Startup: Building Multiple Businesses Without Outside Investment',
-        excerpt: 'No investors. No co-founders. No startup capital. Here\'s what building with zero outside investment actually looks like — and why constraints make it better.',
-        date: 'Feb 15, 2026',
-        readTime: '7 min',
-        category: 'WRITTEN',
-        num: '05',
-    },
-];
+const allPosts = (await getCollection('field-report'))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const posts = allPosts.map((entry, index) => ({
+    slug: entry.id,
+    title: entry.data.title,
+    excerpt: entry.data.excerpt ?? entry.data.description,
+    date: entry.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+    readTime: entry.data.readTime,
+    category: entry.data.category,
+    num: String(index + 1).padStart(2, '0'),
+}));
 
 const featured = posts[0];
 const rest = posts.slice(1);

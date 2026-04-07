@@ -14,6 +14,9 @@ Personal brand site for **Jaymes Corey** — Navy Vet, Dad of 3, creative strate
 ## Project Structure
 ```
 src/
+  content/
+    field-report/     — MDX blog posts (one file per post, named by slug)
+  content.config.ts   — Astro Content Collections schema (field-report collection)
   pages/
     index.astro       — Home page
     about.astro       — About Jaymes / personal story
@@ -22,18 +25,20 @@ src/
     thank-you.astro   — Post-signup confirmation (noindex, pitches Builder Session)
     sprint.astro      — 30-Day Sprint offer page ($2,500, max 10 clients at a time)
     own-your-income.astro — SEO-targeted long-form sales page for "Own Your Income" course ($97, Stripe checkout)
-    field-report.astro         — Field Report index (featured post + feed list layout)
+    field-report.astro    — Field Report index (featured post + feed list, pulls from getCollection)
     field-report/
-      building-in-public.astro
-      one-person-business-model.astro
-      navy-discipline-entrepreneur.astro
-      present-dad-entrepreneur.astro
-      zero-dollar-startup.astro
+      [slug].astro    — Dynamic route rendering MDX posts via PostLayout
+      rss.xml.js      — RSS feed, auto-generated from getCollection
   layouts/
     BaseLayout.astro  — Shared layout wrapper
-    PostLayout.astro  — Shared layout for all field-report posts
+    PostLayout.astro  — Shared layout for all field-report posts (calls getCollection internally)
   components/
     Nav.astro         — Navigation component
+    PostImage.astro   — Responsive post image with optional caption + full-bleed
+    YouTube.astro     — Privacy-safe YouTube embed (youtube-nocookie.com)
+    Callout.astro     — Branded callout box (note / tip / warning / raw)
+    PostCTA.astro     — Promo/CTA box (yellow or dark theme)
+    PostButton.astro  — Styled inline link button
   styles/
     global.css        — Shared styles
 public/
@@ -49,18 +54,52 @@ public/
 `sprint.astro` — currently shows a waitlist modal (all spots marked as full) because hi@jaymescorey.com is not yet active. When email is ready, replace modal with a real application form. The waitlist form feeds into MailerLite (same account `2182045`).
 
 ### Field Report (blog)
-`field-report.astro` — index page. Layout: one featured post (full-width split panel) + a compact feed list of all other posts. **The post list is hardcoded** in two places that must both be updated when adding a new post:
-1. `src/pages/field-report.astro` — the `posts` array at the top of the frontmatter
-2. `src/layouts/PostLayout.astro` — the `allPosts` array at the top of the frontmatter (used to build the "More from the field" rail)
-3. `public/sitemap.xml` — add a new `<url>` entry
+`field-report.astro` — index page. Layout: one featured post (full-width split panel) + a compact feed list of all other posts. Posts are pulled from `getCollection('field-report')`, sorted by `pubDate` descending. The featured post is always index 0 (newest).
 
-Each post page lives at `src/pages/field-report/[slug].astro` and uses `PostLayout.astro`. Required props: `title`, `description`, `canonicalUrl`, `pubDate` (YYYY-MM-DD), `readTime`, `category`, `postTitle`, `slug`.
+Posts live as `.mdx` files in `src/content/field-report/`. The dynamic route `src/pages/field-report/[slug].astro` renders each one. **To add a new post: drop one `.mdx` file in `src/content/field-report/` and add a sitemap entry — nothing else needs updating.**
 
-`PostLayout.astro` includes:
-- Dark post hero with Anton headline + Space Mono meta
-- Lora body copy, Anton H2s with yellow left-border, rust blockquotes with offset shadow
-- "More from the field" dark rail — 3 cards auto-filtered to exclude the current post
-- Email list CTA footer
+`PostLayout.astro` — receives props from the dynamic route, calls `getCollection()` internally to build the "More from the field" rail. No hardcoded arrays anywhere.
+
+**RSS feed** — `src/pages/field-report/rss.xml.js`, served at `/field-report/rss.xml`. Auto-generated from `getCollection()`.
+
+**Collection schema** (`src/content.config.ts`):
+```
+title       — display headline (PostLayout appends "| Jaymes Corey" for SEO title)
+description — meta description + RSS description
+excerpt     — (optional) short card blurb; falls back to description if omitted
+pubDate     — date (YYYY-MM-DD in frontmatter, coerced to Date)
+readTime    — e.g. "6 min"
+category    — e.g. "WRITTEN", "VIDEO" (default: "WRITTEN")
+ogImage     — (optional) OG image override; defaults to og-jaymes.jpg
+tags        — (optional) array of strings
+```
+
+**MDX authoring** — write in Markdown, use components when needed. Components are pre-registered in `[slug].astro` and available in every post without importing:
+
+| Component | Usage |
+|-----------|-------|
+| `<PostImage>` | `<PostImage src="..." alt="..." caption="..." full />` — `full` makes it bleed past body margins |
+| `<YouTube>` | `<YouTube id="VIDEO_ID" title="..." caption="..." />` — privacy-safe, no cookies until play |
+| `<Callout>` | `<Callout type="note|tip|warning|raw" label="...">text</Callout>` |
+| `<PostCTA>` | `<PostCTA heading="..." body="..." btnText="..." btnHref="..." theme="yellow|dark" />` |
+| `<PostButton>` | `<PostButton href="..." theme="yellow|dark|outline" external>text</PostButton>` |
+
+**Publishing workflow plan (not yet built — Make.com automation):**
+```
+Write in Notion (Mac + iOS app)
+  → flip post Status to "Published"
+  → Make.com creates .mdx file in GitHub repo
+  → Cloudflare Pages auto-deploys
+```
+
+**Bonus pipeline (not yet built — voice memo → post):**
+```
+Record voice memo on iPhone
+  → iOS Shortcut sends audio to Make.com
+  → Whisper transcription → Claude API formats draft
+  → Draft lands in Notion for review
+  → Publish when ready
+```
 
 ## Design System
 
@@ -201,7 +240,7 @@ Add to `public/sitemap.xml` for every new public page:
 - Gallery images in portfolio overlays keep `loading="eager"` per existing convention.
 
 ## Pending / Not Yet Done
-- **Own Your Income course** — Course content not yet built. Stripe payment link placeholder (`href="#"`) on `own-your-income.astro` — replace with live Stripe link when ready. Two TODO comments in the file mark the checkout buttons. Testimonials on the page are placeholder — replace with real quotes once collected.
+- **Own Your Income course** — Sales page is built and content is roughed in. Targeting the keyword "Own Your Income." Two checkout buttons still use `href="#"` placeholder (marked with TODO comments at lines ~672 and ~782 in `own-your-income.astro`) — replace with live Stripe payment link when ready. Testimonials on the page are placeholder — replace with real quotes once collected. **Course delivery system not yet built** — see plan below.
 - **hi@jaymescorey.com** — Set up domain email. Once live, replace sprint waitlist modal with a real application form.
 - **MailerLite** — Set up a separate group/segment for Sprint waitlist vs newsletter subscribers. Verify signups land correctly end-to-end.
 - **Calendly URL** — `thank-you.astro` Builder Session button still points to `https://calendly.com/your-link`. Replace before sending traffic.
@@ -209,6 +248,55 @@ Add to `public/sitemap.xml` for every new public page:
 - **Cloudflare Analytics** — Free, no cookies. Enable in the Cloudflare dashboard.
 - **Deploy** `landing` + `thank-you` to separate Cloudflare Pages deployment.
 - **Field Report** — Submit `sitemap.xml` to Google Search Console to index new posts.
+- **Field Report — Notion → Make.com publishing pipeline** — Not yet built. Make.com automation that watches Notion for posts marked "Published" and creates the `.mdx` file in the GitHub repo, triggering a Cloudflare Pages deploy. Also planned: voice memo → Whisper → Claude → Notion draft pipeline. See full plan in the Field Report section above.
+
+## Own Your Income — Course Delivery Build Plan
+
+### Stack Decision
+- **Supabase** — auth (magic link login) + PostgreSQL database (stores who purchased)
+- **Astro SSR** — switch from static to server-rendered using the Cloudflare adapter so pages can check auth before serving
+- **`@supabase/ssr`** — official Supabase package for SSR frameworks, handles cookies correctly
+- **Cloudflare Pages Functions** — receives Stripe webhook on payment, creates user in Supabase
+
+### Purchase → Access Flow
+```
+Customer clicks Buy on /own-your-income
+  → Stripe checkout (live payment link replaces href="#")
+  → Payment succeeds → Stripe fires webhook
+  → Cloudflare Pages Function receives webhook
+      → Creates user in Supabase with paid = true
+      → Supabase sends magic login link to customer's email
+  → Customer clicks link → session cookie set
+  → /course/* (protected Astro SSR pages) check Supabase session
+      → paid = true  → show course content
+      → no session   → redirect to /own-your-income
+```
+
+### Files to Create
+- `src/middleware.ts` — checks Supabase session on all `/course/*` routes, redirects if not authenticated/paid
+- `src/lib/supabase.ts` — Supabase client helper (uses env vars)
+- `src/pages/login.astro` — magic link login page (email input → Supabase sends link)
+- `src/pages/course/index.astro` — course dashboard / module list (protected)
+- `src/pages/course/[module].astro` — individual lesson pages (protected)
+- `functions/stripe-webhook.ts` — Cloudflare Pages Function at `/api/stripe-webhook`
+
+### Config Changes Required
+- `astro.config.mjs` — add `@astrojs/cloudflare` adapter + `output: 'server'`
+- `.env` / Cloudflare env vars:
+  - `PUBLIC_SUPABASE_URL`
+  - `PUBLIC_SUPABASE_ANON_KEY`
+  - `STRIPE_WEBHOOK_SECRET`
+
+### Before Starting — User Must Do First
+1. Create Supabase project at supabase.com → grab **Project URL** and **anon public key** from Settings → API
+2. Create a `purchases` table in Supabase: `id, email, stripe_customer_id, paid (bool), created_at`
+3. Set up Stripe webhook in Stripe dashboard pointing to `https://jaymescorey.com/api/stripe-webhook`, event: `checkout.session.completed`
+4. Add env vars to Cloudflare Pages dashboard
+
+### Packages to Install
+```bash
+npm install @astrojs/cloudflare @supabase/supabase-js @supabase/ssr
+```
 
 ## Key Assets
 ```

@@ -1,75 +1,48 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import Nav from '../components/Nav.astro';
+import { getCollection } from 'astro:content';
 
 interface Props {
     title: string;
     description: string;
-    canonicalUrl: string;
-    pubDate: string;
+    pubDate: Date;
     readTime: string;
     category: string;
-    postTitle: string;
     slug: string;
+    ogImage?: string;
 }
 
-const { title, description, canonicalUrl, pubDate, readTime, category, postTitle, slug } = Astro.props;
+const { title, description, pubDate, readTime, category, slug, ogImage } = Astro.props;
 
-const displayDate = new Date(pubDate).toLocaleDateString('en-US', {
+const canonicalUrl = `https://jaymescorey.com/field-report/${slug}`;
+const seoTitle = `${title} | Jaymes Corey`;
+
+const displayDate = pubDate.toLocaleDateString('en-US', {
     year: 'numeric', month: 'long', day: 'numeric'
 });
 
-const allPosts = [
-    {
-        slug: 'building-in-public',
-        title: 'Why I Stopped Waiting to Be Ready (And Started Building in Public)',
-        excerpt: 'Most people wait for perfect. I waited for years. Here\'s what changed when I started building out loud.',
-        date: 'Mar 15, 2026',
-        readTime: '6 min',
-        category: 'WRITTEN',
-    },
-    {
-        slug: 'one-person-business-model',
-        title: 'The One-Person Business Model: Build Without a Team, Funding, or Permission',
-        excerpt: 'The old startup playbook is broken for most people. Here\'s the model that actually works.',
-        date: 'Mar 8, 2026',
-        readTime: '7 min',
-        category: 'WRITTEN',
-    },
-    {
-        slug: 'navy-discipline-entrepreneur',
-        title: 'What 4 Years in the Navy Taught Me About Building a Business',
-        excerpt: 'Mission clarity. Shipping ugly. Adapting without perfect intel. The Navy built habits that matter.',
-        date: 'Mar 1, 2026',
-        readTime: '6 min',
-        category: 'WRITTEN',
-    },
-    {
-        slug: 'present-dad-entrepreneur',
-        title: 'The Real ROI: Why Presence With Your Kids Is Worth Building For',
-        excerpt: 'Money is a terrible reason to build a business. Presence is the real return.',
-        date: 'Feb 22, 2026',
-        readTime: '5 min',
-        category: 'WRITTEN',
-    },
-    {
-        slug: 'zero-dollar-startup',
-        title: 'The $0 Startup: Building Multiple Businesses Without Outside Investment',
-        excerpt: 'No investors. No co-founders. No startup capital. Here\'s what zero investment actually looks like.',
-        date: 'Feb 15, 2026',
-        readTime: '7 min',
-        category: 'WRITTEN',
-    },
-];
+const allPosts = (await getCollection('field-report'))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const morePosts = allPosts.filter(p => p.slug !== slug).slice(0, 3);
+const morePosts = allPosts
+    .filter(p => p.id !== slug)
+    .slice(0, 3)
+    .map(p => ({
+        slug: p.id,
+        title: p.data.title,
+        excerpt: p.data.excerpt ?? p.data.description,
+        date: p.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+        readTime: p.data.readTime,
+        category: p.data.category,
+    }));
 
 const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": postTitle,
+    "headline": title,
     "url": canonicalUrl,
-    "datePublished": pubDate,
+    "datePublished": pubDate.toISOString(),
     "author": {
         "@type": "Person",
         "name": "Jaymes Corey",
@@ -88,7 +61,12 @@ const schema = {
 };
 ---
 
-<BaseLayout title={title} description={description} canonicalUrl={canonicalUrl}>
+<BaseLayout
+    title={seoTitle}
+    description={description}
+    canonicalUrl={canonicalUrl}
+    ogImage={ogImage ?? "https://jaymescorey.com/images/og-jaymes.jpg"}
+>
     <Fragment slot="head">
         <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
     </Fragment>
@@ -456,7 +434,7 @@ const schema = {
 
     <header class="post-hero">
         <span class="post-category">{category} // Field Report</span>
-        <h1>{postTitle}</h1>
+        <h1>{title}</h1>
         <div class="post-meta">
             <span>{displayDate}</span>
             <span class="sep">◆</span>

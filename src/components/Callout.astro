@@ -1,0 +1,61 @@
+---
+interface Props {
+    type?: 'note' | 'tip' | 'warning' | 'raw';
+    label?: string;
+}
+
+const { type = 'note', label } = Astro.props;
+
+const defaultLabels = {
+    note: '◆ Note',
+    tip: '◆ Worth knowing',
+    warning: '◆ Heads up',
+    raw: '◆ Raw take',
+};
+
+const displayLabel = label ?? defaultLabels[type];
+---
+
+<aside class:list={['post-callout', `post-callout--${type}`]}>
+    <span class="post-callout-label">{displayLabel}</span>
+    <div class="post-callout-body">
+        <slot />
+    </div>
+</aside>
+
+<style is:global>
+    .post-callout {
+        margin: 2.5rem 0;
+        border: var(--border-width) solid var(--ink);
+        padding: 1.5rem 1.75rem;
+        position: relative;
+    }
+
+    .post-callout--note   { background: var(--cream); box-shadow: 5px 5px 0px var(--ink); }
+    .post-callout--tip    { background: #f0f9e8; box-shadow: 5px 5px 0px #4a7c2b; border-color: #4a7c2b; }
+    .post-callout--warning { background: #fff4e0; box-shadow: 5px 5px 0px var(--rust); border-color: var(--rust); }
+    .post-callout--raw    { background: var(--yellow); box-shadow: 5px 5px 0px var(--ink); }
+
+    .post-callout-label {
+        display: block;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--ink);
+        opacity: 0.6;
+        margin-bottom: 0.75rem;
+    }
+
+    .post-callout-body p {
+        font-family: 'Lora', serif;
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: var(--ink);
+        margin: 0;
+    }
+
+    .post-callout-body p + p {
+        margin-top: 0.75rem;
+    }
+</style>

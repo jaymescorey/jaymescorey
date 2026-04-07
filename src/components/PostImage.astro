@@ -1,0 +1,52 @@
+---
+interface Props {
+    src: string;
+    alt: string;
+    caption?: string;
+    full?: boolean;
+}
+
+const { src, alt, caption, full = false } = Astro.props;
+---
+
+<figure class:list={['post-image', { 'post-image--full': full }]}>
+    <img src={src} alt={alt} loading="lazy" />
+    {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style is:global>
+    .post-image {
+        margin: 2.5rem 0;
+        border: var(--border-width) solid var(--ink);
+        box-shadow: 6px 6px 0px var(--rust);
+    }
+
+    .post-image--full {
+        margin-left: -10%;
+        margin-right: -10%;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-image figcaption {
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: rgba(15, 15, 15, 0.5);
+        padding: 0.6rem 0.75rem;
+        background: var(--cream);
+        border-top: 1px solid var(--light-rule);
+    }
+
+    @media (max-width: 640px) {
+        .post-image--full {
+            margin-left: -6vw;
+            margin-right: -6vw;
+        }
+    }
+</style>

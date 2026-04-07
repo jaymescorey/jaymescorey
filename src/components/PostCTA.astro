@@ -1,0 +1,101 @@
+---
+interface Props {
+    label?: string;
+    heading: string;
+    body: string;
+    btnText: string;
+    btnHref: string;
+    theme?: 'yellow' | 'dark';
+}
+
+const {
+    label = '◆ Take the next step',
+    heading,
+    body,
+    btnText,
+    btnHref,
+    theme = 'yellow',
+} = Astro.props;
+---
+
+<aside class:list={['post-cta-box', `post-cta-box--${theme}`]}>
+    <span class="post-cta-box-label">{label}</span>
+    <div class="post-cta-box-inner">
+        <div class="post-cta-box-body">
+            <h3>{heading}</h3>
+            <p>{body}</p>
+        </div>
+        <a href={btnHref} class="btn post-cta-box-btn">{btnText} &nbsp;→</a>
+    </div>
+</aside>
+
+<style is:global>
+    .post-cta-box {
+        margin: 2.5rem 0;
+        border-top: var(--border-width) solid var(--ink);
+        border-bottom: var(--border-width) solid var(--ink);
+        padding: 2.5rem 0;
+    }
+
+    .post-cta-box--yellow { background: var(--yellow); padding: 2.5rem; border: var(--border-width) solid var(--ink); box-shadow: 6px 6px 0px var(--rust); }
+    .post-cta-box--dark   { background: var(--ink); padding: 2.5rem; border: var(--border-width) solid var(--ink); box-shadow: 6px 6px 0px var(--rust); }
+
+    .post-cta-box-label {
+        display: block;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+
+    .post-cta-box--yellow .post-cta-box-label { color: var(--ink); opacity: 0.6; }
+    .post-cta-box--dark   .post-cta-box-label { color: var(--yellow); opacity: 0.7; }
+
+    .post-cta-box-inner {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .post-cta-box-body {
+        flex: 1;
+        min-width: 200px;
+    }
+
+    .post-cta-box-body h3 {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(1.2rem, 2vw, 1.6rem);
+        text-transform: uppercase;
+        line-height: 1.05;
+        margin-bottom: 0.4rem;
+    }
+
+    .post-cta-box--yellow .post-cta-box-body h3 { color: var(--ink); }
+    .post-cta-box--dark   .post-cta-box-body h3 { color: var(--paper); }
+
+    .post-cta-box-body p {
+        font-family: 'Lora', serif;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .post-cta-box--yellow .post-cta-box-body p { color: rgba(15,15,15,0.7); }
+    .post-cta-box--dark   .post-cta-box-body p { color: rgba(246,241,231,0.75); }
+
+    .post-cta-box--dark .post-cta-box-btn {
+        background: var(--yellow);
+        color: var(--ink);
+        box-shadow: 4px 4px 0px var(--rust);
+    }
+
+    .post-cta-box--dark .post-cta-box-btn:hover {
+        box-shadow: 7px 7px 0px var(--rust);
+    }
+
+    @media (max-width: 640px) {
+        .post-cta-box-inner { flex-direction: column; align-items: flex-start; }
+    }
+</style>
