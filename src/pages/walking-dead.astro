@@ -625,6 +625,137 @@
     margin-top: 24px;
   }
 
+  .invest-story {
+    max-width: 1100px;
+    margin: 0 auto 40px;
+    background: linear-gradient(135deg, rgba(242, 181, 26, 0.14), rgba(23, 26, 23, 0.92));
+    border: 1px solid rgba(242, 181, 26, 0.28);
+    clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 34px 100%, 0 calc(100% - 34px));
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .invest-story::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, transparent 0, transparent calc(100% - 1px), rgba(242, 181, 26, 0.08) calc(100% - 1px)),
+      linear-gradient(180deg, transparent 0, transparent calc(100% - 1px), rgba(242, 181, 26, 0.06) calc(100% - 1px));
+    background-size: 24px 24px;
+    pointer-events: none;
+    opacity: 0.35;
+  }
+
+  .invest-story-top {
+    display: grid;
+    grid-template-columns: 1.1fr 1.1fr 0.8fr;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 900px) {
+    .invest-story-top { grid-template-columns: 1fr; }
+  }
+
+  .invest-story-block {
+    padding: 24px;
+    background: rgba(14, 14, 14, 0.52);
+    border: 1px solid rgba(242, 181, 26, 0.16);
+  }
+  .invest-story-block.emphasis {
+    background: var(--marines-yellow);
+    color: var(--deep-green);
+    border-color: var(--marines-yellow);
+  }
+
+  .invest-story-label {
+    display: block;
+    font-family: var(--font-sub);
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(250, 247, 242, 0.62);
+    margin-bottom: 12px;
+  }
+  .invest-story-block.emphasis .invest-story-label {
+    color: rgba(23, 26, 23, 0.62);
+  }
+
+  .invest-story-price {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .invest-story-price .currency {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--marines-yellow);
+  }
+  .invest-story-price .amount {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 6vw, 76px);
+    font-weight: 600;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    color: var(--sand);
+  }
+  .invest-story-block.emphasis .invest-story-price .currency,
+  .invest-story-block.emphasis .invest-story-price .amount {
+    color: var(--deep-green);
+  }
+  .invest-story-price .suffix {
+    font-family: var(--font-sub);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(250, 247, 242, 0.54);
+    margin-left: 2px;
+  }
+  .invest-story-block.emphasis .invest-story-price .suffix {
+    color: rgba(23, 26, 23, 0.62);
+  }
+
+  .invest-story-copy {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(250, 247, 242, 0.74);
+    max-width: 26ch;
+  }
+  .invest-story-block.emphasis .invest-story-copy {
+    color: rgba(23, 26, 23, 0.76);
+  }
+
+  .invest-story-caption {
+    position: relative;
+    z-index: 1;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(242, 181, 26, 0.16);
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .invest-story-caption p {
+    max-width: 760px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(250, 247, 242, 0.78);
+  }
+
+  .invest-story-tag {
+    font-family: var(--font-stencil);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--marines-yellow);
+    white-space: nowrap;
+  }
+
   .invest-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1555,16 +1686,55 @@
       <h2>Clear Numbers.<br>No Games.</h2>
     </div>
 
+    <div class="invest-story reveal">
+      <div class="invest-story-top">
+        <div class="invest-story-block">
+          <span class="invest-story-label">Standard Bespoke Rate</span>
+          <div class="invest-story-price">
+            <span class="currency">$</span>
+            <span class="amount counter" data-target="18000">0</span>
+          </div>
+          <p class="invest-story-copy">What a build at this depth normally commands on this stack.</p>
+        </div>
+
+        <div class="invest-story-block emphasis">
+          <span class="invest-story-label">Veteran Brotherhood Rate</span>
+          <div class="invest-story-price">
+            <span class="currency">$</span>
+            <span class="amount counter" data-target="6000">0</span>
+          </div>
+          <p class="invest-story-copy">The actual project price I am offering here because the mission matters.</p>
+        </div>
+
+        <div class="invest-story-block">
+          <span class="invest-story-label">Mission Discount</span>
+          <div class="invest-story-price">
+            <span class="currency">$</span>
+            <span class="amount counter" data-target="12000">0</span>
+            <span class="suffix">67% Off</span>
+          </div>
+          <p class="invest-story-copy">A real two-thirds reduction, not a made-up slash-through number.</p>
+        </div>
+      </div>
+
+      <div class="invest-story-caption">
+        <p>
+          For a bespoke build like this, my normal rate lands around $18,000. I am pricing this one at $6,000 as a Veteran Brotherhood rate, which puts the discount at $12,000. That is a serious cut, and it reflects exactly what it should: respect for the mission and for who this site is built to serve.
+        </p>
+        <div class="invest-story-tag">Honest Rate. Brotherhood Discount.</div>
+      </div>
+    </div>
+
     <div class="invest-grid">
       <!-- Phase 1 Build -->
       <div class="invest-card primary reveal">
-        <div class="invest-card-label">[ Phase 1 — One-Time ]</div>
+        <div class="invest-card-label">[ Veteran Brotherhood Rate ]</div>
         <div class="invest-card-title">Foundation Build</div>
         <div class="invest-price">
           <span class="currency">$</span>
           <span class="amount counter" data-target="6000">0</span>
         </div>
-        <div class="invest-sublabel">Flat Rate · Paid in Full at Kickoff</div>
+        <div class="invest-sublabel">Standard Bespoke Rate: $18,000 · Flat Rate Paid in Full at Kickoff</div>
         <ul class="invest-includes">
           <li>Full brand system + component library</li>
           <li>All Phase 1 pages as scoped above</li>
@@ -1776,19 +1946,21 @@
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = progress + '%';
+    if (progressBar instanceof HTMLElement) {
+      progressBar.style.width = progress + '%';
+    }
   }
 
   window.addEventListener('scroll', updateProgress, { passive: true });
   updateProgress();
 
   // ============ NUMBER COUNTER ============
-  function animateCounter(el) {
-    const target = parseInt(el.dataset.target, 10);
+  function animateCounter(el: HTMLElement) {
+    const target = parseInt(el.dataset.target ?? '0', 10);
     const duration = 1400;
     const startTime = performance.now();
 
-    function tick(now) {
+    function tick(now: number) {
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       // Ease-out cubic for a natural settle
@@ -1806,7 +1978,7 @@
 
   const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && entry.target instanceof HTMLElement) {
         animateCounter(entry.target);
         counterObserver.unobserve(entry.target);
       }
