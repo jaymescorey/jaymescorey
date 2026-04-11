@@ -448,6 +448,75 @@ h1 .line-2 {
     box-shadow: 4px 4px 0px rgba(0,0,0,0.14);
 }
 
+/* ── Hero Stats Grid ── */
+.hero-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+    margin-bottom: 1.75rem;
+    z-index: 2;
+}
+
+.hero-stat-card {
+    background: var(--ink);
+    color: var(--yellow);
+    padding: 0.85rem 0.75rem;
+    border: 2px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.hero-stat-num {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.hero-stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+/* ── Hero CTA Row (email form) ── */
+.hero-cta-row {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    box-shadow: 8px 8px 0px var(--ink);
+    margin-bottom: 0.75rem;
+    z-index: 2;
+}
+
+.hero-cta-row input[type="email"] {
+    flex: 1;
+    padding: 12px 15px;
+    border: 3px solid var(--ink);
+    border-right: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    outline: none;
+    background: white;
+    color: var(--ink);
+    min-width: 0;
+}
+
+.hero-cta-row input[type="email"]::placeholder {
+    color: rgba(15, 15, 15, 0.5);
+}
+
+.hero-cta-row .btn {
+    flex-shrink: 0;
+    font-size: 1rem;
+    padding: 12px 20px;
+    box-shadow: none;
+}
+
 /* ── Portrait & Mascot ── */
 .portrait-container {
     position: relative;
@@ -1845,6 +1914,10 @@ h1 .line-2 {
     .portrait-container { max-width: 300px; }
     .hero-portrait { min-height: 300px; }
     .mascot-sticker { width: 130px; left: -15px; bottom: -15px; }
+    .hero-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-cta-row { max-width: 100%; flex-direction: column; box-shadow: none; }
+    .hero-cta-row input[type="email"] { border-right: 3px solid var(--ink); border-bottom: none; }
+    .hero-cta-row .btn { width: 100%; text-align: center; }
 
     /* Lab title: tighten on small screens */
     .lab-title {
