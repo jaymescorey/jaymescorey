@@ -277,6 +277,34 @@ nav {
     z-index: 2;
 }
 
+/* LIVE status tag above eyebrow */
+.hero-live-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--ink);
+    color: var(--yellow);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.75rem;
+    margin-bottom: 0.75rem;
+    border: 2px solid var(--ink);
+    align-self: flex-start;
+}
+
+.hero-live-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--rust);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: rec-blink 1.2s ease-in-out infinite;
+    will-change: opacity;
+}
+
 .hero-eyebrow {
     font-family: 'Space Mono', monospace;
     font-weight: bold;
@@ -426,6 +454,80 @@ h1 .line-2 {
     width: 100%;
     max-width: 480px;
     transform: rotate(1deg);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    /* box-shadow lives here so overflow:hidden on the frame doesn't clip it */
+    box-shadow: 20px 20px 0px var(--ink);
+}
+
+.portrait-container:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+/* Frame wrapper — clips the scan line without clipping the outer box shadow */
+.portrait-live-frame {
+    position: relative;
+    overflow: hidden;
+    border: var(--border-width) solid var(--ink);
+    display: block;
+}
+
+/* Scan line — GPU-composited: uses transform only, no top/left changes */
+.portrait-scan {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    background: linear-gradient(
+        to bottom,
+        transparent 0,
+        rgba(201, 74, 43, 0.65) 1px,
+        rgba(201, 74, 43, 0.65) 3px,
+        transparent 3px
+    );
+    transform: translateY(-100%);
+    animation: portrait-scan 4s linear infinite;
+    will-change: transform;
+}
+
+@keyframes portrait-scan {
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+}
+
+/* REC badge */
+.portrait-rec {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 6;
+    background: var(--rust);
+    color: var(--paper);
+    padding: 0.3rem 0.65rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 2px solid var(--ink);
+}
+
+.portrait-rec::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--paper);
+    border-radius: 50%;
+    animation: rec-blink 1.2s ease-in-out infinite;
+    will-change: opacity;
+}
+
+@keyframes rec-blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
 }
 
 .hero-portrait {
@@ -433,8 +535,7 @@ h1 .line-2 {
     max-height: 72vh;
     object-fit: cover;
     object-position: top center;
-    border: var(--border-width) solid var(--ink);
-    box-shadow: 20px 20px 0px var(--ink);
+    /* border and box-shadow moved to .portrait-container / .portrait-live-frame */
     filter: grayscale(100%) contrast(115%);
     display: block;
     background: var(--paper);

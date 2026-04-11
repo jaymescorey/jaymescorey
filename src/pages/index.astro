@@ -964,6 +964,9 @@ import Nav from '../components/Nav.astro';
     <!-- 02 // HERO -->
     <section class="hero">
         <div class="hero-text">
+            <div class="hero-live-tag" aria-hidden="true">
+                <span class="hero-live-dot"></span>NOW BUILDING
+            </div>
             <span class="hero-eyebrow">THE CYCLE ENDS WITH ME.</span>
             <h1><span class="line-1">Company man or family man</span><span class="line-2">should never be a choice.</span></h1>
             <p class="hero-sub">My parents hustled like hell to provide—the standard path still cost us our time together. I refuse that trade. I&#39;m running raw experiments across my domains to fund a life of total presence with my three kids, and documenting every ugly, honest step so you can start moving, too.</p>
@@ -980,9 +983,13 @@ import Nav from '../components/Nav.astro';
         </div>
         <div class="hero-image">
             <div class="portrait-container">
-                <img src="/images/jaymes.webp" alt="Jaymes Corey" class="hero-portrait"
-                     fetchpriority="high"
-                     onerror="this.style.background='#1C1C1C'; this.style.minHeight='400px'; this.alt='';">
+                <div class="portrait-live-frame">
+                    <img src="/images/jaymes.webp" alt="Jaymes Corey" class="hero-portrait"
+                         fetchpriority="high"
+                         onerror="this.style.background='#1C1C1C'; this.style.minHeight='400px'; this.alt='';">
+                    <div class="portrait-scan" aria-hidden="true"></div>
+                    <div class="portrait-rec" aria-hidden="true">REC ● LIVE</div>
+                </div>
 
                 <!-- Mascot Sticker -->
                 <div class="mascot-sticker">
